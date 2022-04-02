@@ -14,12 +14,17 @@
     git clone git@github.com:roaringstars/lightning-atm-mainan-ui.git
     ```
 
-3.  **Mulai mengembangkan**
+3.  **Install dependency**
+    ```shell
+    npm install
+    ```
+
+4.  **Mulai mengembangkan**
     ```shell
     npm run develop
     ```
 
-3.  **Buka di browser**
+5.  **Buka di browser**
 
     Akses halaman di http://localhost:8000
 
