@@ -1,0 +1,39 @@
+name: Deploy to Prod
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  CD:
+    name: CD
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '17.x'
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli@2.12.34
+
+      - name: Build
+        run: npm run build
+      
+      - name: Re-sync /public dir 
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete
+          path: /public
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: ${{ secrets.SSH_APPS_PATH }}/${{ github.event.repository.name }}/public
+          
+
