@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import Header from "../components/Header"
 import { Button } from 'react-bootstrap';
 
@@ -8,7 +8,7 @@ const IndexPage = () => {
     <main>
       <title>Index</title>
 
-      <Header/>
+      <Header />
 
       Link Penting
       <ul>
@@ -17,7 +17,10 @@ const IndexPage = () => {
         </li>
         <li>
           <Link to="/bantuan">Pusat Bantuan</Link>
-          </li>
+        </li>
+        <li>
+          <Link to="/tos">Perjanjian Penggunaan Layanan</Link>
+        </li>
       </ul>
 
     </main>
