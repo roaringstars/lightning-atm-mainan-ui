@@ -13,7 +13,7 @@ services:
       - "traefik.http.middlewares.fix-the-trailing.redirectregex.replacement=$${1}/"
       - "traefik.http.routers.app-secure.entrypoints=websecure"
       - "traefik.http.middlewares.app-ratelimit.ratelimit.burst=15"
-      - "traefik.http.routers.app-secure.rule=(Host(`beta.roaringstars.com`) || Host(`labs.roaringstars.com`))"
+      - "traefik.http.routers.app-secure.rule=((Host(`beta.roaringstars.com`) || Host(`labs.roaringstars.com`)) && PathPrefix(`/`))"
       - "traefik.http.routers.app-secure.middlewares=fix-prefix,fix-the-trailing"
       - "traefik.http.middlewares.app-ratelimit.ratelimit.average=25"
     ports:
