@@ -1,4 +1,6 @@
 import * as React from "react"
+import { Link } from "gatsby"
+import '../styles/global.css'
 
 const Header = () => {
     return (
@@ -16,26 +18,14 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ms-auto py-4 py-lg-0">
-                            <li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="">Home</a></li>
-                            <li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="">About</a></li>
-                            <li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="">Sample Post</a></li>
-                            <li className="nav-item"><a className="nav-link px-lg-3 py-3 py-lg-4" href="">Contact</a></li>
+                            <li className="nav-item"><div className="nav-link px-lg-3 py-3 py-lg-4"><Link to="/">Beranda</Link></div></li>
+                            <li className="nav-item"><div className="nav-link px-lg-3 py-3 py-lg-4"><Link to="/atm">ATM</Link></div></li>
+                            <li className="nav-item"><div className="nav-link px-lg-3 py-3 py-lg-4"><Link to="/bantuan">Bantuan</Link></div></li>
+                            <li className="nav-item"><div className="nav-link px-lg-3 py-3 py-lg-4"><Link to="/tos">TOS</Link></div></li>
                         </ul>
                     </div>
                 </div>
             </nav>
-
-            <header className="masthead">
-                <div className="container position-relative px-4 px-lg-5">
-                    <div className="row gx-4 gx-lg-5 justify-content-center">
-                        <div className="col-md-10 col-lg-8 col-xl-7">
-                            <div className="post-heading">
-                                <h2 className="subheading">Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
 
             <br />
         </>

@@ -16,9 +16,7 @@ const Bantuan = () => {
                             <h2 className="section-heading">Apa itu Bitcoin</h2>
                             <p>Bitcoin adalah mata uang digital yang didistribusikan secara elektronik dan tidak dikendalikan oleh pemerintah mana pun. Bitcoin merupakan sebuah repository open-source yakni seluruh desain arsitekturnya dipublikasi, siapa saja dapat melihat isi dari software Bitcoin itu sendiri. Yang artinya bersifat transparan akan segala konsep dan cara kerja teknologinya.</p>
                             <h2 className="section-heading">Apa itu Bitcoin Lightning</h2>
-                            <p></p>
-                            <h2 className="section-heading">Penjelasan Bitcoin Wallet</h2>
-                            <p></p>
+                            <p>Penjelasan Bitcoin Wallet</p>
                             <h2 className="section-heading">Pembayaran Rupiah Yang Didukung</h2>
                             <ul>
                                 <li>Gopay</li>
