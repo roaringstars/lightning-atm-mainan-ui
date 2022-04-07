@@ -1,7 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 .navbar {
     background: rgba(255, 255, 255, 0.28);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.navbar a {
+    color: #111;
+    text-decoration: none;
+}
+.navbar-brand span {
+    font-size: 0.7rem;
+    vertical-align:super;  
+}
+.navbar .justify-content-end {
+    float: right
+}
+
+.footer-section {
+    background-color: #333 !important;
+    color: #eee !important;
+}
+footer .footer-copyright {
+    background-color: rgba(0, 0, 0, 0.05)
+}
+footer a {
+    color: #111;
+    text-decoration: none;
+}
+footer .about {
+    font-size: 0.8rem;
+}
+.text-justify {
+    text-align: justify;
+}
+.btn-orange {
+    background-color: #f39300;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    padding: 10px 20px;
+}
+.btn-xs {
+    font-size: 0.5rem;
+    padding: 3px 10px;
+    text-decoration: none;
+    color: #444;
+}
+.section-1{
+    background-color: #fdc26a;
+    color: #222;
+    padding: 40px  20px ;
+}
+.section-2{
+    background-color: rgb(255, 235, 209);
+    padding: 40px  20px ;
+}
+.section-3{
+    background-color: #fff;
+    padding: 40px  20px ;
 }
