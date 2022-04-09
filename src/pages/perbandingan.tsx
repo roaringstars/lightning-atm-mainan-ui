@@ -83,6 +83,15 @@ const Bantuan = () => {
                                             <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>Luno</td>
+                                        <td>Rp10,000</td>
+                                        <td>Rp0</td>
+                                        <td>Rp7,xxx (OnChain Fee)</td>
+                                        <td>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </Table>
                         </div>
