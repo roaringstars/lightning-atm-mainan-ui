@@ -5,16 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { Card, Table } from "react-bootstrap"
+import PriceInBtc from "../components/PriceInBtc";
 
 const Bantuan = () => {
+    const [btcRate, setBtcRate] = React.useState(600000000);
+
     return (
         <main>
             <title>Pusat Bantuan</title>
 
             <Header />
 
-            <article className="mb-4">
-                <div className="container px-4 px-lg-5">
+            <article className="mb-4 section-comparison">
+                <div className="container ">
                     <div className="row gx-4 gx-lg-5 justify-content-center">
                         <div className="col-md-10 col-lg-10 col-xl-7">
                             <h2 className="section-heading mb-2">Perbandingan Biaya Self-Custody</h2>
@@ -67,9 +70,9 @@ const Bantuan = () => {
                                     </tr>
                                     <tr>
                                         <td>TokoCrypto</td>
-                                        <td>?</td>
-                                        <td>?</td>
-                                        <td>?</td>
+                                        <td>Rp50,000</td>
+                                        <td><PriceInBtc btc="0.001"/></td>
+                                        <td><PriceInBtc btc="0.0004"/></td>
                                         <td>
                                             <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
                                         </td>

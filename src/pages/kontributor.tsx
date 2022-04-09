@@ -11,6 +11,8 @@ const Kontributor = () => {
                 Terima kasih kepada kontributor yang telah membantu mengembangkan proyek ini: <br />
                 <ul>
                     <li>Github @nathfred</li>
+                    <li>Twitter @orangkamar</li>
+                    <li>Twitter @santridanalam</li>
                 </ul>
             </p>
         </main>

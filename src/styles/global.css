@@ -62,3 +62,22 @@ footer .about {
     background-color: #fff;
     padding: 40px  20px ;
 }
+
+/**
+ *  section-comparison
+ */
+
+.section-comparison table {
+    font-size: 0.7rem;
+}
+.text-right {
+    text-align: right;
+}
+
+
+/**
+ * ReactTooltip
+ */
+.opaque {
+    opacity: 1 !important;
+  }
