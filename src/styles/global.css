@@ -81,3 +81,19 @@ footer .about {
 .opaque {
     opacity: 1 !important;
   }
+
+
+/**
+ * 
+ */
+ ul.no-bullet {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.ml-1 {
+    margin-left: 4px;
+}
+.mb-2 {
+    margin-bottom: 10px;
+}

@@ -5,7 +5,11 @@ const config: GatsbyConfig = {
     title: `new`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: ["gatsby-plugin-react-helmet"]
+  plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+  ],
 };
 
 export default config;

@@ -55,6 +55,9 @@ const Footer = () => {
                                     <Link to="/tos" className="text-reset">Kebijakan Layanan</Link>
                                 </p>
                                 <p>
+                                <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
+                                </p>
+                                <p>
                                 <Link to="/kontributor"  className="text-reset">Kontributor</Link>
                                 </p>
                             </div>

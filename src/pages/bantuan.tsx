@@ -3,6 +3,9 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 import { Card } from "react-bootstrap"
+import ReactTooltip from "react-tooltip"
+import { TwitterTweetEmbed } from "react-twitter-embed"
+import { Link } from "gatsby"
 
 const Bantuan = () => {
     return (
@@ -64,8 +67,24 @@ const Bantuan = () => {
 
                                     <p className="mb-0">
                                         <ul>
-                                            <li>Gopay</li>
-                                            <li>Dana</li>
+                                            <li>
+                                                <span data-tip="React-tooltip" data-for={'idr-gopay'}>
+                                                    Gopay 
+                                                    [<a href="https://twitter.com/roaringstars/status/1490360523535564800">1</a>]
+                                                </span>
+                                                <ReactTooltip place="right" id={'idr-gopay'} effect="solid">
+                                                    Terakhir diuji coba 6 Feb 2022
+                                                </ReactTooltip>
+                                            </li>
+                                            <li>
+                                                <span data-tip="React-tooltip" data-for={'idr-dana'}>
+                                                    Dana 
+                                                    [<a href="https://twitter.com/jevanjovandy/status/1498143245758767104">1</a>]
+                                                </span>
+                                                <ReactTooltip place="right" id={'idr-dana'} effect="solid">
+                                                    Terakhir diuji coba 28 Feb 2022
+                                                </ReactTooltip>
+                                            </li>
                                             <li> ... need help add more</li>
                                         </ul>
                                         (membutuhkan bantuan untuk melengkapi ) ⚠️
@@ -79,8 +98,26 @@ const Bantuan = () => {
 
                                     <p className="mb-0">
                                         <ul>
-                                            <li>Muun</li>
-                                            <li>BlueWallet</li>
+                                            <li>
+                                               <Link to={'/dompet/muun'}>Muun</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/bluewallet'} 
+                                                        data-tip="React-tooltip" 
+                                                        data-for={'wallet-bluewallet'}>BlueWallet</Link>
+                                                <ReactTooltip id={'wallet-bluewallet'} effect="solid">
+                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                </ReactTooltip>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/wallet-of-satoshi'} 
+                                                        data-tip="React-tooltip" 
+                                                        data-for={'wallet-walletofsatoshi'}>Wallet of Satoshi</Link>
+                                                <ReactTooltip id={'wallet-walletofsatoshi'} effect="solid">
+                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                </ReactTooltip>
+                                            </li>
+                                            
                                             <li> ...(membutuhkan bantuan untuk melengkapi ) ⚠️</li>
                                         </ul></p>
 
