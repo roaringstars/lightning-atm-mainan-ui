@@ -102,18 +102,37 @@ const Bantuan = () => {
                                                <Link to={'/dompet/muun'}>Muun</Link>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/bluewallet'} 
-                                                        data-tip="React-tooltip" 
-                                                        data-for={'wallet-bluewallet'}>BlueWallet</Link>
-                                                <ReactTooltip id={'wallet-bluewallet'} effect="solid">
-                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
-                                                </ReactTooltip>
+                                                <Link to={'/dompet/bluewallet'} >BlueWallet</Link>
                                             </li>
                                             <li>
                                                 <Link to={'/dompet/wallet-of-satoshi'} 
                                                         data-tip="React-tooltip" 
-                                                        data-for={'wallet-walletofsatoshi'}>Wallet of Satoshi</Link>
-                                                <ReactTooltip id={'wallet-walletofsatoshi'} effect="solid">
+                                                        data-for={'wallet-wallet-of-satoshi'}>Wallet of Satoshi</Link>
+                                                <ReactTooltip id={'wallet-wallet-of-satoshi'} effect="solid">
+                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                </ReactTooltip>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/zap'} 
+                                                        data-tip="React-tooltip" 
+                                                        data-for={'wallet-zap'}>Zap</Link>
+                                                <ReactTooltip id={'wallet-zap'} effect="solid">
+                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                </ReactTooltip>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/phoenix'} 
+                                                        data-tip="React-tooltip" 
+                                                        data-for={'wallet-phoenix'}>Phoenix</Link>
+                                                <ReactTooltip id={'wallet-phoenix'} effect="solid">
+                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                </ReactTooltip>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/zebedee'} 
+                                                        data-tip="React-tooltip" 
+                                                        data-for={'wallet-zebedee'}>Zebedee</Link>
+                                                <ReactTooltip id={'wallet-zebedee'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
                                             </li>
