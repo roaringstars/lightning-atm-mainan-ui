@@ -40,6 +40,13 @@ const Muun = () => {
                                         </a>
                                     </li>
                                     <li>
+                                        <FontAwesomeIcon icon={faNewspaper} />&nbsp;
+                                        <a target="_blank" 
+                                        href="https://coinvestasi.com/berita/atm-bitcoin-di-indonesia">
+                                           Coinvestasi: Didukung Lightning Network, Indonesia Bakal Punya ATM Bitcoin?!
+                                        </a>
+                                    </li>
+                                    <li>
                                         <FontAwesomeIcon icon={faTwitter} />&nbsp;
                                         <a target="_blank" 
                                         href="https://twitter.com/GlobalBTCFest/status/1513577186745364485">

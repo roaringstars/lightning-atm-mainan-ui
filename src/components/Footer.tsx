@@ -31,7 +31,7 @@ const Footer = () => {
                                     Menu Utama
                                 </h6>
                                 <p>
-                                    <Link to="/" className="text-reset">Beranda</Link>
+                                    <Link to="/status" className="text-reset">Status Layanan</Link>
                                 </p>
                                 <p>
                                     <Link to="/atm" className="text-reset">ATM</Link>
@@ -52,7 +52,7 @@ const Footer = () => {
                                 </p>
 
                                 <p>
-                                    <Link to="/tos" className="text-reset">Kebijakan Layanan</Link>
+                                    <Link to="/kebijakan-layanan" className="text-reset">Kebijakan Layanan</Link>
                                 </p>
                                 <p>
                                 <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
