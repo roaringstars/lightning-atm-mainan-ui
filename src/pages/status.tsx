@@ -101,7 +101,7 @@ const Status = () => {
                                                             <Card className="mb-5 card-danger">
                                                                 <Card.Body>
                                                                     <p className="mb-0">
-                                                                        <FontAwesomeIcon icon={faExclamationTriangle} /> ATM Dalam Perbaikan
+                                                                        <FontAwesomeIcon icon={faExclamationTriangle} /> Gangguan Dari Pihak Luar
                                                                     </p>
                                                                 </Card.Body>
                                                             </Card>
@@ -114,7 +114,7 @@ const Status = () => {
 
                                         }
 
-                                        <StatusComponent data={data.lnpay}/>
+                                        <StatusComponent data={data.external}/>
 
                                         <Row className="text-center mb-5 mt-5">
                                             <Col md={6}>

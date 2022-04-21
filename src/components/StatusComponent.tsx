@@ -30,32 +30,38 @@ const StatusComponent = (props: any) => {
                                         <Card.Body>
                                             <Row>
                                                 <Col sm={10}>
-                                                    LNPay Server <FontAwesomeIcon
+                                                    {props.data[item].label} <FontAwesomeIcon
                                                         icon={faQuestionCircle}
                                                         className="text-faded"
-                                                        data-tip="React-tooltip" data-for={'lnpay-ping'}
+                                                        data-tip="React-tooltip" data-for={props.data[item].id}
                                                     />
                                                     <ReactTooltip
                                                         place="bottom"
-                                                        id={'lnpay-ping'}
+                                                        id={props.data[item].id}
                                                         type="light"
                                                         effect="solid"
                                                         className={"opaque"}>
                                                         <Table>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Status Code</td>
+                                                                    <td>Respon HTTP</td>
                                                                     <td className="text-right">
                                                                         {props.data[item].series[0].status_code}
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Last Check</td>
+                                                                    <td>Terakhir Diperiksa</td>
                                                                     <td className="text-right">
                                                                         <ReactTimeAgo date={props.data[item].last_check * 1000} />
                                                                     </td>
                                                                 </tr>
 
+                                                                <tr>
+                                                                    <td>Deskripsi</td>
+                                                                    <td className="text-right">
+                                                                        {props.data[item].description}
+                                                                    </td>
+                                                                </tr>
                                                             </tbody>
                                                         </Table>
                                                     </ReactTooltip>
