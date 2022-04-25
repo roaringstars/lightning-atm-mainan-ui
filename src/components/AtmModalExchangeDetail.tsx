@@ -62,7 +62,7 @@ const AtmModalExchangeDetail = () => {
     return (
         <>
             <Table bordered>
-                <tr>
+                <tr className="tr-bordered">
                     <td>Rupiah Deposit Amount</td>
                     <td className="idr-deposit-amount text-end">
                         {
@@ -166,7 +166,7 @@ const AtmModalExchangeDetail = () => {
                 </tr>
             </Table>
             <Table bordered>
-                <tr>
+                <tr className="tr-bordered">
                     <td>You'll Receive</td>
                     <td className="sats-received text-end">
                     {

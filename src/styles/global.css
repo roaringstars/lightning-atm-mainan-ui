@@ -353,16 +353,21 @@ h1 {
     border-color: #444;
     color: #444;
 }
-
-.modal.modal-8bit .table.table-bordered:nth-child(1)>tbody>tr>td.text-end,
-.modal.modal-8bit .table.table-bordered:nth-child(3)>tbody>tr>td.text-end {
-    border-left-width: 0;
+.modal.modal-8bit .table.table-bordered td {
+    padding: 10px;
+    border-width: 1px;
+}
+.modal.modal-8bit .table.minimal tr {
+    border: none;
 }
 
-.modal.modal-8bit .table.table-bordered:nth-child(1)>tbody>tr>td:nth-child(1),
-.modal.modal-8bit .table.table-bordered:nth-child(3)>tbody>tr>td:nth-child(1) {
-    border-right-width: 0;
+.modal.modal-8bit .table.table-bordered .tr-bordered td:first-child{
+    border-right-width: 0 !important;
 }
+.modal.modal-8bit .table.table-bordered .tr-bordered td:last-child{
+    border-left-width: 0 !important;
+}
+
 
 .modal.modal-8bit .table.minimal {
     border-color: transparent;
@@ -399,8 +404,8 @@ h1 {
 
 .modal.modal-8bit .btn.btn-secondary {
     border-color: #444;
-    color: #444;
-    background-color: transparent;
+    color: #444 !important;
+    background-color: transparent !important;
 }
 
 .modal.modal-8bit .btn.btn-primary {

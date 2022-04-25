@@ -3,13 +3,13 @@
   "message": "ok",
   "data": {
     "atm": {
-      "ok": false,
+      "ok": true,
       "internal_problem": false
     },
     "external": [
       {
         "id": "lnpay_ping",
-        "ok": false,
+        "ok": true,
         "label": "LNPAY Server",
         "description": "Ketersediaan API dapat diakses oleh ATM",
         "last_check": 1650545405,
