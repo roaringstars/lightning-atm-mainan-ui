@@ -1,8 +1,9 @@
 import * as React from "react"
 import { Button, Modal, Table } from "react-bootstrap"
 import Header from "../components/Header"
+import formatNumber from "./formatNumber";
 
-const AtmModalExchangeDetail = () => {
+const AtmModalExchangeDetail = (props: any) => {
     /**
      * Constant 
      */
@@ -17,7 +18,7 @@ const AtmModalExchangeDetail = () => {
     const [isRateDataReady, setIsRateDataReady] = React.useState(false);
     const [isRateDataFailed, setIsRateDataFailed] = React.useState(false);
     const [depositAmount, setDepositAmount] = React.useState(1500);
-
+    
     /**
      * Compose API endpoint
      */
@@ -55,9 +56,30 @@ const AtmModalExchangeDetail = () => {
             })
     }
 
+
+
+
     React.useEffect(() => {
         load();
     }, [])
+
+
+    /**
+     * Refrest every 1 minutes
+     * Update when `depositAmount` changes 
+     */
+    React.useEffect(() => { 
+        if (props.depositAmount === undefined) {
+            return
+        } 
+
+        setDepositAmount(props.depositAmount)
+        console.log('Refreshing rate...');
+        const timer = setInterval(() => {
+            load()
+        }, 5 * 1000);
+       return () => clearInterval(timer);
+    }, [props.depositAmount])
 
     return (
         <>
@@ -66,19 +88,7 @@ const AtmModalExchangeDetail = () => {
                     <td>Rupiah Deposit Amount</td>
                     <td className="idr-deposit-amount text-end">
                         {
-                            isLoading && (
-                                <>Loading...</>
-                            )
-                        }
-                        {
-                            isRateDataFailed && (
-                                <>Failed!</>
-                            )
-                        }
-                        {
-                            isRateDataReady ? (
-                                <>{rateData.idr_deposit_amount}</>
-                            ) : null
+                           <> {formatNumber(depositAmount, 'IDR ', '')}</>
                         }
                     </td>
                 </tr>

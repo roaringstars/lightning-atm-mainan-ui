@@ -8,12 +8,14 @@ const ATM = () => {
      * Constant 
      */
     const isDebug = (process.env.ATM_DEBUG === 'true');
+    const depositOption = [1500, 10000];
 
-         
     /**
      * Declare state
      */
     const [isScreenModalVisible, setIsScreenModalVisible] = React.useState(false);
+    const [depositAmount, setDepositAmount] = React.useState(0);
+    const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
 
     /**
      * Deposit Modal
@@ -21,6 +23,26 @@ const ATM = () => {
     function depositBtnAction() {
         setIsScreenModalVisible(true);
         console.log(isScreenModalVisible);
+    }
+
+    /**
+     * Change deposit amount
+     */
+    function changeDepositAmount(){
+        if (depositAmount == 0) {
+            setDepositAmount(1)
+            setDepositAmountText('Deposit 10K')
+        } else {
+            setDepositAmount(0)
+            setDepositAmountText('Deposit 1.5K')
+        }
+    }
+
+    /**
+     * Close modal 
+     */
+    function closeModal() {
+        setIsScreenModalVisible(false)
     }
 
     return (
@@ -72,15 +94,18 @@ const ATM = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <AtmModalExchangeDetail/>
+                    <AtmModalExchangeDetail depositAmount={depositOption[depositAmount]}/>
                     
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Out of Service</Button>
                     <Button className="btn btn-primary float-start btn-8bit">Agree &amp; Deposit</Button>
-                    <Button className="btn btn-secondary float-end btn-8bit">Close</Button>
-                    <Button className="btn btn-secondary float-end btn-8bit">Deposit 10K</Button>
+                    <Button className="btn btn-secondary float-end btn-8bit"
+                        onClick={() => {closeModal()}}>Close</Button>
+                    <Button className="btn btn-secondary float-end btn-8bit"
+                        onClick={() => {changeDepositAmount()}}
+                    >{depositAmountText}</Button>
                 </Modal.Footer>
             </Modal>
 
