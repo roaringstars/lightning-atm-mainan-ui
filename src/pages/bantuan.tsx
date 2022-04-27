@@ -6,6 +6,8 @@ import { Card } from "react-bootstrap"
 import ReactTooltip from "react-tooltip"
 import { TwitterTweetEmbed } from "react-twitter-embed"
 import { Link } from "gatsby"
+import Image1 from '../assets/images/bantuan/bitcoin.jpg';
+import Image2 from '../assets/images/bantuan/lightning-network.jpg';
 
 const Bantuan = () => {
     return (
@@ -32,10 +34,15 @@ const Bantuan = () => {
 
 
                             <h2 className="section-heading mb-2">Apa itu Lightning Network?</h2>
+                                    <img src={Image2} alt="BlueWallet" className="img-fluid" />
                             <Card className="mb-4">
                                 <Card.Body>
 
-                                    <p className="mb-0">(membutuhkan bantuan untuk melengkapi penjelasan lightning network) ⚠️
+                                    <p className="mb-0">
+                                        Bitcoin Lightning network merupakan solusi dari isu skalabilitas Bitcoin. 
+                                        Jaringan ini menumpang diatas jaringan Bitcoin, sehingga dapat melakukan transaksi 
+                                        lebih cepat dan efisien tanpa mengorbankan desentralisasi dan keamanan Bitcoin. 
+                                        Lightning Network menawarkan transaksi instan dan sangat menghemat biaya.
                                     </p>
                                 </Card.Body>
                             </Card>
