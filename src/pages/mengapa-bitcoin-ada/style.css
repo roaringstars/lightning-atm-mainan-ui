@@ -1,0 +1,156 @@
+.why .section-1 {
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 50px;
+}
+.why .section-1 .h1 {
+   font-size: 4rem;
+   text-align: center;
+   font-weight: bold;
+}
+.why .section-1 .h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 50px;
+ }
+.why .section-1 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i1.png); */
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    text-align: center;
+    opacity: 0.6;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+.why .section-2 {
+    background-color: #fafafa;
+}
+.why .section-2 .illustration {
+    background-image: url(../../assets/images/mengapa-bitcoin-ada/i2.png);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+ .why .section-3 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i2.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+ .why .section-4 .illustration {
+    background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+ .why .section-5 {
+     background-color: #eee;
+     padding: 50px;
+     margin-top: 50px;
+ }
+ .why .section-5 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+ .why .section-6 {
+    padding: 50px;
+    margin-top: 50px;
+}
+ .why .section-6 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+
+ .why .section-7 {
+    padding: 50px;
+    margin-top: 50px;
+}
+.why .section-7 .illustration {
+   /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+   background-size: cover;
+   background-position: center;
+   height: 250px;
+   text-align: center;
+   padding: 20px;
+   border: 2px dashed #eee;
+   border-radius: 10px;
+}
+
+ .why .section-8 {
+    background-color: #eee;
+    padding: 50px;
+    margin-top: 50px;
+}
+ .why .section-8 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+
+ .why .section-9 {
+    padding: 50px;
+    margin-top: 50px;
+}
+ .why .section-9 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
+
+ .why .section-10 {
+    padding: 50px;
+    margin-top: 50px;
+}
+ .why .section-10 .illustration {
+    /* background-image: url(../../assets/images/mengapa-bitcoin-ada/i4.png); */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #eee;
+    border-radius: 10px;
+ }
