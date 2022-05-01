@@ -68,6 +68,13 @@ const Muun = () => {
                                            Bukanrastaman: Cara mudah membeli Bitcoin dengan Lightning ATM ( Roaringstars)
                                         </a>
                                     </li>
+                                    <li>
+                                        <FontAwesomeIcon icon={faNewspaper} />&nbsp;
+                                        <a target="_blank" 
+                                        href="https://www.trenasia.com/warganet-indonesia-membuat-atm-bitcoin-pengguna-bisa-membeli-btc-mulai-dari-rp-1-500">
+                                           TrenAsia: Warganet Indonesia Membuat ATM Bitcoin, Pengguna Bisa Membeli BTC Mulai dari Rp1.500
+                                        </a>
+                                    </li>
                                 </ul>
                             </p>
 
