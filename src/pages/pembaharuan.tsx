@@ -3,10 +3,10 @@ import * as React from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 
-const TOS = () => {
+const Pembaharuan = () => {
     return (
         <main>
-            <title>Kebijakan Layanan</title>
+            <title>Pembaharuan</title>
 
             <Header />
 
@@ -15,7 +15,7 @@ const TOS = () => {
                     <div className="row gx-4 gx-lg-5 justify-content-center">
                         <div className="col-md-10 col-lg-8 col-xl-7">
 
-                            <h2 className="section-heading mb-5">Kebijakan Layanan</h2>
+                            <h2 className="section-heading mb-5">Pembaharuan</h2>
 
                             <div className="mb-2"><b>Privasi</b></div>
                             <p className="text-justify">
@@ -116,4 +116,4 @@ const TOS = () => {
     )
 }
 
-export default TOS
+export default Pembaharuan

@@ -45,7 +45,7 @@ const Bantuan = () => {
                                         <td>Lightning ATM (Mainan)</td>
                                         <td>Rp1,500</td>
                                         <td>Rp1,500</td>
-                                        <td>9% (Fixed)</td>
+                                        <td>10% (Fixed)</td>
                                         <td>
                                             <FontAwesomeIcon icon={faCheckCircle} className="text-success"/>
                                         </td>
