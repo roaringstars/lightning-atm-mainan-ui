@@ -357,14 +357,14 @@ h1 {
     padding: 10px;
     border-width: 1px;
 }
-.modal.modal-8bit .table.minimal tr {
+.modal.modal-8bit .table.minimal tbody tbody tr {
     border: none;
 }
 
-.modal.modal-8bit .table.table-bordered .tr-bordered td:first-child{
+.modal.modal-8bit .table.table-bordered tbody .tr-bordered td:first-child{
     border-right-width: 0 !important;
 }
-.modal.modal-8bit .table.table-bordered .tr-bordered td:last-child{
+.modal.modal-8bit .table.table-bordered tbody .tr-bordered td:last-child{
     border-left-width: 0 !important;
 }
 

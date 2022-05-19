@@ -31,10 +31,8 @@ const ATM = () => {
     function changeDepositAmount(){
         if (depositAmount == 0) {
             setDepositAmount(1)
-            setDepositAmountText('Deposit 10K')
         } else {
             setDepositAmount(0)
-            setDepositAmountText('Deposit 1.5K')
         }
     }
 
@@ -44,6 +42,17 @@ const ATM = () => {
     function closeModal() {
         setIsScreenModalVisible(false)
     }
+
+    /**
+     * Update text when `depositAmount` changes
+     */
+    React.useEffect(() => {
+        if (depositAmount == 0) {
+            setDepositAmountText('Deposit 10K')
+        } else {
+            setDepositAmountText('Deposit 1.5K')
+        }
+    }, [depositAmount])
 
     return (
         <main>
@@ -90,7 +99,7 @@ const ATM = () => {
                 size="lg"
             >
                 <Modal.Header>
-                    <Modal.Title>Exchange detail</Modal.Title>
+                    <Modal.Title>Detail Penukaran</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -99,10 +108,10 @@ const ATM = () => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Out of Service</Button>
-                    <Button className="btn btn-primary float-start btn-8bit">Agree &amp; Deposit</Button>
+                    <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Sedang Gangguan</Button>
+                    <Button className="btn btn-primary float-start btn-8bit">Setuju &amp; Deposit</Button>
                     <Button className="btn btn-secondary float-end btn-8bit"
-                        onClick={() => {closeModal()}}>Close</Button>
+                        onClick={() => {closeModal()}}>Tutup</Button>
                     <Button className="btn btn-secondary float-end btn-8bit"
                         onClick={() => {changeDepositAmount()}}
                     >{depositAmountText}</Button>
@@ -121,14 +130,14 @@ const ATM = () => {
                 <div className="modal-dialog modal-lg" id="modal-step-1" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exchangeDetailModalLabel">Exchange detail</h5>
+                            <h5 className="modal-title" id="exchangeDetailModalLabel">Detail Penukaran</h5>
                         </div>
                         <div className="modal-body">
                             <AtmModalExchangeDetail/>
                         </div>
                         <div className="modal-footer">
-                            <a className="btn btn-primary float-start btn-8bit disabled hide" disabled href="#"
-                                aria-disabled="" id="step-1-btn-deposit-maintenance">ATM Out of Service</a>
+                            <a className="btn btn-primary float-start btn-8bit disabled hide" disabled={true} href="#"
+                                aria-disabled="" id="step-1-btn-deposit-maintenance">ATM Sedang Gangguan</a>
                             <a className="btn btn-primary float-start btn-8bit" href="#"
                                 id="step-1-btn-deposit">Agree &amp; Deposit</a>
 
@@ -221,7 +230,7 @@ const ATM = () => {
                                 </div>
                                 <div className="col">
                                     <div className="pull-right">
-                                        <input id="switch" type="checkbox" checked />
+                                        <input id="switch" type="checkbox" />
                                         <div className="wrap">
                                             <label htmlFor="switch"><span className="rib"></span><span className="rib"></span><span className="rib">
 
