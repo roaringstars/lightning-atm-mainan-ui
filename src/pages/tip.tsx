@@ -27,12 +27,24 @@ const Tip = () => {
     const [isGenerateInvoiceSuccess, setIsGenerateInvoiceSuccess] = React.useState(false);
     const [isGenerateInvoiceReady, setIsGenerateInvoiceReady] = React.useState(false);
     const [invoiceCode, setInvoiceCode] = React.useState('');
-    const [invoiceGenerateFail, setInvoiceGenerateFail] = React.useState(false);
     const [invoiceGenerateFailMessage, setInvoiceGenerateFailMessage] = React.useState('');
 
     const [isInvoiceCopied, setIsInvoiceCopied] = React.useState(false);
 
     const [isPaymentPaid, setIsPaymentPaid] = React.useState(false);
+
+    function resetState() {
+        setTipAmount(1500);
+        setIsAnonTip(false);
+        setTipMemo('');
+        setIsGenerateInvoiceLoading(false);
+        setIsGenerateInvoiceSuccess(false);
+        setIsGenerateInvoiceReady(false);
+        setInvoiceCode('');
+        setInvoiceGenerateFailMessage('');
+        setIsInvoiceCopied(false);
+        setIsPaymentPaid(false);
+    }
 
     function generateQr() {
         setIsGenerateInvoiceLoading(true);
@@ -262,6 +274,7 @@ const Tip = () => {
                                                     <Button className="btn btn-primary btn-center mt-3 mb-3"
                                                 onClick={() => {
                                                     setIsInvoiceModalVisible(false);
+                                                    resetState();
                                                 }}
                                             >Close</Button>
                                                     </>
@@ -290,6 +303,7 @@ const Tip = () => {
                                              <div className="text-center btn btn-outline btn-center mb-2"
                                                 onClick={() => {
                                                     setIsInvoiceModalVisible(false);
+                                                    resetState();
                                                 }}
                                             >Close</div>
                                         </>
