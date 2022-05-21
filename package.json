@@ -28,11 +28,14 @@
     "gatsby-source-filesystem": "^4.12.1",
     "gatsby-transformer-sharp": "^4.12.1",
     "javascript-time-ago": "^2.3.13",
+    "rc-slider": "^10.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^2.2.2",
     "react-content-loader": "^6.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-qr-code": "^2.0.7",
     "react-time-ago": "^7.1.9",
     "react-tooltip": "^4.2.21",
     "react-twitter-embed": "^4.0.4",
@@ -41,6 +44,7 @@
   "devDependencies": {
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
+    "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-dom": "^17.0.14",
     "typescript": "^4.6.3"
   }
