@@ -25,9 +25,10 @@ const Tip = () => {
     const [isGenerateInvoiceSuccess, setIsGenerateInvoiceSuccess] = React.useState(false);
     const [isGenerateInvoiceReady, setIsGenerateInvoiceReady] = React.useState(false);
     const [invoiceCode, setInvoiceCode] = React.useState('');
+    const [invoiceGenerateFail, setInvoiceGenerateFail] = React.useState(false);
+    const [invoiceGenerateFailMessage, setInvoiceGenerateFailMessage] = React.useState('');
 
     const [isInvoiceCopied, setIsInvoiceCopied] = React.useState(false);
-
 
     const [isPaymentPaid, setIsPaymentPaid] = React.useState(false);
 
@@ -55,7 +56,12 @@ const Tip = () => {
                 return response.json();
             })
             .then(data => {
-                setInvoiceCode(data.data.invoice)
+                if (data.success == true) {
+                    setInvoiceCode(data.data.invoice)
+                } else {
+                    setIsGenerateInvoiceSuccess(false);
+                    setInvoiceGenerateFailMessage(data.message);
+                }
             })
             .catch(error => {
                 // TODO: Log
@@ -103,7 +109,7 @@ const Tip = () => {
             }, 2 * 1000);
             return () => clearInterval(timer);
         }
-    }, [isGenerateInvoiceSuccess, isGenerateInvoiceReady])
+    }, [isGenerateInvoiceSuccess, isGenerateInvoiceReady, invoiceCode])
 
     return (
         <main>
@@ -157,7 +163,14 @@ const Tip = () => {
                         ) : (
                             <>
                                 {
-                                    isGenerateInvoiceReady ? (
+                                  isGenerateInvoiceReady && !isGenerateInvoiceSuccess && (
+                                      <>
+                                      <div className="text-danger text-center">{invoiceGenerateFailMessage}
+                                          </div></>
+                                  )        
+                                }
+                                {
+                                    isGenerateInvoiceReady && isGenerateInvoiceSuccess ? (
                                         <>
                                             {
                                                 isPaymentPaid ? (
@@ -220,7 +233,7 @@ const Tip = () => {
                                                 )
                                             }
                                         </>
-                                    )
+                                    ) 
                                 }
                             </>
                         )
@@ -236,7 +249,7 @@ const Tip = () => {
                         ) : (
                             <>
                                 {
-                                    isGenerateInvoiceReady ? (
+                                    isGenerateInvoiceReady && isGenerateInvoiceSuccess ? (
                                         <>
                                             {
                                                 isPaymentPaid ? null : (
