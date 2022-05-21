@@ -8,6 +8,8 @@ import 'rc-slider/assets/index.css';
 import LoadingQr from "../components/LoadingQr";
 import QRCode from "react-qr-code";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Tip = () => {
     /**
@@ -102,14 +104,14 @@ const Tip = () => {
      * Check payment if QR code generated successfully 
      */
     React.useEffect(() => {
-        if (isGenerateInvoiceReady && isGenerateInvoiceSuccess) {
+        if (isGenerateInvoiceReady && isGenerateInvoiceSuccess && !isPaymentPaid) {
             console.log('Refreshing payment status...');
             const timer = setInterval(() => {
                 checkPayment(invoiceCode)
             }, 2 * 1000);
             return () => clearInterval(timer);
         }
-    }, [isGenerateInvoiceSuccess, isGenerateInvoiceReady, invoiceCode])
+    }, [isGenerateInvoiceSuccess, isGenerateInvoiceReady, invoiceCode, isPaymentPaid])
 
     return (
         <main>
@@ -174,7 +176,10 @@ const Tip = () => {
                                         <>
                                             {
                                                 isPaymentPaid ? (
-                                                    <>Thank you for your Tip!</>
+                                                    <>  
+                                                        <div className="text-center mb-4" style={{ "fontSize": "4rem" }}>🤩🙏⚡</div>
+                                                        <div className="text-center">Thank you for your Tip!</div>
+                                                    </>
                                                 ) : (
                                                     <>
                                                         <div className="tip-checking">Scan with your Bitcoin Lightning Network wallet</div>
@@ -252,7 +257,15 @@ const Tip = () => {
                                     isGenerateInvoiceReady && isGenerateInvoiceSuccess ? (
                                         <>
                                             {
-                                                isPaymentPaid ? null : (
+                                                isPaymentPaid ? (
+                                                    <>
+                                                    <Button className="btn btn-primary btn-center mt-3 mb-3"
+                                                onClick={() => {
+                                                    setIsInvoiceModalVisible(false);
+                                                }}
+                                            >Close</Button>
+                                                    </>
+                                                ) : (
                                                     <>
                                                         <CopyToClipboard text={invoiceCode}
                                                             onCopy={() => setIsInvoiceCopied(true)}>
@@ -265,12 +278,20 @@ const Tip = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <Button className="btn btn-primary btn-center mt-3 mb-3"
+                                            <Button className="btn btn-primary btn-center mt-3 mb-2" 
+                                                style={{"display":"block", "width": "100%"}}
                                                 disabled={(!isAnonTip && (tipMemo == '' || (tipMemo !== '' && tipMemo.length < 2)))}
                                                 onClick={() => {
                                                     generateQr()
                                                 }}
                                             >Generate Lightning Invoice</Button>
+
+
+                                             <div className="text-center btn btn-outline btn-center mb-2"
+                                                onClick={() => {
+                                                    setIsInvoiceModalVisible(false);
+                                                }}
+                                            >Close</div>
                                         </>
                                     )
                                 }
