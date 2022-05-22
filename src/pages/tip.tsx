@@ -8,8 +8,7 @@ import 'rc-slider/assets/index.css';
 import LoadingQr from "../components/LoadingQr";
 import QRCode from "react-qr-code";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import User from '../assets/images/user.jpg';
 
 const Tip = () => {
     /**
@@ -30,8 +29,13 @@ const Tip = () => {
     const [invoiceGenerateFailMessage, setInvoiceGenerateFailMessage] = React.useState('');
 
     const [isInvoiceCopied, setIsInvoiceCopied] = React.useState(false);
-
     const [isPaymentPaid, setIsPaymentPaid] = React.useState(false);
+
+
+    const [isListTipperReady, setIsListTipperReady] = React.useState(false);
+    const [listTipper, setListTipper] = React.useState([]);
+    const [totalTip, setTotalTip] = React.useState(0);
+
 
     function resetState() {
         setTipAmount(1500);
@@ -125,6 +129,38 @@ const Tip = () => {
         }
     }, [isGenerateInvoiceSuccess, isGenerateInvoiceReady, invoiceCode, isPaymentPaid])
 
+    /**
+     * Load tipper on page load 
+     */
+    function load() {
+        const endpoint = apiEndpoint + '/api_tip.php'
+        fetch(endpoint, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            })
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                setIsListTipperReady(true);
+                setListTipper(data.data.donors_list);
+                setTotalTip(data.data.total_amount)
+            })
+            .catch(error => {
+                // TODO: Log
+                // Log('error', 'Failed while sending post data', {
+                //     endpoint: apiEndpoint,
+                //     error: error
+                // })
+            })
+    }
+
+    React.useEffect(() => {
+        load();
+    }, [])
+
     return (
         <main>
             <title>Tip</title>
@@ -144,7 +180,61 @@ const Tip = () => {
                             }}>Tip with Bitcoin Lightning Network ⚡</Button>
                             <br />
                             <br />
+                            <div className="text-center">
+                                Thank You For Helping <b>Lightning ATM (Mainan)</b> grow!
+                            </div>
                             <br />
+                            {
+                                isListTipperReady ? (
+                                    <>
+                                        {
+                                            listTipper != undefined && (
+                                                <div className="tip-donor-list">
+                                                    {
+                                                        listTipper.map((item) => {
+                                                            return <>
+                                                                {
+                                                                    /^(\@)([a-zA-Z0-9_])+/.test(item.memo) ? (
+                                                                        <>
+                                                                            <a href={'https://twitter.com/' + item.memo} target="_blank">
+                                                                                <div className="tip-donor clickable">
+                                                                                    <div className="tip-donor-avatar">
+                                                                                        <img src={'https://unavatar.io/twitter/' + item.memo}
+                                                                                            alt=".."
+                                                                                        />
+                                                                                    </div>
+                                                                                    <div className="tip-donor-name">
+                                                                                        {item.memo} ({item.amount.toLocaleString()} sats)
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </>
+                                                                    ) : (
+                                                                        <>
+                                                                            <div className="tip-donor">
+                                                                                <div className="tip-donor-avatar">
+                                                                                    <img src={User}
+                                                                                        alt=".."
+                                                                                    />
+                                                                                </div>
+                                                                                <div className="tip-donor-name">
+                                                                                    {item.memo} ({item.amount.toLocaleString()} sats)
+                                                                                </div>
+                                                                            </div>
+                                                                        </>
+                                                                    )
+                                                                }
+
+                                                            </>
+                                                        })
+                                                    }
+                                                </div>
+                                            )
+                                        }
+                                    </>
+                                ) : (<>Loading...</>)
+                            }
+
                             <br />
                             <br />
                             <br />
@@ -177,18 +267,18 @@ const Tip = () => {
                         ) : (
                             <>
                                 {
-                                  isGenerateInvoiceReady && !isGenerateInvoiceSuccess && (
-                                      <>
-                                      <div className="text-danger text-center">{invoiceGenerateFailMessage}
-                                          </div></>
-                                  )        
+                                    isGenerateInvoiceReady && !isGenerateInvoiceSuccess && (
+                                        <>
+                                            <div className="text-danger text-center">{invoiceGenerateFailMessage}
+                                            </div></>
+                                    )
                                 }
                                 {
                                     isGenerateInvoiceReady && isGenerateInvoiceSuccess ? (
                                         <>
                                             {
                                                 isPaymentPaid ? (
-                                                    <>  
+                                                    <>
                                                         <div className="text-center mb-4" style={{ "fontSize": "4rem" }}>🤩🙏⚡</div>
                                                         <div className="text-center">Thank you for your Tip!</div>
                                                     </>
@@ -201,8 +291,6 @@ const Tip = () => {
                                                         <div className="mt-4 tip-invoice-code">
                                                             {invoiceCode}
                                                         </div>
-
-
                                                         {isInvoiceCopied ? <><br /><div className="tip-copied">Copied.</div></> : null}
                                                     </>
                                                 )
@@ -250,7 +338,7 @@ const Tip = () => {
                                                 )
                                             }
                                         </>
-                                    ) 
+                                    )
                                 }
                             </>
                         )
@@ -271,12 +359,12 @@ const Tip = () => {
                                             {
                                                 isPaymentPaid ? (
                                                     <>
-                                                    <Button className="btn btn-primary btn-center mt-3 mb-3"
-                                                onClick={() => {
-                                                    setIsInvoiceModalVisible(false);
-                                                    resetState();
-                                                }}
-                                            >Close</Button>
+                                                        <Button className="btn btn-primary btn-center mt-3 mb-3"
+                                                            onClick={() => {
+                                                                setIsInvoiceModalVisible(false);
+                                                                resetState();
+                                                            }}
+                                                        >Close</Button>
                                                     </>
                                                 ) : (
                                                     <>
@@ -291,8 +379,8 @@ const Tip = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <Button className="btn btn-primary btn-center mt-3 mb-2" 
-                                                style={{"display":"block", "width": "100%"}}
+                                            <Button className="btn btn-primary btn-center mt-3 mb-2"
+                                                style={{ "display": "block", "width": "100%" }}
                                                 disabled={(!isAnonTip && (tipMemo == '' || (tipMemo !== '' && tipMemo.length < 2)))}
                                                 onClick={() => {
                                                     generateQr()
@@ -300,7 +388,7 @@ const Tip = () => {
                                             >Generate Lightning Invoice</Button>
 
 
-                                             <div className="text-center btn btn-outline btn-center mb-2"
+                                            <div className="text-center btn btn-outline btn-center mb-2"
                                                 onClick={() => {
                                                     setIsInvoiceModalVisible(false);
                                                     resetState();
