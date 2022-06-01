@@ -1009,3 +1009,16 @@ code {
 .tip-donor-list .tip-donor-avatar img {
     width: 100%;
 }
+
+/**
+ * Trx Insight
+ */
+.trx-insight .table {
+    text-align: left;
+}
+.trx-insight .h1 {
+    font-size: 5rem;
+}
+.trx-insight .hide {
+    display: none;
+}
