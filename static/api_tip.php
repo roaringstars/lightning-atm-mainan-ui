@@ -28,7 +28,7 @@
         "amount": 1512
       },
       {
-        "memo": "@Bukanrastaman",
+        "memo": "@Bukan_rastaman",
         "amount": 1500
       },
       {

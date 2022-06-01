@@ -9,6 +9,8 @@ import LoadingQr from "../components/LoadingQr";
 import QRCode from "react-qr-code";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import User from '../assets/images/user.jpg';
+import { EditText } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
 
 const Tip = () => {
     /**
@@ -302,12 +304,41 @@ const Tip = () => {
                                         <>
                                             <div className="text-center mb-4" style={{ "fontSize": "4rem" }}>⚡</div>
                                             <h1 className="text-center mb-3 mt-3">
-
-                                                {tipAmount.toLocaleString()} Satoshi
+                                            <EditText 
+                                                value={tipAmount.toString()} 
+                                                formatDisplayText={(val) => {
+                                                    return val.toLocaleString() + ' Satoshi'
+                                                }}
+                                                onSave={(input) => {
+                                                    if (
+                                                        parseInt(input.value.toString()) <= 10000 &&
+                                                        parseInt(input.value.toString()) > 0
+                                                    ) {
+                                                        setTipAmount(parseInt(input.value.toString()));
+                                                    } else {
+                                                        setTipAmount(10000);
+                                                    }
+                                                }}
+                                                onChange={(input) => {
+                                                    if (
+                                                        parseInt(input.toString()) <= 10000 &&
+                                                        parseInt(input.toString()) > 0
+                                                    ) {
+                                                        setTipAmount(parseInt(input.toString()));
+                                                    } else {
+                                                        setTipAmount(10000);
+                                                    }
+                                                }}
+                                                type="number"
+                                                style={{textAlign: "center"}}
+                                            />
                                             </h1>
+
                                             <Slider min={1} max={10000} defaultValue={tipAmount} onChange={(value) => {
                                                 setTipAmount(parseInt(value.toString()));
-                                            }} />
+                                            }} 
+                                            value={tipAmount}
+                                            />
                                             <br />
                                             <br />
                                             <div className="center-checkbox"
