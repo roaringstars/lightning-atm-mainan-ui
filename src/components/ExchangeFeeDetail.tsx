@@ -13,13 +13,11 @@ const ExchangeFeeDetail = () => {
                 <li>Biaya Transfer Antar Bank</li>
                 <li>Biaya Pembelian Bitcoin Melalui Exchange Resmi</li>
                 <li>Biaya Transaksi On-Chain Bitcoin</li>
-                <li>Biaya Transaksi Withdraw/Refill Lightning Netwrok</li>
+                <li>Biaya Route Fee Lightning Netwrok</li>
                 <li>Pajak</li>
                 <li>Refund</li>
                 <li>Donasi Mangrove</li>
             </ul>
-            Pengelola ATM (Mainan) tidak mengambil keuntungan apapun dari proyek ini.
-
         </>
     )
 }
