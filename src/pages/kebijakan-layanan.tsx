@@ -50,7 +50,7 @@ const TOS = () => {
                                 Jika masih gagal, kami menyediakan jaminan uang kembali hanya dalam bentuk Bitcoin melalui jaringan Lightning Network, dengan syarat
                                 sebagai berikut:<br />
                                 <ul className="mt-2">
-                                    <li>Transaksi gagal dikarenakan kesalahan sistem, sebelum masuk ke dompet Bitcoin</li>
+                                    <li>Transaksi gagal dikarenakan kesalahan sistem, sebelum transaksi dinyatakan Selesai sesuai dengan <Link to="/wawasan-transaksi">Wawasan Transaksi</Link></li>
                                     <li>Maksimal pelaporan 2x24 jam dari waktu pembayaran QRIS</li>
                                     <li>Mengirimkan Kode <code>Trx ID</code>, tangkapan layar bukti pembayaran QRIS, dan tangkapan layar error melalui DM ke twitter @roaringstars</li>
                                 </ul>
