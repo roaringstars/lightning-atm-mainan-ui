@@ -24,7 +24,7 @@
     "frappe-charts": "^1.6.2",
     "gatsby": "^4.15.2",
     "gatsby-plugin-image": "^0.7.2",
-    "gatsby-plugin-react-helmet": "^3.10.0",
+    "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sharp": "^2.14.4",
     "gatsby-source-filesystem": "^2.11.1",
     "gatsby-transformer-sharp": "^2.12.1",
