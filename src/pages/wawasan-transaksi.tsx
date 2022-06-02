@@ -14,7 +14,7 @@ TimeAgo.addDefaultLocale(en)
 import ReactTimeAgo from 'react-time-ago'
 import LoadingTrxInsight from "../components/LoadingTrxInsight";
 
-import TrxIdHelp from '../assets/images/trx_id.png';
+import TrxIdHelp from '../assets/images/trx_id.svg';
 
 const WawasanTransaksi = ({ location }: any) => {
     /**
