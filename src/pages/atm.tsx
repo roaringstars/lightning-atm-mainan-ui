@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Button, Modal, Table } from "react-bootstrap"
 import AtmModalExchangeDetail from "../components/AtmModalExchangeDetail";
+import AtmModalGenerateQris from "../components/AtmModalGenerateQris";
 import Header from "../components/Header"
 
 const ATM = () => {
@@ -8,7 +9,7 @@ const ATM = () => {
      * Constant 
      */
     const isDebug = (process.env.ATM_DEBUG === 'true');
-    const depositOption = [1500, 10000];
+    const depositOption = [1500, 10000, 25000];
 
     /**
      * Declare state
@@ -16,6 +17,13 @@ const ATM = () => {
     const [isScreenModalVisible, setIsScreenModalVisible] = React.useState(false);
     const [depositAmount, setDepositAmount] = React.useState(0);
     const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
+    const [trxStep, setTrxStep] = React.useState('agreement');
+    const [trxId, setTrxId] = React.useState('');
+
+    /**
+     * UI Text
+     */
+    const [modalTitle, setModalTitle] = React.useState('Detail Penukaran');
 
     /**
      * Deposit Modal
@@ -28,10 +36,14 @@ const ATM = () => {
     /**
      * Change deposit amount
      */
-    function changeDepositAmount(){
+    function changeDepositAmount() {
         if (depositAmount == 0) {
             setDepositAmount(1)
-        } else {
+        }
+        else if (depositAmount == 1) {
+            setDepositAmount(2)
+        }
+        else {
             setDepositAmount(0)
         }
     }
@@ -40,6 +52,10 @@ const ATM = () => {
      * Close modal 
      */
     function closeModal() {
+        if (isDebug) {
+            console.log('Change step: agreement');
+        }
+        setTrxStep('agreement');
         setIsScreenModalVisible(false)
     }
 
@@ -49,10 +65,24 @@ const ATM = () => {
     React.useEffect(() => {
         if (depositAmount == 0) {
             setDepositAmountText('Deposit 10K')
-        } else {
+        }
+        else if (depositAmount == 1) {
+            setDepositAmountText('Deposit 25K')
+        }
+        else {
             setDepositAmountText('Deposit 1.5K')
         }
     }, [depositAmount])
+
+    /**
+     * Accept & Deposit button
+     */
+    function acceptAndDeposit() {
+        if (isDebug) {
+            console.log('Change step: generate-qris');
+        }
+        setTrxStep('generate-qris');
+    }
 
     return (
         <main>
@@ -60,14 +90,14 @@ const ATM = () => {
 
             {/* <Header/>
              */}
-            
+
             {
                 !isDebug ? (
                     <div className="atm-wip">ATM di halaman ini masih dalam proses rekonstruksi,
-                    sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.</div>
+                        sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.</div>
                 ) : null
             }
-           
+
 
             <div className="main-wrapper">
                 <div className="box-container ">
@@ -84,13 +114,13 @@ const ATM = () => {
                                 - ketuk untuk deposit rupiah -
                             </a>
                         </div>
+
                         <div className="atm-logo white"></div>
                     </div>
                 </div>
             </div>
 
             {/* <!-- Exchange Detail Modal --> */}
-
             <Modal
                 show={isScreenModalVisible}
                 backdrop="static"
@@ -99,103 +129,49 @@ const ATM = () => {
                 size="lg"
             >
                 <Modal.Header>
-                    <Modal.Title>Detail Penukaran</Modal.Title>
+                    <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <AtmModalExchangeDetail depositAmount={depositOption[depositAmount]}/>
-                    
+                    <AtmModalExchangeDetail
+                        depositAmount={depositOption[depositAmount]}
+                        modalTitle={modalTitle}
+                        setModalTitle={setModalTitle}
+                        trxStep={trxStep}
+                        setTrxStep={setTrxStep}
+                    />
+                    <AtmModalGenerateQris
+                        depositAmount={depositOption[depositAmount]}
+                        modalTitle={modalTitle}
+                        setModalTitle={setModalTitle}
+                        trxStep={trxStep}
+                        setTrxStep={setTrxStep}
+                        trxId={trxId}
+                        setTrxId={setTrxId}
+                    />
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Sedang Gangguan</Button>
-                    <Button className="btn btn-primary float-start btn-8bit">Setuju &amp; Deposit</Button>
-                    <Button className="btn btn-secondary float-end btn-8bit"
-                        onClick={() => {closeModal()}}>Tutup</Button>
-                    <Button className="btn btn-secondary float-end btn-8bit"
-                        onClick={() => {changeDepositAmount()}}
-                    >{depositAmountText}</Button>
+                    {
+                        trxStep === 'agreement' && (
+                            <>
+                                <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Sedang Gangguan</Button>
+                                <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
+                                <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
+                                <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { changeDepositAmount() }}>{depositAmountText}</Button>
+                            </>
+                        )
+                    }
+                    {
+                        trxStep === 'transaction-cancelled' && (
+                            <>
+                                <a className="btn btn-primary float-start btn-8bit"  href="https://twitter.com/roaringstars/" target="_blank">Laporkan Kesalahan</a>
+                                <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
+                            </>
+                        )
+                    }
                 </Modal.Footer>
             </Modal>
-
-
-
-            <div className="modal fade modal-8bit"
-                id="exchangeDetailModal"
-                role="dialog"
-                aria-labelledby="exchangeDetailModalLabel"
-                data-keyboard="false"
-                data-backdrop="static"
-                aria-hidden="true">
-                <div className="modal-dialog modal-lg" id="modal-step-1" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exchangeDetailModalLabel">Detail Penukaran</h5>
-                        </div>
-                        <div className="modal-body">
-                            <AtmModalExchangeDetail/>
-                        </div>
-                        <div className="modal-footer">
-                            <a className="btn btn-primary float-start btn-8bit disabled hide" disabled={true} href="#"
-                                aria-disabled="" id="step-1-btn-deposit-maintenance">ATM Sedang Gangguan</a>
-                            <a className="btn btn-primary float-start btn-8bit" href="#"
-                                id="step-1-btn-deposit">Agree &amp; Deposit</a>
-
-                            <button type="button"
-                                className="btn btn-secondary float-end btn-8bit" id="step-1-close-modal-btn">Close</button>
-                            <button className="btn btn-secondary float-end btn-8bit"
-                                id="step-1-change-deposit-btn"
-                            >Deposit 10K</button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <!-- Modal step 2 --> */}
-                <div className="modal-dialog modal-lg hide" id="modal-step-2" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="step2-modal-title">Deposit Rupiah</h5>
-                        </div>
-                        <div className="modal-body text-center">
-                            <p id="step-2-loading">Generating QRIS QR Code...</p>
-
-                            <div id="step-2-qr-generated" className="hide">
-                                <div id="step-2-message-top">Finish the payment by scanning with app that support QRIS</div>
-                                <div id="step-2-qr-code" className="qr-code">
-                                    <span></span>
-                                </div>
-                                <div id="step-2-trx-id"></div>
-                                <div id="step-2-message-bottom"></div>
-                            </div>
-
-                            <div id="step-3-share" className="hide">
-                                <p id="step-3-share-title">Share with your friends!</p>
-                                <img src="assets/img/b_logo.png" alt="share" />
-                                <div id="step-3-share-message">
-                                    Just exchange Indonesian Rupiah to Bitcoin with Lightning ATM (Mainan) and it's frickin' awesome!<br /><br /> #LightningAtmMainan #BitcoinEceran                    </div>
-                                <a className="btn btn-primary btn-block btn-8bit" id="step-3-share-btn"
-                                    href="https://twitter.com/intent/tweet?text=Just+exchange+Indonesian+Rupiah+to+Bitcoin+with+Lightning+ATM+%28Mainan%29+and+it%27s+frickin%27+awesome%21%0A%0A%23LightningAtmMainan+%23BitcoinEceran+https%3A%2F%2Ftwitter.com%2Froaringstars%2Fstatus%2F1490360523535564800" target="_blank"
-                                >Tweet this on Twitter</a>
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <textarea id="step-2-lnurl-copy" className="hide" rows="3"></textarea>
-
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col text-center">
-                                        <a className="btn btn-primary btn-block btn-8bit hide" id="step-2-lnurl-copy-btn">Copy LNURL</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button type="button" className="btn btn-secondary float-end btn-8bit"
-                                id="step-2-close-modal-btn">Close</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
 
             <div className="modal modal-back-case"
                 id="modal-settings"
@@ -258,7 +234,7 @@ const ATM = () => {
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </main>
     )

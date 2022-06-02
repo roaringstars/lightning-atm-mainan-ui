@@ -181,6 +181,40 @@ ul.no-bullet {
     opacity: 1;
 }
 
+.modal-top-message {
+    text-align: center;
+}
+.modal-trx-id {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.modal-bottom-message {
+    text-align: center;
+}
+.qr-qris svg {
+    margin: 20px auto;
+    display: block;
+}
+.qr-qris-logo {
+
+    margin: 0 auto;
+    left: calc(50% - 50px);
+    top: 150px;
+    display: inline-block;
+    content: ' ';
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    background-image: url("../assets/images/atm/qris.png");
+    background-size: 100% auto;
+}
+
+
+.big-icon {
+    margin: 20px auto;
+    display: block;
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;

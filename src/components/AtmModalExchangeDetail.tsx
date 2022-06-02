@@ -72,7 +72,7 @@ const AtmModalExchangeDetail = (props: any) => {
     /**
      * Update price rate when deposit amount change 
      */
-     React.useEffect(() => {
+    React.useEffect(() => {
         console.log('Deposit Amount:', props.depositAmount);
         console.log('Updating exchange detail...');
         load(props.depositAmount);
@@ -82,151 +82,158 @@ const AtmModalExchangeDetail = (props: any) => {
      * Refrest every 1 minutes
      * Update when `depositAmount` changes 
      */
-    React.useEffect(() => { 
+    React.useEffect(() => {
         if (props.depositAmount === undefined) {
             return
-        } 
+        }
 
         setDepositAmount(props.depositAmount)
         console.log('Refreshing rate...');
         const timer = setInterval(() => {
             load(props.depositAmount)
         }, 5 * 1000);
-       return () => clearInterval(timer);
+        return () => clearInterval(timer);
     }, [props.depositAmount])
 
     return (
         <>
-            <Table bordered>
-                <tbody>
+            {
+                props.trxStep == 'agreement' && (
+                    <>
 
-                <tr className="tr-bordered">
-                    <td>Jumlah Deposit Rupiah</td>
-                    <td className="idr-deposit-amount text-end">
-                        {
-                           <> {formatNumber(depositAmount, 'IDR ', '')}</>
-                        }
-                    </td>
-                </tr>
-                </tbody>
-            </Table>
-            <Table className="minimal">
-                <tbody>
-                <tr>
-                    <td>
-                        <span data-tip="React-tooltip" data-for={'exchange-fee-detail'}>
-                            Biaya Penukaran ({exchangeFeePercentage}%) 
-                        </span>
-                        </td>
-                    <td className="exchange-fee text-end">
-                    {
-                            isLoading && (
-                                <>Memuat...</>
-                            )
-                        }
-                        {
-                            isRateDataFailed && (
-                                <>Gagal Memuat!</>
-                            )
-                        }
-                        {
-                            isRateDataReady ? (
-                                <>{exchangeFee}</>
-                            ) : null
-                        }
+                        <Table bordered>
+                            <tbody>
 
-                        <ReactTooltip place="bottom" id={'exchange-fee-detail'} effect="solid">
-                            <div style={{maxWidth: "500px", textAlign: "left"}}>
-                                <ExchangeFeeDetail/>
-                            </div>
-                        </ReactTooltip>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jumlah Setelah Potongan</td>
-                    <td className="after-fee text-end">
-                    {
-                            isLoading && (
-                                <>Memuat...</>
-                            )
-                        }
-                        {
-                            isRateDataFailed && (
-                                <>Gagal Memuat!</>
-                            )
-                        }
-                        {
-                            isRateDataReady ? (
-                                <>{afterFeeIdr}</>
-                            ) : null
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Kurs (1 BTC ke IDR)</td>
-                    <td className="current-rate text-end">
-                    {
-                            isLoading && (
-                                <>Memuat...</>
-                            )
-                        }
-                        {
-                            isRateDataFailed && (
-                                <>Gagal Memuat!</>
-                            )
-                        }
-                        {
-                            isRateDataReady ? (
-                                <>{oneBtcToIdr}</>
-                            ) : null
-                        }
-                    </td>
-                </tr>
+                                <tr className="tr-bordered">
+                                    <td>Jumlah Deposit Rupiah</td>
+                                    <td className="idr-deposit-amount text-end">
+                                        {
+                                            <> {formatNumber(depositAmount, 'IDR ', '')}</>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                        <Table className="minimal">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span data-tip="React-tooltip" data-for={'exchange-fee-detail'}>
+                                            Biaya Penukaran ({exchangeFeePercentage}%)
+                                        </span>
+                                    </td>
+                                    <td className="exchange-fee text-end">
+                                        {
+                                            isLoading && (
+                                                <>Memuat...</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataFailed && (
+                                                <>Gagal Memuat!</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataReady ? (
+                                                <>{exchangeFee}</>
+                                            ) : null
+                                        }
 
-                </tbody>
+                                        <ReactTooltip place="bottom" id={'exchange-fee-detail'} effect="solid">
+                                            <div style={{ maxWidth: "500px", textAlign: "left" }}>
+                                                <ExchangeFeeDetail />
+                                            </div>
+                                        </ReactTooltip>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Setelah Potongan</td>
+                                    <td className="after-fee text-end">
+                                        {
+                                            isLoading && (
+                                                <>Memuat...</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataFailed && (
+                                                <>Gagal Memuat!</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataReady ? (
+                                                <>{afterFeeIdr}</>
+                                            ) : null
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kurs (1 BTC ke IDR)</td>
+                                    <td className="current-rate text-end">
+                                        {
+                                            isLoading && (
+                                                <>Memuat...</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataFailed && (
+                                                <>Gagal Memuat!</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataReady ? (
+                                                <>{oneBtcToIdr}</>
+                                            ) : null
+                                        }
+                                    </td>
+                                </tr>
 
-            </Table>
-            <Table bordered>
+                            </tbody>
 
-            <tbody>
+                        </Table>
+                        <Table bordered>
 
-                <tr className="tr-bordered">
-                    <td>Kamu Akan Menerima</td>
-                    <td className="sats-received text-end">
-                    {
-                            isLoading && (
-                                <>Memuat...</>
-                            )
-                        }
-                        {
-                            isRateDataFailed && (
-                                <>Gagal Memuat!</>
-                            )
-                        }
-                        {
-                            isRateDataReady ? (
-                                <>{satsReceive}</>
-                            ) : null
-                        }
-                    </td>
-                </tr>
+                            <tbody>
 
-                </tbody>
+                                <tr className="tr-bordered">
+                                    <td>Kamu Akan Menerima</td>
+                                    <td className="sats-received text-end">
+                                        {
+                                            isLoading && (
+                                                <>Memuat...</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataFailed && (
+                                                <>Gagal Memuat!</>
+                                            )
+                                        }
+                                        {
+                                            isRateDataReady ? (
+                                                <>{satsReceive}</>
+                                            ) : null
+                                        }
+                                    </td>
+                                </tr>
 
-            </Table>
+                            </tbody>
 
-            <div className="alert alert-8bit">
-                <p className="text-center mb-1">- Mohon Baca Sebelum Melakukan Pembayaran -</p>
-                <ul>
-                    <li>Mendukung semua pembayaran QRIS (OVO, Gopay, DANA, LinkAja, ShopeePay, BCA, CIMB).</li>
-                    <li>Jika membutuhkan bantuan DM <b>@roaringstars</b> dengan menyertakan nomor Trx ID.</li>
+                        </Table>
 
-                    <li>Mesin ini dibuat untuk tujuan edukasi, kehilangan Bitcoin setelah transaksi selesai/menggunakan 
-                        untuk hal dilarang hukum merupakan tanggung jawab sendiri.
-                    </li>
-                </ul>
-            </div>
+                        <div className="alert alert-8bit">
+                            <p className="text-center mb-1">- Mohon Baca Sebelum Melakukan Pembayaran -</p>
+                            <ul>
+                                <li>Mendukung semua pembayaran QRIS (OVO, Gopay, DANA, LinkAja, ShopeePay, BCA, CIMB).</li>
+                                <li>Jika membutuhkan bantuan DM <b>@roaringstars</b> dengan menyertakan nomor Trx ID.</li>
 
+                                <li>Mesin ini dibuat untuk tujuan edukasi, kehilangan Bitcoin setelah transaksi selesai/menggunakan
+                                    untuk hal dilarang hukum merupakan tanggung jawab sendiri.
+                                </li>
+                            </ul>
+                        </div>
+
+                    </>
+                )
+            }
 
         </>
     )
