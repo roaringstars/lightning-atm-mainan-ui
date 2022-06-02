@@ -60,7 +60,6 @@ const AtmModalGenerateQris = (props: any) => {
                 setQrisData(data.data.qr_data);
                 props.setTrxId(data.data.trx_id);
                 props.setTrxStep('waiting-rupiah-deposit');
-                props.setTrxStep('transaction-cancelled');
                 setIsQrisDataReady(true);
                 setIsLoading(false);
             })
