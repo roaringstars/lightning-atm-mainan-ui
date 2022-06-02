@@ -1022,3 +1022,19 @@ code {
 .trx-insight .hide {
     display: none;
 }
+.trx-insight-box {
+    border: none;
+    padding-top: 17px;
+}
+.trx-insight-box .col {
+    padding: 0 !important;
+}
+.trx-insight-box input {
+    font-size: 2rem;
+}
+.trx-insight-box .btn {
+    font-size: 2rem;
+}
+.trx-not-found {
+    font-size: 2rem;
+}

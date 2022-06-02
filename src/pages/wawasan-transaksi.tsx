@@ -1,21 +1,34 @@
 import * as React from "react"
+import { navigate } from "gatsby"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import ReactFrappeChart from "react-frappe-charts";
 
 import { Badge, Button, Card, Col, Form, FormControl, InputGroup, Modal, Row, Table } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 TimeAgo.addDefaultLocale(en)
 import ReactTimeAgo from 'react-time-ago'
+import LoadingTrxInsight from "../components/LoadingTrxInsight";
+
+import TrxIdHelp from '../assets/images/trx_id.svg';
 
 const WawasanTransaksi = ({ location }: any) => {
+    /**
+     * Regex for find valid Trx ID
+     */
+    const regex = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/gm;
+
+    const [isTrxIdValid, setIsTrxIdValid] = React.useState(true);
+    const [actualTrxId, setActualTrxId] = React.useState(location.search.replace('?trx_id=', ''));
+
     const [isDataReady, setIsDataReady] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
     const [dataNotFound, setDataNotFound] = React.useState(false);
-    const [trxId, setTrxId] = React.useState(location.search.replace('?trx_id=', ''));
+    const [trxId, setTrxId] = React.useState(null);
     const [trxStatus, setTrxStatus] = React.useState(null);
     const [idrAmount, setIdrAmount] = React.useState(0);
     const [satoshiAmount, setSatoshiAmount] = React.useState(0);
@@ -30,9 +43,11 @@ const WawasanTransaksi = ({ location }: any) => {
      * Load tipper on page load 
      */
     function load() {
+        navigate('/wawasan-transaksi/?trx_id=' + actualTrxId);
+        setIsLoading(true);
         setIsDataReady(false);
         setDataNotFound(false);
-        const endpoint = 'https://roaringstars.com/' + '/api_troubleshoot_trx.php?trx_id=' + trxId
+        const endpoint = 'https://roaringstars.com/' + '/api_troubleshoot_trx.php?trx_id=' + actualTrxId
         fetch(endpoint, {
             method: 'GET',
             headers: new Headers({
@@ -46,13 +61,16 @@ const WawasanTransaksi = ({ location }: any) => {
                 console.log(data);
                 if (data.success === false) {
                     setDataNotFound(true);
-    
-                } else {
                     setIsDataReady(true);
+                    setIsLoading(false);
+                } else {
+                    setIsLoading(false);
+                    setIsDataReady(true);
+                    setTrxId(data.trx_id);
                     setTrxStatus(data.trx_status);
                     setIsRefundable(data.is_refundable);
                     setTrxCreatedAt(data.trx_created_at);
-    
+
                     if (data.trx_status == 'finished') {
                         setIdrAmount(data.idr_amount);
                         setSatoshiAmount(data.satoshi_amount);
@@ -72,7 +90,9 @@ const WawasanTransaksi = ({ location }: any) => {
     }
 
     React.useEffect(() => {
-        load();
+        if (location.search.replace('?trx_id=', '') != '') {
+            load();
+        }
     }, [])
 
     return (
@@ -87,41 +107,93 @@ const WawasanTransaksi = ({ location }: any) => {
                         <div className="col-md-12">
                             <br />
                             <br />
+
                             <h2 className="section-heading mb-5 mt-4">Wawasan Transaksi</h2>
+
+
+                            <Card body className="trx-insight-box">
+                                <Row>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <FormControl
+                                                placeholder="aaaaaaaa-1111-dddd-4444-dddddddddd"
+                                                aria-label="aaaaaaaa-1111-dddd-4444-dddddddddd"
+                                                aria-describedby="basic-addon2"
+                                                value={actualTrxId}
+                                                onChange={(item) => {
+                                                    if (regex.test(item.target.value)) {
+                                                        console.log('valid!');
+                                                        setIsTrxIdValid(true);
+                                                    } else {
+                                                        console.log('invalid!');
+                                                        setIsTrxIdValid(false);
+                                                    }
+                                                    setActualTrxId(item.target.value)
+                                                }}
+                                                onKeyPress={(ev) => {
+                                                    if (ev.key === "Enter" && isTrxIdValid) {
+                                                        load();
+                                                        ev.preventDefault();
+                                                    }
+                                                }}
+                                            />
+                                            <Button variant="secondary" id="button-addon2"
+                                                onClick={() => {
+                                                    load();
+                                                }}
+                                                disabled={!isTrxIdValid}
+                                            >
+                                                <FontAwesomeIcon icon={faSearch} /> Cari Transaksi 
+                                            </Button>
+                                        </InputGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        {
+                                            !isTrxIdValid && (
+                                                <><div className="text-danger">Trx ID tidak valid</div></>
+                                            )
+                                        }
+                                    </Col>
+                                </Row>
+                            </Card>
+
+                            {
+                                location.search.replace('?trx_id=', '') == '' && (
+                                    <>
+                                    <img src={TrxIdHelp} alt="Trx Id" className="img-fluid" />
+                                    </>
+                                )
+                            }
                             {
                                 isDataReady && dataNotFound ? (
-                                    <>Data Not Found</>
+                                    <>
+                                       <div className="trx-not-found">🤷 Transaksi Tidak Ditemukan</div><br/>
+                                       <p>Mungkin kode tidak lengkap? atau transaksi sudah lebih dari 3 hari 🤔</p><br/>
+                                        <img src={TrxIdHelp} alt="Trx Id" className="img-fluid" />
+                                    </>
                                 ) : null
                             }
                             {
-                                isDataReady && !dataNotFound ? (
+                                isLoading && (
                                     <>
-                                        <Card body className="trx-insight-box mb-3">
-                                            <Row>
+                                        <Card body className="trx-insight">
+                                            <Row className="p-4">
                                                 <Col>
-                                                    <InputGroup className="mb-3">
-                                                        <FormControl
-                                                            placeholder="Trx ID (contoh. aaaaaaaa-1111-dddd-4444-dddddddddd)"
-                                                            aria-label="Trx ID (contoh. aaaaaaaa-1111-dddd-4444-dddddddddd)"
-                                                            aria-describedby="basic-addon2"
-                                                            value={trxId}
-                                                            onChange={(item) => 
-                                                                setTrxId(item.target.value)
-                                                            }
-                                                        />
-                                                        <Button variant="outline-secondary" id="button-addon2"
-                                                            onClick={() => {
-                                                                load();
-                                                            }}
-                                                        >
-                                                            Cari <FontAwesomeIcon icon={faSearch} />
-                                                        </Button>
-                                                    </InputGroup>
+                                                    <LoadingTrxInsight />
                                                 </Col>
                                             </Row>
                                         </Card>
+                                    </>
+                                )
+                            }
 
-                                        
+                            {
+                                isDataReady && !dataNotFound ? (
+                                    <>
+
+
                                         {
                                             trxStatus == 'finished' ? (
                                                 <Card body className="trx-insight">
@@ -139,7 +211,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Satoshi Diterima</td>
-                                                                        <td>{satoshiAmount} Satoshi</td>
+                                                                        <td>{satoshiAmount.toLocaleString()} Satoshi</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Trx Dibuat</td>
@@ -197,15 +269,16 @@ const WawasanTransaksi = ({ location }: any) => {
                                                     <Row>
                                                         <Col>
                                                             <ReactFrappeChart
-                                                                type="bar"
-                                                                colors={["#21ba45"]}
+                                                                animate={1}
                                                                 axisOptions={{ xAxisMode: "tick", yAxisMode: "tick", xIsSeries: 1 }}
                                                                 height={160}
                                                                 type={"percentage"}
                                                                 data={{
                                                                     labels: timePercentageLabel,
-                                                                    datasets: [{ values: timePercentageValue }],
+                                                                    datasets: [{ values: timePercentageValue }]
                                                                 }}
+                                                                colors={['#ca8b7d', '#af4ced', '#f7931a']}
+                                                                truncateLegends={1}
                                                             />
                                                         </Col>
                                                     </Row>
@@ -229,49 +302,49 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                         <td>-</td>
                                                                     </tr>
                                                                     {
-                                                                                trxCreatedAt !== undefined && (<>
-                                                                    <tr>
-                                                                        <td>Trx Dibuat</td>
-                                                                        <td>
-                                                                            
+                                                                        trxCreatedAt !== undefined && (<>
+                                                                            <tr>
+                                                                                <td>Trx Dibuat</td>
+                                                                                <td>
+
                                                                                     <ReactTimeAgo date={new Date(trxCreatedAt * 1000)} locale="en-US" />
-                                                                       
-                                                                           
-                                                                        </td>
-                                                                    </tr>    
-                                                                    <tr>
-                                                                        <td>Status</td>
-                                                                        <td>
-                                                                            {
-                                                                                trxStatus == 'finished' ? (
-                                                                                    <Badge bg="success">Selesai &nbsp;
-                                                                                        <FontAwesomeIcon icon={faCheckCircle} />
-                                                                                    </Badge>
-                                                                                ) : null
-                                                                            }
-                                                                            {
-                                                                                trxStatus == 'onprogress' ? (
-                                                                                    <Badge bg="primary">Dalam Proses</Badge>
-                                                                                ) : null
-                                                                            }
-                                                                            {
-                                                                                trxStatus == 'cancelled' ? (
-                                                                                    <Badge bg="secondary">Dibatalkan</Badge>
-                                                                                ) : null
-                                                                            }
-                                                                            <div className="ml-1 d-inline-block">
 
 
-                                                                                {
-                                                                                    isRefundable ? (
-                                                                                        <Badge bg="success">Masih Bisa Refund</Badge>
-                                                                                    ) : (
-                                                                                        <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
-                                                                                    )
-                                                                                } </div>
-                                                                        </td>
-                                                                    </tr>        </> )
-                                                                            }
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Status</td>
+                                                                                <td>
+                                                                                    {
+                                                                                        trxStatus == 'finished' ? (
+                                                                                            <Badge bg="success">Selesai &nbsp;
+                                                                                                <FontAwesomeIcon icon={faCheckCircle} />
+                                                                                            </Badge>
+                                                                                        ) : null
+                                                                                    }
+                                                                                    {
+                                                                                        trxStatus == 'onprogress' ? (
+                                                                                            <Badge bg="primary">Dalam Proses</Badge>
+                                                                                        ) : null
+                                                                                    }
+                                                                                    {
+                                                                                        trxStatus == 'cancelled' ? (
+                                                                                            <Badge bg="secondary">Dibatalkan</Badge>
+                                                                                        ) : null
+                                                                                    }
+                                                                                    <div className="ml-1 d-inline-block">
+
+
+                                                                                        {
+                                                                                            isRefundable ? (
+                                                                                                <Badge bg="success">Masih Bisa Refund</Badge>
+                                                                                            ) : (
+                                                                                                <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
+                                                                                            )
+                                                                                        } </div>
+                                                                                </td>
+                                                                            </tr>        </>)
+                                                                    }
                                                                 </tbody>
                                                             </Table>
                                                         </Col>
@@ -292,7 +365,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                         }
 
                                     </>
-                                ) : (<>Loading..</>)
+                                ) : null
                             }
                             <br />
                             <br />
