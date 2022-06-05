@@ -32,59 +32,66 @@ const AtmModalExchangeDetail = (props: any) => {
     /**
      * Load latest Bitcoin price rate
      */
-    const load = (amount: number, props:any) => {
+    function load(amount: number, props:any) {
+        let forbidAction = false;
+
         /**
          * Only check when `RateChecker` is enabled
          */
         if (!props.isRateCheckerEnabled) {
-            return false;
+            forbidAction = true;
         }
 
         /**
          * Only when `depositAmount` already set
          */
-         if (props.depositAmount == undefined) {
-            return false;
+         if (amount == undefined) {
+             forbidAction = true;
         }
 
         if (isDebug) {
             console.log('Call API: /api_rate');
         }
 
-        setIsLoading(true);
-        setIsRateDataReady(false);
-        let endpoint = apiEndpoint + '/api_rate.php?deposit=' + amount;
-        console.log('Loading request: ', endpoint)
-        fetch(endpoint, {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-        })
-            .then(response => {
-                setIsLoading(false);
-                if (response.ok) {
-                    setIsRateDataReady(true);
-                } else {
-                    setIsRateDataFailed(true);
-                }
-                return response.json();
+        /**
+         * discontinue when specifict criteria unmeet `forbidAction`
+         */
+        if (!forbidAction) {
+            setIsLoading(true);
+            setIsRateDataReady(false);
+            let endpoint = apiEndpoint + '/api_rate.php?deposit=' + amount;
+            console.log('Loading request: ', endpoint)
+            fetch(endpoint, {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
             })
-            .then(data => {
-                setExchangeFee(data.data.exchange_fee);
-                setAfterFeeIdr(data.data.after_fee_idr);
-                setOneBtcToIdr(data.data.one_btc_to_idr);
-                setSatsReceive(data.data.sats_receive);
-                props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
-                setRateData(data.data);
-            })
-            .catch(error => {
-                // TODO: Log
-                // Log('error', 'Failed while sending post data', {
-                //     endpoint: apiEndpoint,
-                //     error: error
-                // })
-            })
+                .then(response => {
+                    setIsLoading(false);
+                    if (response.ok) {
+                        setIsRateDataReady(true);
+                    } else {
+                        setIsRateDataFailed(true);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    setExchangeFee(data.data.exchange_fee);
+                    setAfterFeeIdr(data.data.after_fee_idr);
+                    setOneBtcToIdr(data.data.one_btc_to_idr);
+                    setSatsReceive(data.data.sats_receive);
+                    props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
+                    setRateData(data.data);
+                })
+                .catch(error => {
+                    // TODO: Log
+                    // Log('error', 'Failed while sending post data', {
+                    //     endpoint: apiEndpoint,
+                    //     error: error
+                    // })
+                })
+        }
     }
 
     /**

@@ -11,7 +11,7 @@ const ATM = ({ location }: any) => {
      * Constant 
      */
     const isDebug = (process.env.ATM_DEBUG === 'true');
-    const depositOption = [1500, 10000, 25000];
+    const depositOption = [1500, 10000, 15000];
 
     /**
      * Declare state
@@ -36,6 +36,7 @@ const ATM = ({ location }: any) => {
      * UI Text
      */
     const [modalTitle, setModalTitle] = React.useState('Detail Penukaran');
+    const tweetPreview = 'Baru saja menukarkan Rupiah ke Bitcoin dengan Lightning ATM (Mainan) dan itu keren!\n\n#LightningAtmMainan #BitcoinEceran';
 
     /**
      * Deposit Modal
@@ -78,7 +79,7 @@ const ATM = ({ location }: any) => {
             setDepositAmountText('Deposit 10K')
         }
         else if (depositAmount == 1) {
-            setDepositAmountText('Deposit 25K')
+            setDepositAmountText('Deposit 15K')
         }
         else {
             setDepositAmountText('Deposit 1.5K')
@@ -97,6 +98,7 @@ const ATM = ({ location }: any) => {
             }
             setTrxStep('waiting-rupiah-deposit');
             setModalTitle('Memuat Transaksi...');
+            setTrxId(trxIdFromUrl);
             depositBtnAction();
         }
     }, [trxIdFromUrl])
@@ -203,6 +205,7 @@ const ATM = ({ location }: any) => {
                         setLnurlData={setLnurlData}
                         isMachineInMaintenance={isMachineInMaintenance}
                         setIsMachineInMaintenance={setIsMachineInMaintenance}
+                        tweetPreview={tweetPreview}
                     />
                 </Modal.Body>
 

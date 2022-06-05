@@ -31,7 +31,9 @@ const AtmModalGenerateQris = (props: any) => {
     /**
      * Generate QRIS
      */
-    const load = (amount: number) => {
+    function load(amount: number) {
+        let forbidAction = false;
+
         if (isDebug) {
             console.log('Call API: /api_generate_qris');
         }
@@ -45,49 +47,56 @@ const AtmModalGenerateQris = (props: any) => {
          * Avoid duplicate QR Generation
          */
         if (props.isQrisQrBeingGenerated) {
-            return false;
+            forbidAction = true;
         }
-        props.setIsQrisQrBeingGenerated(true);
 
-        setIsLoading(true);
-        setIsQrisDataReady(false);
-        let endpoint = apiEndpoint + '/api_generate_qris.php?deposit=' + amount;
-        console.log('Loading request: ', endpoint)
-        fetch(endpoint, {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-        })
-            .then(response => {
-                setIsLoading(false);
-                if (response.ok) {
-                    setIsQrisDataFailed(false);
-                } else {
-                    setIsQrisDataFailed(true);
-                }
-                return response.json();
-            })
-            .then(data => {
-                /**
-                 * Change URL into current Trx ID
-                 */
-                navigate('/atm/?trx_id=' + data.data.trx_id);
 
-                setQrisData(data.data.qr_data);
-                props.setTrxId(data.data.trx_id);
-                props.setTrxStep('waiting-rupiah-deposit');
-                setIsQrisDataReady(true);
-                setIsLoading(false);
+        /**
+         * discontinue when specifict criteria unmeet `forbidAction`
+         */
+        if (!forbidAction) {
+            props.setIsQrisQrBeingGenerated(true);
+
+            setIsLoading(true);
+            setIsQrisDataReady(false);
+            let endpoint = apiEndpoint + '/api_generate_qris.php?deposit=' + amount;
+            console.log('Loading request: ', endpoint)
+            fetch(endpoint, {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
             })
-            .catch(error => {
-                console.log(error);
-                // TODO: Log
-                // Log('error', 'Failed while sending post data', {
-                //     endpoint: apiEndpoint,
-                //     error: error
-                // })
-            })
+                .then(response => {
+                    setIsLoading(false);
+                    if (response.ok) {
+                        setIsQrisDataFailed(false);
+                    } else {
+                        setIsQrisDataFailed(true);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    /**
+                     * Change URL into current Trx ID
+                     */
+                    navigate('/atm/?trx_id=' + data.data.trx_id);
+
+                    setQrisData(data.data.qr_data);
+                    props.setTrxId(data.data.trx_id);
+                    props.setTrxStep('waiting-rupiah-deposit');
+                    setIsQrisDataReady(true);
+                    setIsLoading(false);
+                })
+                .catch(error => {
+                    console.log(error);
+                    // TODO: Log
+                    // Log('error', 'Failed while sending post data', {
+                    //     endpoint: apiEndpoint,
+                    //     error: error
+                    // })
+                })
+        }
     }
 
     React.useEffect(() => {
@@ -117,6 +126,8 @@ const AtmModalGenerateQris = (props: any) => {
      * Refrest every 1 second
      */
     React.useEffect(() => {
+        console.log('props.trxId: ' + props.trxId);
+
         if (props.trxStep == 'waiting-rupiah-deposit') {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {
@@ -133,87 +144,100 @@ const AtmModalGenerateQris = (props: any) => {
         }
     }, [props.trxStep, props.trxId, props])
 
-    const checkPayment = (trxId: String, props: any) => {
-        if (isDebug) {
-            console.log('Call API: /api_check_payment');
+    function checkPayment(trxId: String, props: any) {
+        let forbidAction = false;
+
+        if (trxId == '') {
+            forbidAction = true;
         }
 
-        setIsPaymentCheckLoading(true);
-        setIsPaymentCheckReady(false);
-        let endpoint = apiEndpoint + '/api_check_payment.php?id=' + trxId;
-        console.log('Loading request: ', endpoint)
-        fetch(endpoint, {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-        })
-            .then(response => {
-                setIsPaymentCheckLoading(false);
-                if (response.ok) {
-                    setIsPaymentCheckFailed(false);
-                } else {
-                    setIsPaymentCheckFailed(true);
-                }
-                return response.json();
+
+        /**
+         * discontinue when specifict criteria unmeet `forbidAction`
+         */
+        if (!forbidAction) {
+            if (isDebug) {
+                console.log('Call API: /api_check_payment');
+            }
+
+            setIsPaymentCheckLoading(true);
+            setIsPaymentCheckReady(false);
+            let endpoint = apiEndpoint + '/api_check_payment.php?id=' + trxId;
+            console.log('Loading request: ', endpoint)
+            fetch(endpoint, {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
             })
-            .then(data => {
-                setIsPaymentComplete(data.data.payment_complete);
-                setIsPaymentCancelled(data.data.payment_cancelled);
-                setQrisData(data.data.qris_data);
-                setPaymentLnurlData(data.data.lnurl_data);
-                setPaymentLnurlStatus(data.data.lnurl_status);
-                setMessageTop(data.data.message_top);
-                setMessageBottom(data.data.message_bottom);
-                props.setModalTitle(data.data.modal_title);
-                props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
-
-                setIsPaymentCheckReady(true);
-                setIsPaymentCheckLoading(false);
-
-                /**
-                 * Set step
-                 */
-                if (data.data.payment_cancelled) {
-                    if (isDebug) {
-                        console.log('Change step: transaction-cancelled');
+                .then(response => {
+                    setIsPaymentCheckLoading(false);
+                    if (response.ok) {
+                        setIsPaymentCheckFailed(false);
+                    } else {
+                        setIsPaymentCheckFailed(true);
                     }
-                    props.setTrxStep('transaction-cancelled');
-                }
+                    return response.json();
+                })
+                .then(data => {
+                    setIsPaymentComplete(data.data.payment_complete);
+                    setIsPaymentCancelled(data.data.payment_cancelled);
+                    setQrisData(data.data.qris_data);
+                    setPaymentLnurlData(data.data.lnurl_data);
+                    setPaymentLnurlStatus(data.data.lnurl_status);
+                    setMessageTop(data.data.message_top);
+                    setMessageBottom(data.data.message_bottom);
+                    props.setModalTitle(data.data.modal_title);
+                    props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
 
-                /**
-                 * Set step if payment finished
-                 */
-                if (data.data.payment_complete) {
-                    if (isDebug) {
-                        console.log('Change step: withdraw-lnurl');
-                    }
-                    props.setLnurlData(data.data.lnurl_data);
-                    props.setTrxStep('withdraw-lnurl');
+                    setIsPaymentCheckReady(true);
+                    setIsPaymentCheckLoading(false);
 
                     /**
-                     * If LNURL complete 
+                     * Set step
                      */
-                    if (data.data.lnurl_status == 'complete') {
-                        props.setTrxStep('transaction-complete');
+                    if (data.data.payment_cancelled) {
+                        if (isDebug) {
+                            console.log('Change step: transaction-cancelled');
+                        }
+                        props.setTrxStep('transaction-cancelled');
                     }
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                // TODO: Log
-                // Log('error', 'Failed while sending post data', {
-                //     endpoint: apiEndpoint,
-                //     error: error
-                // })
-            })
+
+                    /**
+                     * Set step if payment finished
+                     */
+                    if (data.data.payment_complete) {
+                        if (isDebug) {
+                            console.log('Change step: withdraw-lnurl');
+                        }
+                        props.setLnurlData(data.data.lnurl_data);
+                        props.setTrxStep('withdraw-lnurl');
+
+                        /**
+                         * If LNURL complete 
+                         */
+                        if (data.data.lnurl_status == 'complete') {
+                            props.setTrxStep('transaction-complete');
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    // TODO: Log
+                    // Log('error', 'Failed while sending post data', {
+                    //     endpoint: apiEndpoint,
+                    //     error: error
+                    // })
+                })
+        }
     }
 
     /**
      * Tweet action
      */
     function tweetAction() {
-        const url = 'https://twitter.com/intent/tweet?text=Baru+saja+menukarkan+Rupiah+ke+Bitcoin+dengan+Lightning+ATM+%28Mainan%29+dan+itu+keren!+%0A%0A%23LightningAtmMainan+%23BitcoinEceran+https%3A%2F%2Ftwitter.com%2Froaringstars%2Fstatus%2F1490360523535564800';
+        const tweetPreviewEncoded = encodeURI(props.tweetPreview).replace(/\#/g, '%23');
+        const url = 'https://twitter.com/intent/tweet?text=' +  tweetPreviewEncoded + '%20https%3A%2F%2Ftwitter.com%2Froaringstars%2Fstatus%2F1490360523535564800';
         window.open(url, '_blank');
     }
 
@@ -350,15 +374,18 @@ const AtmModalGenerateQris = (props: any) => {
                 props.trxStep == 'transaction-complete' && (
                     <>
                         <div className="modal-top-message">
-                            {messageTop}
+                            {messageTop}<br/>
+                            {messageBottom}
                         </div>
 
                         <img src={BitcoinIcon} alt="Bitcoin Icon" className="big-icon" />
 
                         <div className="modal-bottom-message">
-                            {messageBottom}
-                            <Button className="btn btn-primary btn-8bit" onClick={() => { tweetAction() }}>Tweet ini di Twitter</Button>
+                           <>{props.tweetPreview}</>
+                           <Button className="btn btn-primary btn-8bit" onClick={() => { tweetAction() }}>Tweet ini di Twitter</Button>
                         </div>
+
+                       
                     </>
                 )
             }
