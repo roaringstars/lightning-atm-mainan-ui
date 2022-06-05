@@ -116,7 +116,7 @@ const AtmModalExchangeDetail = (props: any) => {
         console.log('Refreshing rate...');
         const timer = setInterval(() => {
             load(props.depositAmount, props)
-        }, 5 * 1000);
+        }, 30 * 1000);
         return () => clearInterval(timer);
     }, [props.depositAmount, props])
 
