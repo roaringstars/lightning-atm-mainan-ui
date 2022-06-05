@@ -104,7 +104,7 @@ const AtmModalExchangeDetail = (props: any) => {
     }, [props.depositAmount, apiEndpoint])
 
     /**
-     * Refrest every 5 second
+     * Refrest every 1 second
      * Update when `depositAmount` changes 
      */
     React.useEffect(() => {
@@ -116,9 +116,15 @@ const AtmModalExchangeDetail = (props: any) => {
         console.log('Refreshing rate...');
         const timer = setInterval(() => {
             load(props.depositAmount, props)
-        }, 5 * 1000);
+        }, 10 * 1000);
         return () => clearInterval(timer);
     }, [props.depositAmount, props])
+
+    React.useEffect(() => { 
+        console.log('Refreshing rate...');
+        load(1500, props)
+    }, [props])
+
 
     return (
         <>

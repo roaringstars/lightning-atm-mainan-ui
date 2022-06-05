@@ -1,10 +1,19 @@
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import * as React from "react"
-import { Button, Modal, Table } from "react-bootstrap"
+import { Button, Col, Modal, Row, Table } from "react-bootstrap"
 import CopyToClipboard from "react-copy-to-clipboard";
 import AtmModalExchangeDetail from "../components/AtmModalExchangeDetail";
 import AtmModalGenerateQris from "../components/AtmModalGenerateQris";
 import Header from "../components/Header"
+import '../styles/atm.css'
+import { Helmet } from "react-helmet"
+import BackSideLabel from '../assets/images/atm/back_label.svg';
+
+import ReactTimeAgo from 'react-time-ago'
+
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
+TimeAgo.addDefaultLocale(en)
 
 const ATM = ({ location }: any) => {
     /**
@@ -12,11 +21,14 @@ const ATM = ({ location }: any) => {
      */
     const isDebug = (process.env.ATM_DEBUG === 'true');
     const depositOption = [1500, 10000, 15000];
+    const appUiVersion = process.env.ATM_UI_VERSION;
 
     /**
      * Declare state
      */
     const [isScreenModalVisible, setIsScreenModalVisible] = React.useState(false);
+    const [isConfigModalVisible, setIsConfigModalVisible] = React.useState(true);
+    const [isEinkEffectEnabled, setIsEinkEffectEnabled] = React.useState(true);
     const [depositAmount, setDepositAmount] = React.useState(0);
     const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
     const [trxStep, setTrxStep] = React.useState('agreement');
@@ -31,6 +43,7 @@ const ATM = ({ location }: any) => {
     const [lnurlData, setLnurlData] = React.useState('');
 
     const [isMachineInMaintenance, setIsMachineInMaintenance] = React.useState(false);
+    const [lastLocalTrx, setLastLocalTrx] = React.useState([]);
 
     /**
      * UI Text
@@ -69,6 +82,7 @@ const ATM = ({ location }: any) => {
         }
         setTrxStep('agreement');
         setIsScreenModalVisible(false)
+        navigate('/atm/')
     }
 
     /**
@@ -129,12 +143,90 @@ const ATM = ({ location }: any) => {
         }
     }
 
+    /**
+     * Handle E-ink Toggle
+     */
+    function handleEinkToggle() {
+        if (isDebug) {
+            console.log('E-ink Enabled: ' + !isEinkEffectEnabled);
+        }
+        setIsEinkEffectEnabled(!isEinkEffectEnabled)
+        localStorage.setItem('atm-config', JSON.stringify({
+            'enable_flashy_effect': !isEinkEffectEnabled
+        }));
+
+    }
+
+    /**
+     * Handle Reboot Toggle
+     */
+    function handleRebootBtn() {
+        if (isDebug) {
+            console.log('Rebooting...');
+        }
+        setIsConfigModalVisible(false)
+    }
+    function handleOpenConfig() {
+        if (isDebug) {
+            console.log('Opening Config Modal...');
+        }
+        setIsConfigModalVisible(true)
+
+    }
+
+    /**
+     * Load previous config
+     */
+    React.useEffect(() => {
+
+        const atmConfig = localStorage.getItem('atm-config');
+        if (atmConfig === null) {
+            if (isDebug) {
+                console.log('No config found.');
+            }
+        } else {
+            if (isDebug) {
+                console.log('Previous config found.');
+            }
+            setIsConfigModalVisible(false);
+        }
+        /**
+         * Load last trx
+         */
+        renderLastTrx();
+    }, [])
+
+    /**
+     * Render last trx
+     */
+    function renderLastTrx() {
+        /**
+         * Check last trx
+         * @type {string}
+         */
+        const lastTrx = localStorage.getItem('last-trx');
+        if (lastTrx == null) {
+            console.log('No last trx found.');
+        } else {
+            let lastTrxDecode = JSON.parse(lastTrx);
+            console.log('Found ' + lastTrxDecode.length + ' previous transaction.');
+
+            setLastLocalTrx(lastTrxDecode)
+        }
+
+    }
+
     return (
         <main>
-            <title>ATM</title>
-
-            {/* <Header/>
-             */}
+            <Helmet
+                title={'ATM'}
+                meta={[
+                    {
+                        name: `viewport`,
+                        content: 'width=device-width, initial-scale=1.0',
+                    }
+                ]}
+            />
 
             {
                 !isDebug ? (
@@ -156,11 +248,13 @@ const ATM = ({ location }: any) => {
                                 id="please-deposit-btn"
                                 onClick={() => { depositBtnAction() }}
                             >
-                                - ketuk untuk deposit rupiah -
+                                - ketuk untuk deposit -
                             </a>
                         </div>
 
                         <div className="atm-logo white"></div>
+
+                        <div className="config-btn" onClick={() => { handleOpenConfig() }}></div>
                     </div>
                 </div>
             </div>
@@ -228,7 +322,7 @@ const ATM = ({ location }: any) => {
                     {
                         trxStep === 'transaction-cancelled' && (
                             <>
-                                <a className="btn btn-primary float-start btn-8bit"  href="https://twitter.com/roaringstars/" target="_blank">Laporkan Kesalahan</a>
+                                <a className="btn btn-primary float-start btn-8bit" href="https://twitter.com/roaringstars/" target="_blank">Laporkan Kesalahan</a>
                                 <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
                             </>
                         )
@@ -240,9 +334,9 @@ const ATM = ({ location }: any) => {
                                 {
                                     isMachineInMaintenance ? (
                                         <>
-                                            <CopyToClipboard 
-                                                text={'https://roaringstars.com/atm/?trx_id=' + trxId} 
-                                                onCopy={() => { alert('URL halaman ini berhasil disalin, akses halaman ini beberapa saat lagi')}}
+                                            <CopyToClipboard
+                                                text={'https://roaringstars.com/atm/?trx_id=' + trxId}
+                                                onCopy={() => { alert('URL halaman ini berhasil disalin, akses halaman ini beberapa saat lagi') }}
                                             >
                                                 <Button className="btn btn-primary btn-8bit">Salin Alamat Halaman</Button>
                                             </CopyToClipboard>
@@ -255,9 +349,9 @@ const ATM = ({ location }: any) => {
                                                 )
                                             }
 
-                                            <CopyToClipboard 
-                                                text={lnurlData} 
-                                                onCopy={() => { alert('Kode LNURL berhasil disalin, tempelkan pada dompet Bitcoin yang mendukung Lightning Network')}}
+                                            <CopyToClipboard
+                                                text={lnurlData}
+                                                onCopy={() => { alert('Kode LNURL berhasil disalin, tempelkan pada dompet Bitcoin yang mendukung Lightning Network') }}
                                             >
                                                 <Button className="btn btn-primary btn-8bit">Salin LNURL</Button>
                                             </CopyToClipboard>
@@ -266,7 +360,7 @@ const ATM = ({ location }: any) => {
                                     )
                                 }
 
-                                
+
                             </div>
                         )
                     }
@@ -285,69 +379,126 @@ const ATM = ({ location }: any) => {
                 </Modal.Footer>
             </Modal>
 
-            <div className="modal modal-back-case"
-                id="modal-settings"
-                role="dialog"
-                data-keyboard="false"
-                data-backdrop="static"
-                aria-hidden="true">
-
-                {/* <!-- Modal Settings --> */}
-                <div className="modal-dialog modal-lg " role="document">
-                    <div className="modal-content">
-                        <div className="modal-body text-center">
-                            <div className="back-label">
-                                <p>
-                                    Model: BTCLN-21M<br />
-                                    Version: 0.0.3 (Beta)<br />
-                                    Last Trx: 1 hour ago<br />
-                                    Successful Trx: 584<br />
-                                    Today Trx: 10<br />
-                                </p>
-                                <div className="screw tl"></div>
-                                <div className="screw tr r1"></div>
-                                <div className="screw bl r2"></div>
-                                <div className="screw br r3"></div>
-                                <img src="/assets/img/back_label.svg" alt="back label" />
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <div className="row">
-                                <div className="col">
-                                    Flashy E-Ink Effect
-                                </div>
-                                <div className="col">
-                                    <div className="pull-right">
-                                        <input id="switch" type="checkbox" />
-                                        <div className="wrap">
-                                            <label htmlFor="switch"><span className="rib"></span><span className="rib"></span><span className="rib">
-
-                                            </span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    Save Config &amp; Reboot
-                                </div>
-                                <div className="col">
-                                    <div className="pull-right">
-                                        <input id="switch-reboot" type="checkbox" />
-                                        <div className="wrap">
-                                            <label htmlFor="switch-reboot">
-                                                <span className="rib"></span>
-                                                <span className="rib"></span>
-                                                <span className="rib"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            {/* <!-- Config Modal --> */}
+            <Modal
+                show={isConfigModalVisible}
+                backdrop="static"
+                keyboard={false}
+                className="modal fade modal-back-case"
+                size="lg"
+            >
+                <Modal.Body>
+                    <div className=" text-center">
+                        <div className="back-label">
+                            <p>
+                                Model: BTCLN-21M<br />
+                                Version: {appUiVersion} (Beta)<br />
+                                Last Trx: -<br />
+                                Successful Trx: -<br />
+                                Today Trx: -<br />
+                            </p>
+                            <div className="screw tl"></div>
+                            <div className="screw tr r1"></div>
+                            <div className="screw bl r2"></div>
+                            <div className="screw br r3"></div>
+                            <img src={BackSideLabel} alt="back label" />
                         </div>
                     </div>
-                </div>
-            </div>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            Flashy E-Ink Effect
+                        </Col>
+                        <Col>
+                            <div className="pull-right">
+                                <input id="switch" type="checkbox"
+                                    checked={isEinkEffectEnabled}
+                                    onChange={() => { handleEinkToggle() }}
+                                />
+                                <div className="wrap">
+                                    <label htmlFor="switch"><span className="rib"></span><span className="rib"></span><span className="rib">
+                                    </span></label>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            Save Config &amp; Reboot
+                        </Col>
+                        <Col>
+                            <div className="pull-right">
+                                <input id="switch-reboot" type="checkbox"
+                                    checked={!isConfigModalVisible}
+                                    onChange={() => { handleRebootBtn() }} />
+                                <div className="wrap">
+                                    <label htmlFor="switch-reboot">
+                                        <span className="rib"></span>
+                                        <span className="rib"></span>
+                                        <span className="rib"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div className="last-trx ">
+                                <div className="title">Last Transaction</div>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>TRX ID</th>
+                                            <th>Amount</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            lastLocalTrx.length < 1 ? (
+                                                <><tr><td colSpan={3} className="text-center">Tidak Ada Transaksi Terakhir</td></tr></>
+                                            ) : (
+                                                <>
+                                                    {
+                                                        lastLocalTrx.map((item: any) => {
+                                                            return (
+                                                                <>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a onClick={() => {
+                                                                                setIsConfigModalVisible(false)
+                                                                                setIsScreenModalVisible(true)
+                                                                                setTrxId(item.trx_id)
+                                                                                setModalTitle('Memuat Transaksi...')
+                                                                                setTrxStep('waiting-rupiah-deposit')
+                                                                                navigate('/atm/?trx_id=' + item.trx_id)
+                                                                            }}>{item.trx_id}</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            {item.amount}
+                                                                        </td>
+                                                                        <td>
+                                                                            <ReactTimeAgo date={new Date(item.timestamp * 1000)} locale="en-US" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </>
+                                                            )
+                                                        })
+                                                    }
+                                                </>
+                                            )
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+
+            </Modal>
         </main>
     )
 }

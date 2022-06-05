@@ -1,0 +1,900 @@
+/**
+ * The ATM
+ */
+ .atm-wip {
+    background-color: rgb(255, 142, 142);
+    color: #000;
+    padding: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 99999;
+    text-align: center;
+}
+
+.box {
+    width: 500px;
+    height: 550px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    color: #222;
+    background: rgb(254, 154, 0);
+    background: linear-gradient(121deg, rgba(254, 154, 0, 1) 0%, rgba(241, 146, 0, 1) 77%, rgba(254, 154, 0, 1) 100%);
+    border-radius: 50px;
+    box-shadow: 1px -1px 0px #cb7e08,
+        2px -2px 0px #cb7e08,
+        3px -3px 0px #cb7e08,
+        4px -4px 0px #cb7e08,
+        5px -5px 0px #cb7e08,
+        6px -6px 0px #cb7e08,
+        7px -7px 0px #cb7e08,
+        8px -8px 0px #cb7e08,
+        9px -9px 0px #cb7e08,
+        10px -10px 0px #cb7e08,
+        11px -11px 0px #cb7e08,
+        12px -12px 0px #cb7e08,
+        13px -13px 0px #cb7e08,
+        14px -14px 0px #cb7e08;
+}
+
+.main-wrapper {
+    height: 400px;
+    /* Just for the snippet */
+    width: 400px;
+    
+    /* Just for the snippet */
+    margin: 0 auto;
+    /* Just for the snippet */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0; */
+}
+
+.main-wrapper.show {
+    animation: fade-in 3s;
+    animation-iteration-count: 1;
+    opacity: 1;
+}
+
+.modal-top-message {
+    text-align: center;
+}
+.modal-trx-id {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.modal-bottom-message {
+    text-align: center;
+}
+.qr-qris svg {
+    margin: 20px auto;
+    display: block;
+}
+.qr-qris-logo {
+
+    margin: 0 auto;
+    left: calc(50% - 50px);
+    top: 150px;
+    display: inline-block;
+    content: ' ';
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    background-image: url("../assets/images/atm/qris.png");
+    background-size: 100% auto;
+}
+.ln svg {
+    margin: 20px auto;
+    display: block;
+}
+.ln-logo {
+
+    margin: 0 auto;
+    left: calc(50% - 35px);
+    top: 150px;
+    display: inline-block;
+    content: ' ';
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background-image: url("../assets/images/atm/btcln.png");
+    background-size: 100% auto;
+}
+
+
+
+.big-icon {
+    margin: 20px auto;
+    display: block;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.box:after {
+    content: "";
+    display: block;
+    width: 460px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    position: absolute;
+    left: 51%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    z-index: -1;
+    box-shadow: 0px 5px 80px 0px rgba(0, 0, 0, 1);
+}
+
+.btn-default {
+    background-color: #eee;
+}
+
+.btn-check:focus+.btn,
+.btn:focus {
+    box-shadow: 5px 0 #444, -5px 0 #444, 0 -5px #444, 0 5px #444, 0 0 0 3px #444;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.result {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.screen {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    height: 150px;
+    top: 50px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.1) inset;
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    color: #444;
+
+}
+
+.screen .small {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+}
+
+.screen .large {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.screen .more-text {
+    font-size: 0.5rem;
+    background-color: #444;
+    color: #f1f1f1;
+    border-radius: 0;
+    padding: 10px;
+    display: inline-block;
+}
+
+.screen .more-text.hide {
+    display: none
+}
+
+.screen .btn {
+    font-size: 0.7rem;
+    background-color: #444;
+    color: #f1f1f1;
+    border-radius: 0;
+}
+
+.atm-logo {
+    background-image: url("../assets/images/atm/ln_atm.png");
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
+    bottom: 30px;
+    width: 80%;
+    display: block;
+    position: absolute;
+}
+
+.atm-logo.white {
+    animation-name: bolt;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.lnurl-textarea {
+    background-color: #444;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    font-size: 0.6rem;
+}
+
+@keyframes bolt {
+    0% {
+        filter: invert(100%) drop-shadow(0 0 0 yellow);
+    }
+
+    50% {
+        filter: invert(100%) drop-shadow(0 0 20px yellow);
+    }
+
+    100% {
+        filter: invert(100%) drop-shadow(0 0 0 yellow);
+    }
+}
+
+@keyframes e-ink-flash {
+    0% {
+        filter: invert(0%);
+    }
+
+    50% {
+        filter: invert(100%);
+    }
+
+    100% {
+        filter: invert(0%);
+    }
+}
+
+.modal.modal-8bit {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    background: linear-gradient(121deg, rgba(254, 154, 0, 1) 0%, rgba(241, 146, 0, 1) 77%, rgba(254, 154, 0, 1) 100%);
+}
+
+.modal.modal-8bit .modal-content {
+    min-height: 80vh;
+    background-color: #f1f1f1;
+    color: #444;
+    box-shadow: 2px -2px 10px rgb(0 0 0 / 10%) inset;
+    border-radius: 10px;
+    border: none;
+}
+
+.modal.modal-8bit .modal-body {
+    padding: 1rem 1rem 0;
+}
+
+.modal.modal-8bit .modal-footer {
+    border: none;
+    display: block;
+    padding: 0 .75rem 0.75rem;
+}
+
+.modal.modal-8bit .table.table-bordered {
+    border-color: #444;
+    color: #444;
+}
+.modal.modal-8bit .table.table-bordered td {
+    padding: 10px;
+    border-width: 1px;
+}
+.modal.modal-8bit .table.minimal tbody tbody tr {
+    border: none;
+}
+
+.modal.modal-8bit .table.table-bordered tbody .tr-bordered td:first-child{
+    border-right-width: 0 !important;
+}
+.modal.modal-8bit .table.table-bordered tbody .tr-bordered td:last-child{
+    border-left-width: 0 !important;
+}
+
+
+.modal.modal-8bit .table.minimal {
+    border-color: transparent;
+    color: #444;
+}
+
+.modal.modal-8bit .table.minimal td {
+    padding: 0.2rem 0.6rem;
+}
+
+.modal.modal-8bit .modal-header {
+    color: #f1f1f1;
+    background-color: #444;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 2px -2px 10px rgb(0 0 0 / 10%) inset;
+}
+
+.alert-8bit {
+    color: #f1f1f1;
+    background-color: #444;
+    border-radius: 0;
+    font-size: 0.6rem;
+    line-height: 1.2rem;
+    padding: 0.5rem 0.8rem 0;
+}
+
+.alert-8bit ul {
+    margin-left: -15px !important;
+}
+
+.modal.modal-8bit .btn {
+    border-radius: 0;
+}
+
+.modal.modal-8bit .btn.btn-secondary {
+    border-color: #444;
+    color: #444 !important;
+    background-color: transparent !important;
+}
+
+.modal.modal-8bit .btn.btn-primary {
+    border-color: #444;
+    background-color: #444;
+    color: #f1f1f1;
+}
+
+.modal.modal-8bit .btn.disabled {
+    border-color: transparent;
+    color: #444;
+    background-color: transparent;
+}
+
+
+.btn-8bit {
+    box-shadow: 5px 0 #444, -5px 0 #444, 0 -5px #444, 0 5px #444, 0 0 0 3px #444;
+    padding: 0 0.75rem;
+    margin: 10px !important;
+}
+
+.e-ink-flash {
+    animation-name: e-ink-flash;
+    animation-iteration-count: infinite;
+    animation-duration: 0.6s;
+    -webkit-transition: border-color .25s ease-in;
+    -moz-transition: border-color .25s ease-in;
+    -o-transition: border-color .25s ease-in;
+    transition: border-color .25s ease-in;
+}
+
+.qr-code {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.qr-code span {
+    width: 250px;
+    height: 250px;
+    display: block;
+    background-color: transparent;
+    margin: auto;
+}
+
+#step-2-lnurl-copy {
+    background-color: #444;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    font-size: 0.6rem;
+
+}
+
+#step-3-share {
+    text-align: center;
+}
+
+#step-3-share img {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+
+/**
+ * Switch
+ */
+#switch,
+#switch-reboot {
+    outline: none;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 6rem;
+    height: 2rem;
+    background: #fa9802;
+    border-radius: 2rem;
+    appearance: none;
+    filter: blur(0.4px);
+    left: -20px;
+    box-shadow: -0.05rem -0.05rem 0.08rem rgb(252, 153, 1), 0.05rem 0.05rem 0.1rem #fbf0b6, inset 0.5rem 0.5rem 2rem rgb(194, 121, 7), inset 0.1rem 0.1rem 0.2rem rgb(252, 153, 1), inset -0.5rem -0.5rem 4rem rgba(182, 251, 228, 0.5);
+}
+
+#switch::after {
+    content: 'OFF';
+    margin-top: 3px;
+    margin-left: -50px;
+    position: absolute;
+}
+
+#switch::before {
+    content: 'ON';
+    right: -40px;
+    margin-top: 3px;
+    margin-left: 50px;
+    position: absolute;
+}
+
+#switch-reboot::after {
+    content: '';
+    margin-top: 3px;
+    margin-left: -50px;
+    position: absolute;
+}
+
+#switch-reboot::before {
+    content: 'OK';
+    right: -40px;
+    margin-top: 3px;
+    margin-left: 50px;
+    position: absolute;
+}
+
+.wrap {
+    left: -20px;
+    display: block;
+    position: relative;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    z-index: 1;
+    transform: translatey(-100%);
+}
+
+.modal.modal-8bit label {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0.1rem;
+    width: 4rem;
+    height: 1.8rem;
+    background: #ff9b00;
+    border-radius: 2rem;
+    transform: translate3d(0%, -50%, 0);
+    transition: transform 150ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    filter: blur(0.4px);
+    box-shadow: inset -0.05rem -0.05rem 0.08rem rgba(0, 0, 0, 0.43), inset 0.05rem 0.05rem 0.1rem #ffc100, 0.5rem 0.5rem 2rem rgb(204, 124, 0), 0.1rem 0.1rem 0.2rem rgb(252, 153, 1);
+}
+
+label {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0.1rem;
+    width: 4rem;
+    height: 1.8rem;
+    background: #ff9b00;
+    border-radius: 2rem;
+    transform: translate3d(0%, -50%, 0);
+    transition: transform 150ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    filter: blur(0.4px);
+    box-shadow: inset -0.05rem -0.05rem 0.08rem rgba(0, 0, 0, 0.43), inset 0.05rem 0.05rem 0.1rem #ffc100, 0.5rem 0.5rem 2rem rgb(204, 124, 0), 0.1rem 0.1rem 0.2rem rgb(252, 153, 1);
+}
+
+#switch:checked + div label,
+#switch-reboot:checked + div label {
+    transform: translate3d(1.85rem, -50%, 0);
+}
+
+.rib {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.35rem;
+    height: 1.2rem;
+    border-radius: 1rem;
+    background: #ff9b00;
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0);
+    box-shadow: inset -0.02rem -0.03rem 0.08rem rgba(114, 114, 114, 0.38), inset 0.03rem 0.03rem 0.1rem rgba(205, 124, 2, 0), inset -0.02rem -0.03rem 0.2rem rgba(211, 129, 0, 0), inset 0.03rem 0.03rem 0.2rem rgba(205, 124, 2, 0), 0.05rem 0.08rem 0.3rem rgba(0, 0, 51, 0.3), -0.05rem -0.08rem 0.4rem rgba(182, 251, 228, 0.3), 0rem 0rem 0.2rem rgba(46, 66, 107, 0.2);
+}
+.rib:nth-child(1) {
+    left: 35%;
+}
+.rib:nth-child(3) {
+    left: 65%;
+}
+.sig {
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 100;
+    font-family: sans-serif;
+    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+/** modal back case */
+.modal.modal-back-case {
+    font-family: 'Heebo', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 0.7rem;
+    color: #000;
+    background: linear-gradient(121deg, rgba(254, 154, 0, 1) 0%, rgba(241, 146, 0, 1) 77%, rgba(254, 154, 0, 1) 100%);
+}
+
+.modal.modal-back-case .modal-content {
+    background-color: transparent;
+    border: none;
+}
+
+.modal.modal-back-case .modal-body {
+    min-height: 80vh;
+    background: linear-gradient(121deg, rgb(222, 222, 222) 0%, rgb(241, 241, 241) 77%, rgb(201, 201, 201) 100%);
+    color: #444;
+    box-shadow: 2px -2px 10px rgb(0 0 0 / 10%) inset;
+    border-radius: 10px;
+    border: none;
+}
+
+#modal-settings.blur {
+    transition: 1s;
+    animation-name: blur;
+    animation-duration: 5s;
+}
+
+#modal-settings.blur .modal-body {
+    opacity: 0;
+    transition: 1s;
+    animation-name: blur;
+    animation-duration: 5s;
+}
+
+#modal-settings.blur .modal-footer {
+    opacity: 0;
+    transition: 1s;
+    animation-name: blur;
+    animation-duration: 5s;
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0)
+    }
+
+    50% {
+        filter: blur(3rem)
+    }
+
+    100% {
+        filter: blur(0)
+    }
+}
+
+
+/** Back label */
+.back-label img {
+    width: 100%;
+}
+
+.modal.modal-back-case .modal-body {
+    min-height: initial;
+    padding: 1rem 1rem 0;
+}
+
+.modal.modal-back-case .modal-body p {
+    position: absolute;
+    left: 50px;
+    top: 180px;
+    font-size: 1.4rem;
+    text-align: left;
+    color: #000;
+}
+
+.modal.modal-back-case .modal-body .screw {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-image: url('../assets/images/atm/screw.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.screw::before {
+    display: block;
+    content: '';
+    width: 32px;
+    height: 32px;
+    margin-top: 4px;
+    margin-left: 4px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.screw.tl,
+.screw.tr {
+    top: 10px;
+}
+
+.screw.br,
+.screw.tr {
+    right: 10px;
+}
+
+.screw.br,
+.screw.bl {
+    bottom: 10px;
+}
+
+.screw.r1 {
+    transform: rotateZ(23deg);
+}
+
+.screw.r2 {
+    transform: rotateZ(73deg);
+}
+
+.screw.r3 {
+    transform: rotateZ(33deg);
+}
+
+.modal.modal-back-case .modal-footer {
+    border: none;
+    display: block;
+    padding: 20px .75rem;
+    font-size: 1.2rem;
+}
+
+.modal.modal-back-case .modal-footer .pull-right {
+    float: right;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .box {
+        min-width: 370px;
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        padding: 0 !important;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .box::after {
+        display: none;
+    }
+
+    .screen {
+        width: 90%;
+        display: block;
+        margin: 5%;
+    }
+
+    .atm-logo {
+        width: 90%;
+        margin: 5%;
+    }
+
+    .modal-title {
+        font-size: 0.9rem;
+    }
+
+    .table.minimal {
+        font-size: 0.45rem;
+    }
+
+    .modal.modal-8bit .modal-content {
+        height: 96vh;
+        overflow-x: scroll;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 10px auto 10px !important;
+        font-size: 0.7rem;
+        padding: 0.8rem;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+    .modal.modal-back-case .modal-body p {
+        top: 118px;
+        font-size: 0.9rem;
+    }
+
+    .modal.modal-back-case .modal-footer {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .modal.modal-back-case .modal-body p {
+        top: 100px;
+        margin-left: -15px;
+        font-size: 0.8rem;
+    }
+
+    .screw {
+        visibility: hidden;
+    }
+
+    .modal.modal-back-case .modal-footer {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .modal.modal-back-case .modal-body p {
+        top: 90px;
+        font-size: 0.7rem;
+        margin-left: -20px;
+    }
+
+    .screw {
+        visibility: hidden;
+    }
+
+    .modal.modal-back-case .modal-footer {
+        font-size: 0.8rem;
+    }
+
+        .main-wrapper {
+            width: auto;
+        }
+}
+
+@media only screen and (max-width: 375px) {
+    .modal.modal-back-case .modal-body p {
+        top: 90px;
+        font-size: 0.7rem;
+        margin-left: -20px;
+    }
+
+    .screw {
+        visibility: hidden;
+    }
+
+    .screen .large {
+        font-size: 0.7rem;
+        margin-bottom: 10px;
+    }
+    .main-wrapper {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .modal.modal-back-case .modal-body p {
+        font-size: 0.56rem;
+        top: 85px;
+        margin-left: -20px;
+    }
+
+    .screw {
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .modal.modal-back-case .modal-body p {
+        font-size: 0.56rem;
+        top: 100px;
+        margin-left: -20px;
+    }
+
+    .screw {
+        visibility: hidden;
+    }
+}
+
+.config-btn {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #f79600;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border-radius: 50%;
+    box-shadow: 2px -2px 9px #c67800;
+    background-image: url('../assets/images/atm/lightning.png');
+    background-size: auto;
+    cursor: pointer;
+}
+.config-btn.active {
+    background-color: #e38a01;
+    box-shadow: 0 0 3px #c67800 inset;
+}
+
+
+.last-trx {
+    background: linear-gradient( 121deg , rgb(222, 222, 222) 0%, rgb(241, 241, 241) 77%, rgb(201, 201, 201) 100%);
+    padding: 10px;
+    border-radius: 10px;
+    height: 200px;
+    overflow: auto;
+}
+
+.last-trx .title {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.last-trx .table {
+    border-color: transparent;
+}
+
+.last-trx .table a {
+   cursor: pointer;
+    text-decoration: underline;
+}
+.last-trx .table thead tr th:nth-child(2),
+.last-trx .table thead tr th:nth-child(3),
+.last-trx .table tbody tr td:nth-child(2),
+.last-trx .table tbody tr td:nth-child(3)
+{
+    text-align: center;
+}
+
+
+.mobile-warning {
+    z-index: 1000000000;
+    background-color: #ffca9e;
+    color: #222;
+    display: none;
+    position: absolute;
+    top: 40%;
+    left:0;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+.mobile-warning.hide{
+    display: none;
+}
+.mobile-warning .btn{
+  background-color: #444;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .mobile-warning {
+        display: block;
+    }
+}

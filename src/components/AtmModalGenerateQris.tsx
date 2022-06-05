@@ -87,6 +87,15 @@ const AtmModalGenerateQris = (props: any) => {
                     props.setTrxStep('waiting-rupiah-deposit');
                     setIsQrisDataReady(true);
                     setIsLoading(false);
+
+                    /**
+                     * Save trx to localStorage
+                     */
+                    addTrxToLocal({
+                        'trx_id': data.data.trx_id,
+                        'amount': props.depositAmount,
+                        'timestamp': Math.round((new Date()). getTime() / 1000),
+                    })
                 })
                 .catch(error => {
                     console.log(error);
@@ -150,7 +159,6 @@ const AtmModalGenerateQris = (props: any) => {
         if (trxId == '') {
             forbidAction = true;
         }
-
 
         /**
          * discontinue when specifict criteria unmeet `forbidAction`
@@ -240,6 +248,25 @@ const AtmModalGenerateQris = (props: any) => {
         const url = 'https://twitter.com/intent/tweet?text=' +  tweetPreviewEncoded + '%20https%3A%2F%2Ftwitter.com%2Froaringstars%2Fstatus%2F1490360523535564800';
         window.open(url, '_blank');
     }
+
+
+
+    /**
+     * Add trx to localStorage
+     */
+     function addTrxToLocal(data: any) {
+        // load data
+        let currentData;
+        const lastTrx = localStorage.getItem('last-trx');
+        if (lastTrx !== null) {
+            currentData = JSON.parse(lastTrx);
+            currentData.unshift(data);
+        } else {
+            currentData = [data];
+        }
+        localStorage.setItem('last-trx', JSON.stringify(currentData));
+    }
+
 
 
     return (
