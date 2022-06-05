@@ -132,14 +132,14 @@ const AtmModalGenerateQris = (props: any) => {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {
                 checkPayment(props.trxId, props)
-            }, 1 * 1000);
+            }, 5 * 1000);
             return () => clearInterval(timer);
         }
         if (props.trxStep == 'withdraw-lnurl') {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {
                 checkPayment(props.trxId, props)
-            }, 5 * 1000);
+            }, 10 * 1000);
             return () => clearInterval(timer);
         }
     }, [props.trxStep, props.trxId, props])
@@ -269,13 +269,13 @@ const AtmModalGenerateQris = (props: any) => {
                         </div>
 
                         {
-                            qrisData !== '' ? (
+                            qrisData == '' || qrisData == null ? (
+                                <img src={SandClockIcon} alt="Sand Clock Icon" className="big-icon" />
+                            ) : (
                                 <div className="qr-qris">
                                     <div className="qr-qris-logo" />
                                     <QRCode value={qrisData.toString()} fgColor="#444" />
                                 </div>
-                            ) : (
-                                <img src={SandClockIcon} alt="Sand Clock Icon" className="big-icon" />
                             )
                         }
 
