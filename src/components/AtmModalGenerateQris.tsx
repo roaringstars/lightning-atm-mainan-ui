@@ -241,8 +241,6 @@ const AtmModalGenerateQris = (props: any) => {
                 props.trxStep == 'waiting-rupiah-deposit' && (
                     <>
                         <div className="modal-top-message">
-                            {/* Selesaikan Pembayaran, Pindai Dengan E-wallet yang mendukung QRIS
-                             */}
                             {messageTop}
                         </div>
 
@@ -267,8 +265,6 @@ const AtmModalGenerateQris = (props: any) => {
                         }
 
                         <div className="modal-bottom-message">
-                            {/* Transaksi secara otomatis dibatalkan jika tagihan tidak dibayar dalam 1 jam,
-                            sementara kami sedang memverifikasi pembayaran anda. */}
                             {messageBottom}
                         </div>
                     </>
@@ -330,10 +326,15 @@ const AtmModalGenerateQris = (props: any) => {
                                         {messageTop}
                                     </div>
 
-                                    <div className="ln">
-                                        <div className="ln-logo" />
-                                        <QRCode value={paymentLnurlData.toString()} fgColor="#444" />
-                                    </div>
+                                    {
+                                        paymentLnurlData !== '' && (
+                                            <div className="ln">
+                                                <div className="ln-logo" />
+                                                <QRCode value={paymentLnurlData.toString()} fgColor="#444" />
+                                            </div>
+                                        )
+                                    }
+
 
                                     <div className="modal-bottom-message">
                                         {messageBottom}

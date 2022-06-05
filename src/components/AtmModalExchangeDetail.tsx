@@ -40,6 +40,13 @@ const AtmModalExchangeDetail = (props: any) => {
             return false;
         }
 
+        /**
+         * Only when `depositAmount` already set
+         */
+         if (props.depositAmount == undefined) {
+            return false;
+        }
+
         if (isDebug) {
             console.log('Call API: /api_rate');
         }
