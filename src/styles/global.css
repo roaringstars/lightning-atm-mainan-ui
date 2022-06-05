@@ -208,6 +208,24 @@ ul.no-bullet {
     background-image: url("../assets/images/atm/qris.png");
     background-size: 100% auto;
 }
+.ln svg {
+    margin: 20px auto;
+    display: block;
+}
+.ln-logo {
+
+    margin: 0 auto;
+    left: calc(50% - 35px);
+    top: 150px;
+    display: inline-block;
+    content: ' ';
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background-image: url("../assets/images/atm/btcln.png");
+    background-size: 100% auto;
+}
+
 
 
 .big-icon {
@@ -328,6 +346,14 @@ h1 {
     animation-name: bolt;
     animation-duration: 2s;
     animation-iteration-count: infinite;
+}
+.lnurl-textarea {
+    background-color: #444;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    font-size: 0.6rem;
 }
 
 @keyframes bolt {

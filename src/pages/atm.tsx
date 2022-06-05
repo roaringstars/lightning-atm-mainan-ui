@@ -1,10 +1,12 @@
+import { Link } from "gatsby";
 import * as React from "react"
 import { Button, Modal, Table } from "react-bootstrap"
+import CopyToClipboard from "react-copy-to-clipboard";
 import AtmModalExchangeDetail from "../components/AtmModalExchangeDetail";
 import AtmModalGenerateQris from "../components/AtmModalGenerateQris";
 import Header from "../components/Header"
 
-const ATM = () => {
+const ATM = ({ location }: any) => {
     /**
      * Constant 
      */
@@ -19,6 +21,16 @@ const ATM = () => {
     const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
     const [trxStep, setTrxStep] = React.useState('agreement');
     const [trxId, setTrxId] = React.useState('');
+    const [trxIdFromUrl, setTrxIdFromUrl] = React.useState(location.search.replace('?trx_id=', ''));
+
+    const [isQrisQrBeingGenerated, setIsQrisQrBeingGenerated] = React.useState(false);
+    const [isRateCheckerEnabled, setIsRateCheckerEnabled] = React.useState(true);
+    const [isPaymentCheckerEnabled, setIsPaymentCheckerEnabled] = React.useState(false);
+    const [isLnurlTextareaVisible, setIsLnurlTextareaVisible] = React.useState(false);
+    const [lnurlBtnLabel, setLnurlBtnLabel] = React.useState('^');
+    const [lnurlData, setLnurlData] = React.useState('');
+
+    const [isMachineInMaintenance, setIsMachineInMaintenance] = React.useState(false);
 
     /**
      * UI Text
@@ -30,7 +42,6 @@ const ATM = () => {
      */
     function depositBtnAction() {
         setIsScreenModalVisible(true);
-        console.log(isScreenModalVisible);
     }
 
     /**
@@ -75,13 +86,45 @@ const ATM = () => {
     }, [depositAmount])
 
     /**
+     * Check previous 
+     */
+    React.useEffect(() => {
+        const regex = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/gm;
+        if (regex.test(trxIdFromUrl)) {
+            if (isDebug) {
+                console.log('Found previous Trx Id from URL: ' + trxIdFromUrl)
+                console.log('Change step: waiting-rupiah-deposit');
+            }
+            setTrxStep('waiting-rupiah-deposit');
+            setModalTitle('Memuat Transaksi...');
+            depositBtnAction();
+        }
+    }, [trxIdFromUrl])
+
+    /**
      * Accept & Deposit button
      */
     function acceptAndDeposit() {
         if (isDebug) {
             console.log('Change step: generate-qris');
         }
+        setIsRateCheckerEnabled(false);
         setTrxStep('generate-qris');
+    }
+
+    /**
+     * Open/Close LNURL Textarea
+     */
+    function toggleLnurlTextarea() {
+        if (isLnurlTextareaVisible) {
+            if (isDebug) { console.log('Close LNURL Textarea') }
+            setIsLnurlTextareaVisible(false);
+            setLnurlBtnLabel('^');
+        } else {
+            if (isDebug) { console.log('Open LNURL Textarea') }
+            setIsLnurlTextareaVisible(true);
+            setLnurlBtnLabel('v');
+        }
     }
 
     return (
@@ -139,6 +182,9 @@ const ATM = () => {
                         setModalTitle={setModalTitle}
                         trxStep={trxStep}
                         setTrxStep={setTrxStep}
+                        isRateCheckerEnabled={isRateCheckerEnabled}
+                        setIsRateCheckerEnabled={setIsRateCheckerEnabled}
+                        setIsMachineInMaintenance={setIsMachineInMaintenance}
                     />
                     <AtmModalGenerateQris
                         depositAmount={depositOption[depositAmount]}
@@ -148,6 +194,15 @@ const ATM = () => {
                         setTrxStep={setTrxStep}
                         trxId={trxId}
                         setTrxId={setTrxId}
+                        isQrisQrBeingGenerated={isQrisQrBeingGenerated}
+                        setIsQrisQrBeingGenerated={setIsQrisQrBeingGenerated}
+                        isRateCheckerEnabled={isRateCheckerEnabled}
+                        setIsRateCheckerEnabled={setIsRateCheckerEnabled}
+                        isPaymentCheckerEnabled={isPaymentCheckerEnabled}
+                        setIsPaymentCheckerEnabled={setIsPaymentCheckerEnabled}
+                        setLnurlData={setLnurlData}
+                        isMachineInMaintenance={isMachineInMaintenance}
+                        setIsMachineInMaintenance={setIsMachineInMaintenance}
                     />
                 </Modal.Body>
 
@@ -155,8 +210,13 @@ const ATM = () => {
                     {
                         trxStep === 'agreement' && (
                             <>
-                                <Button className="btn btn-primary float-start btn-8bit disabled hide" disabled>ATM Sedang Gangguan</Button>
-                                <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
+                                {
+                                    isMachineInMaintenance ? (
+                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan</Button>
+                                    ) : (
+                                        <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
+                                    )
+                                }
                                 <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
                                 <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { changeDepositAmount() }}>{depositAmountText}</Button>
                             </>
@@ -170,6 +230,55 @@ const ATM = () => {
                             </>
                         )
                     }
+
+                    {
+                        trxStep === 'withdraw-lnurl' && (
+                            <div className="text-center">
+                                {
+                                    isMachineInMaintenance ? (
+                                        <>
+                                            <CopyToClipboard 
+                                                text={'https://roaringstars.com/atm/?trx_id=' + trxId} 
+                                                onCopy={() => { alert('URL halaman ini berhasil disalin, akses halaman ini beberapa saat lagi')}}
+                                            >
+                                                <Button className="btn btn-primary btn-8bit">Salin Alamat Halaman</Button>
+                                            </CopyToClipboard>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {
+                                                isLnurlTextareaVisible && (
+                                                    <textarea className="form-control lnurl-textarea" rows={3}>{lnurlData}</textarea>
+                                                )
+                                            }
+
+                                            <CopyToClipboard 
+                                                text={lnurlData} 
+                                                onCopy={() => { alert('Kode LNURL berhasil disalin, tempelkan pada dompet Bitcoin yang mendukung Lightning Network')}}
+                                            >
+                                                <Button className="btn btn-primary btn-8bit">Salin LNURL</Button>
+                                            </CopyToClipboard>
+                                            <Button className="btn btn-primary btn-8bit" onClick={() => { toggleLnurlTextarea() }}>{lnurlBtnLabel}</Button>
+                                        </>
+                                    )
+                                }
+
+                                
+                            </div>
+                        )
+                    }
+
+
+                    {
+                        trxStep === 'transaction-complete' && (
+                            <>
+                                <Link className="btn btn-secondary float-start btn-8bit" to={'/wawasan-transaksi/?trx_id=' + trxId}>Wawasan Transaksi</Link>
+                                <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
+                            </>
+                        )
+                    }
+
+
                 </Modal.Footer>
             </Modal>
 

@@ -29,11 +29,21 @@ const AtmModalExchangeDetail = (props: any) => {
     const [satsReceive, setSatsReceive] = React.useState(0);
     const exchangeFeePercentage = 10;
 
-
     /**
      * Load latest Bitcoin price rate
      */
-    const load = (amount: number) => {
+    const load = (amount: number, props:any) => {
+        /**
+         * Only check when `RateChecker` is enabled
+         */
+        if (!props.isRateCheckerEnabled) {
+            return false;
+        }
+
+        if (isDebug) {
+            console.log('Call API: /api_rate');
+        }
+
         setIsLoading(true);
         setIsRateDataReady(false);
         let endpoint = apiEndpoint + '/api_rate.php?deposit=' + amount;
@@ -58,6 +68,7 @@ const AtmModalExchangeDetail = (props: any) => {
                 setAfterFeeIdr(data.data.after_fee_idr);
                 setOneBtcToIdr(data.data.one_btc_to_idr);
                 setSatsReceive(data.data.sats_receive);
+                props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
                 setRateData(data.data);
             })
             .catch(error => {
@@ -75,11 +86,11 @@ const AtmModalExchangeDetail = (props: any) => {
     React.useEffect(() => {
         console.log('Deposit Amount:', props.depositAmount);
         console.log('Updating exchange detail...');
-        load(props.depositAmount);
+        load(props.depositAmountm, props);
     }, [props.depositAmount, apiEndpoint])
 
     /**
-     * Refrest every 1 minutes
+     * Refrest every 5 second
      * Update when `depositAmount` changes 
      */
     React.useEffect(() => {
@@ -90,10 +101,10 @@ const AtmModalExchangeDetail = (props: any) => {
         setDepositAmount(props.depositAmount)
         console.log('Refreshing rate...');
         const timer = setInterval(() => {
-            load(props.depositAmount)
+            load(props.depositAmount, props)
         }, 5 * 1000);
         return () => clearInterval(timer);
-    }, [props.depositAmount])
+    }, [props.depositAmount, props])
 
     return (
         <>
