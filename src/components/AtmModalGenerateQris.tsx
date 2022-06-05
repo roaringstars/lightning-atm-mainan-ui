@@ -132,14 +132,14 @@ const AtmModalGenerateQris = (props: any) => {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {
                 checkPayment(props.trxId, props)
-            }, 5 * 1000);
+            }, 1 * 1000);
             return () => clearInterval(timer);
         }
         if (props.trxStep == 'withdraw-lnurl') {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {
                 checkPayment(props.trxId, props)
-            }, 10 * 1000);
+            }, 5 * 1000);
             return () => clearInterval(timer);
         }
     }, [props.trxStep, props.trxId, props])
