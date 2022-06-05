@@ -29,6 +29,7 @@ const ATM = ({ location }: any) => {
     const [isScreenModalVisible, setIsScreenModalVisible] = React.useState(false);
     const [isConfigModalVisible, setIsConfigModalVisible] = React.useState(true);
     const [isEinkEffectEnabled, setIsEinkEffectEnabled] = React.useState(true);
+    const [isWipWarningVisible, setIsWipWarningVisible] = React.useState(true);
     const [depositAmount, setDepositAmount] = React.useState(0);
     const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
     const [trxStep, setTrxStep] = React.useState('agreement');
@@ -229,9 +230,13 @@ const ATM = ({ location }: any) => {
             />
 
             {
-                !isDebug ? (
+                !isDebug && isWipWarningVisible ? (
                     <div className="atm-wip">ATM di halaman ini masih dalam proses rekonstruksi,
-                        sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.</div>
+                        sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.<br/>
+                        <Button onClick={() => {
+                            setIsWipWarningVisible(false)
+                        }}>Bodoamat, YOLO!</Button>    
+                    </div>
                 ) : null
             }
 
