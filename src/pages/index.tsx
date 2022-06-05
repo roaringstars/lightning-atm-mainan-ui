@@ -18,7 +18,7 @@ const IndexPage = () => {
             <h1 className="display-6">Lightning ATM <span>(mainan)</span></h1>
             <p className="lead">Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri</p>
             <p className="lead">
-              <Link className="btn btn-orange btn-lg" to="https://roaringstars.com" role="button">Menuju ke ATM</Link>
+              <Link className="btn btn-orange btn-lg" to="/atm" role="button">Menuju ke ATM</Link>
             </p>
           </div>
 
