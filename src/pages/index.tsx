@@ -50,7 +50,7 @@ const IndexPage = () => {
 
         <section className="section-2"> 
           <div className="container">
-            <h3>Cara Menggunakan</h3>
+            <h3>3 Tahap Cara Menggunakan</h3>
 
             <Row className="simple-step">
               <Col>
@@ -63,7 +63,7 @@ const IndexPage = () => {
               </Col>
               <Col>
                 <img src={OwnBitcoin} alt="Miliki Bitcoin"/>
-                <div>Miliki Bitcoin Eceran</div>
+                <div>Bitcoin Eceran siap dipakai untuk Belajar</div>
               </Col>
             </Row>
             {/* <ul>
