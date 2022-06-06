@@ -57,33 +57,24 @@ const Footer = () => {
                                 <p>
                                 <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
                                 </p>
-                                <p>
-                                <Link to="/kontributor"  className="text-reset">Kontributor</Link>
-                                </p>
                             </div>
 
                             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    Alamat Kantor
+                                Tautan Lainnya
                                 </h6>
-                                <p>Jl. Raya Internet, Block #709632, Internet 🏴‍☠</p>
-
-                                <Link to="https://twitter.com/hashtag/LightningAtmMainan?src=hashtag_click" className="me-4 text-reset">
-
-                                    <FontAwesomeIcon icon={faTwitter} />  #LightningAtmMainan
-                                </Link>
-                                <Link to="https://twitter.com/roaringstars/" className="me-4 text-reset">
-                                    <br />
-                                    <FontAwesomeIcon icon={faTwitter} />  @roaringstars
-                                </Link>
+                                
+                                <p>
+                                <Link to="/tip"  className="text-reset">Tip &amp; Kontributor</Link>
+                                </p>
 
                             </div>
                         </div>
                     </div>
                 </section>
                 <div className="text-center p-4 footer-copyright">
-                &#127279; {new Date().getFullYear()} F**k Copyright, Semua Milik Tuhan. Dikelola oleh Banyak Orang
+                &#127279; {new Date().getFullYear()} Dikelola oleh Banyak Orang
                 </div>
             </footer>
         </>

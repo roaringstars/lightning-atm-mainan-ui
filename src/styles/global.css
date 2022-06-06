@@ -23,6 +23,9 @@
 .navbar .justify-content-end {
     float: right
 }
+.nav-link svg {
+    margin-right: 4px;
+}
 
 .footer-section {
     background-color: #333 !important;
@@ -271,6 +274,10 @@ code {
 }
 .tip-donor-list .tip-donor-avatar img {
     width: 100%;
+}
+
+.tip-donor.contributor {
+    background-color: #ffdaa4;
 }
 
 /**

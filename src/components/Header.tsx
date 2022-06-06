@@ -14,13 +14,12 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav>
-                            <Nav.Link href="/atm"><Link to="/atm">ATM</Link></Nav.Link>
-                            <Nav.Link href="/bantuan"><Link to="/bantuan">Bantuan</Link></Nav.Link>
-                            <Nav.Link href="https://twitter.com/roaringstars">
-                                <Link to="https://twitter.com/roaringstars">
-                                <FontAwesomeIcon icon={faTwitter} />
+                            <Link to="/atm" className="nav-link">ATM</Link>
+                            <Link to="/bantuan" className="nav-link">Bantuan</Link>
+                                <Link to="https://twitter.com/roaringstars" className="nav-link">
+                                <FontAwesomeIcon icon={faTwitter}/>
                                 @roaringstars
-                                </Link></Nav.Link>
+                                </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

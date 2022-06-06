@@ -39,6 +39,9 @@ const Tip = () => {
     const [totalTip, setTotalTip] = React.useState(0);
 
 
+    const [isListContributorReady, setIsListContributorReady] = React.useState(false);
+    const [listContributor, setListContributor] = React.useState([]);
+
     function resetState() {
         setTipAmount(1500);
         setIsAnonTip(false);
@@ -134,7 +137,7 @@ const Tip = () => {
     /**
      * Load tipper on page load 
      */
-    function load() {
+    function loadTipper() {
         const endpoint = apiEndpoint + '/api_tip.php'
         fetch(endpoint, {
             method: 'GET',
@@ -147,8 +150,31 @@ const Tip = () => {
             })
             .then(data => {
                 setIsListTipperReady(true);
-                setListTipper(data.data.donors_list);
                 setTotalTip(data.data.total_amount)
+                setListTipper(data.data.donors_list);
+            })
+            .catch(error => {
+                // TODO: Log
+                // Log('error', 'Failed while sending post data', {
+                //     endpoint: apiEndpoint,
+                //     error: error
+                // })
+            })
+    }
+    function loadContributor() {
+        const endpoint =  '/contributor.json'
+        fetch(endpoint, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            })
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                setIsListContributorReady(true);
+                setListContributor(data.data);
             })
             .catch(error => {
                 // TODO: Log
@@ -160,7 +186,8 @@ const Tip = () => {
     }
 
     React.useEffect(() => {
-        load();
+        loadTipper();
+        loadContributor();
     }, [])
 
     return (
@@ -230,6 +257,52 @@ const Tip = () => {
                                                             </>
                                                         })
                                                     }
+                                                    {
+                                                        listContributor.map((item) => {
+                                                            return <>
+                                                                {
+                                                                    /^(\@)([a-zA-Z0-9_])+/.test(item.username) ? (
+                                                                        <>
+                                                                            {
+                                                                                item.social == 'twitter' && (
+                                                                                    <a href={'https://twitter.com/' + item.username.replace('@', '')} target="_blank">
+                                                                                        <div className="tip-donor clickable contributor">
+                                                                                            <div className="tip-donor-avatar">
+                                                                                            <img src={'https://unavatar.io/twitter/' + item.username}
+                                                                                            alt=".."
+                                                                                        />
+                                                                                            </div>
+                                                                                            <div className="tip-donor-name">
+                                                                                                {item.username} ({item.contribution})
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                )
+                                                                            }
+                                                                            {
+                                                                                item.social == 'github' && (
+                                                                                    <a href={'https://github.com/' + item.username.replace('@', '')} target="_blank">
+                                                                                        <div className="tip-donor clickable contributor">
+                                                                                            <div className="tip-donor-avatar">
+                                                                                                <img src={'https://github.com/' + item.username.replace('@', '') + '.png?size=40'}
+                                                                                                    alt=".."
+                                                                                                />
+                                                                                            </div>
+                                                                                            <div className="tip-donor-name">
+                                                                                                {item.username} ({item.contribution})
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                )
+                                                                            }
+                                                                        </>
+                                                                    ) : null
+                                                                }
+
+                                                            </>
+                                                        })
+                                                    }
+
                                                 </div>
                                             )
                                         }
@@ -304,40 +377,40 @@ const Tip = () => {
                                         <>
                                             <div className="text-center mb-4" style={{ "fontSize": "4rem" }}>⚡</div>
                                             <h1 className="text-center mb-3 mt-3">
-                                            <EditText 
-                                                value={tipAmount.toString()} 
-                                                formatDisplayText={(val) => {
-                                                    return val.toLocaleString() + ' Satoshi'
-                                                }}
-                                                onSave={(input) => {
-                                                    if (
-                                                        parseInt(input.value.toString()) <= 10000 &&
-                                                        parseInt(input.value.toString()) > 0
-                                                    ) {
-                                                        setTipAmount(parseInt(input.value.toString()));
-                                                    } else {
-                                                        setTipAmount(10000);
-                                                    }
-                                                }}
-                                                onChange={(input) => {
-                                                    if (
-                                                        parseInt(input.toString()) <= 10000 &&
-                                                        parseInt(input.toString()) > 0
-                                                    ) {
-                                                        setTipAmount(parseInt(input.toString()));
-                                                    } else {
-                                                        setTipAmount(10000);
-                                                    }
-                                                }}
-                                                type="number"
-                                                style={{textAlign: "center"}}
-                                            />
+                                                <EditText
+                                                    value={tipAmount.toString()}
+                                                    formatDisplayText={(val) => {
+                                                        return val.toLocaleString() + ' Satoshi'
+                                                    }}
+                                                    onSave={(input) => {
+                                                        if (
+                                                            parseInt(input.value.toString()) <= 10000 &&
+                                                            parseInt(input.value.toString()) > 0
+                                                        ) {
+                                                            setTipAmount(parseInt(input.value.toString()));
+                                                        } else {
+                                                            setTipAmount(10000);
+                                                        }
+                                                    }}
+                                                    onChange={(input) => {
+                                                        if (
+                                                            parseInt(input.toString()) <= 10000 &&
+                                                            parseInt(input.toString()) > 0
+                                                        ) {
+                                                            setTipAmount(parseInt(input.toString()));
+                                                        } else {
+                                                            setTipAmount(10000);
+                                                        }
+                                                    }}
+                                                    type="number"
+                                                    style={{ textAlign: "center" }}
+                                                />
                                             </h1>
 
                                             <Slider min={1} max={10000} defaultValue={tipAmount} onChange={(value) => {
                                                 setTipAmount(parseInt(value.toString()));
-                                            }} 
-                                            value={tipAmount}
+                                            }}
+                                                value={tipAmount}
                                             />
                                             <br />
                                             <br />
