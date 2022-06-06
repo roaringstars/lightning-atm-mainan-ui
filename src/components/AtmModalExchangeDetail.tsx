@@ -82,7 +82,7 @@ const AtmModalExchangeDetail = (props: any) => {
                 })
                 .then(data => {
                     setPriceOutdateInSec(Math.floor(Date.now() / 1000));
-                    setExchangeFee(data.data.exchange_fee + data.data.payment_gateway_fee);
+                    setExchangeFee(data.data.exchange_fee_int + data.data.payment_gateway_fee_int);
                     setAfterFeeIdr(data.data.after_fee_idr);
                     setOneBtcToIdr(data.data.one_btc_to_idr);
                     setSatsReceive(data.data.sats_receive);
@@ -210,7 +210,7 @@ const AtmModalExchangeDetail = (props: any) => {
                                         }
                                         {
                                             isRateDataReady ? (
-                                                <>{exchangeFee}</>
+                                                <>IDR {exchangeFee.toLocaleString()}</>
                                             ) : null
                                         }
 

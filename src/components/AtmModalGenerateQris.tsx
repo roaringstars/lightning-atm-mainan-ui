@@ -339,7 +339,7 @@ const AtmModalGenerateQris = (props: any) => {
 
                         <div className="modal-bottom-message">
                             Maaf, transaksi telah dibatalkan karena tagihan tidak kunjung dibayar,
-                            jika ini adalah kesalahan hubungi @roaringstars.
+                            laporkan jika ini adalah sebuah kesalahan.
                         </div>
                     </>
                 )

@@ -179,7 +179,8 @@ h1 {
 .screen {
     background-color: #f1f1f1;
     border-radius: 10px;
-    height: 150px;
+    height: 170px;
+    overflow: hidden;
     top: 50px;
     width: 80%;
     display: block;
@@ -195,11 +196,13 @@ h1 {
 .screen .small {
     font-size: 0.7rem;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .screen .large {
     font-size: 0.9rem;
     margin-bottom: 15px;
+    white-space: nowrap;
 }
 
 .screen .more-text {
@@ -223,7 +226,7 @@ h1 {
 }
 
 .atm-logo {
-    background-image: url("../assets/images/atm/ln_atm.png");
+    background-image: url("../assets/images/atm/logo.svg");
     background-size: 80% auto;
     background-repeat: no-repeat;
     background-position: center;
@@ -240,7 +243,7 @@ h1 {
     animation-iteration-count: infinite;
 }
 .lnurl-textarea {
-    background-color: #444;
+    background-color: #444444;
     color: #f1f1f1;
     width: 100%;
     padding: 5px;
@@ -691,7 +694,9 @@ label {
     float: right;
 }
 
-
+.btn-small-screen {
+    display: none;
+}
 @media only screen and (max-width: 600px) {
     .box {
         min-width: 370px;
@@ -765,6 +770,15 @@ label {
     .modal.modal-back-case .modal-footer {
         font-size: 0.9rem;
     }
+    .screen {
+        width: calc(100% - 10px);
+        margin: 5px;
+    }
+    .config-btn {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 410px) {
@@ -784,6 +798,19 @@ label {
 
         .main-wrapper {
             width: auto;
+        }
+        .screen  {
+           height: 190px;
+           width: calc(100% - 10px);
+           margin: 5px;
+        }
+        .box {
+            min-width: initial;
+        }
+        .config-btn {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
         }
 }
 
@@ -805,6 +832,11 @@ label {
     .main-wrapper {
         width: auto;
     }
+    .config-btn {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 350px) {
@@ -817,6 +849,11 @@ label {
     .screw {
         visibility: hidden;
     }
+    .config-btn {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 280px) {
@@ -828,6 +865,17 @@ label {
 
     .screw {
         visibility: hidden;
+    }
+    .screen .btn.btn-big-screen {
+        display: none;
+    }
+    .screen .btn.btn-small-screen {
+        display: block;
+    }
+    .config-btn {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
     }
 }
 

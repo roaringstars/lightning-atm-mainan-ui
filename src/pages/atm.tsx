@@ -253,11 +253,15 @@ const ATM = ({ location }: any) => {
                             <div className="large">Lightning ATM (Mainan)</div>
                             <div className="more-text hide" id="maintenance">maaf, atm sedang bermasalah</div>
                             <div className="more-text hide" id="maintenance-max-trx">maaf, melebihi quota harian</div>
-                            <a className="btn btn-default"
-                                id="please-deposit-btn"
+                            <a className="btn btn-default btn-big-screen"
                                 onClick={() => { depositBtnAction() }}
                             >
                                 - ketuk untuk deposit -
+                            </a>
+                            <a className="btn btn-default btn-small-screen"
+                                onClick={() => { depositBtnAction() }}
+                            >
+                                mulai
                             </a>
                         </div>
 
