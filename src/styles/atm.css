@@ -844,8 +844,30 @@ label {
     padding: 10px;
     border-radius: 10px;
     height: 200px;
-    overflow: auto;
+    overflow-y: scroll;
 }
+/* width */
+.last-trx::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0 10px 10px 0;
+    overflow: hidden;
+  }
+  
+  /* Track */
+  .last-trx::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+   
+  /* Handle */
+  .last-trx::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .last-trx::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 
 .last-trx .title {
     margin-bottom: 10px;

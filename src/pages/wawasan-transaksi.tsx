@@ -8,9 +8,6 @@ import { Badge, Button, Card, Col, Form, FormControl, InputGroup, Modal, Row, Ta
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
-TimeAgo.addDefaultLocale(en)
 import ReactTimeAgo from 'react-time-ago'
 import LoadingTrxInsight from "../components/LoadingTrxInsight";
 

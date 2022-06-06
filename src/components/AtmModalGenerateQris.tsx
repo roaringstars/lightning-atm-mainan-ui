@@ -135,8 +135,6 @@ const AtmModalGenerateQris = (props: any) => {
      * Refrest every 1 second
      */
     React.useEffect(() => {
-        console.log('props.trxId: ' + props.trxId);
-
         if (props.trxStep == 'waiting-rupiah-deposit') {
             console.log('Refreshing transaction status...');
             const timer = setInterval(() => {

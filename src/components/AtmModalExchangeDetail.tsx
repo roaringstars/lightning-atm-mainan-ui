@@ -28,11 +28,16 @@ const AtmModalExchangeDetail = (props: any) => {
     const [oneBtcToIdr, setOneBtcToIdr] = React.useState(0);
     const [satsReceive, setSatsReceive] = React.useState(0);
     const exchangeFeePercentage = 10;
+    const updateInterval = 3;
+
+    const [priceOutdateInSec, setPriceOutdateInSec] = React.useState(0);
+    const [rateTimer, setRateTimer] = React.useState(0);
+    const [isMachineInMaintenaceLocal, setIsMachineInMaintenaceLocal] = React.useState(false);
 
     /**
      * Load latest Bitcoin price rate
      */
-    function load(amount: number, props:any) {
+    function load(amount: number) {
         let forbidAction = false;
 
         /**
@@ -49,14 +54,13 @@ const AtmModalExchangeDetail = (props: any) => {
              forbidAction = true;
         }
 
-        if (isDebug) {
-            console.log('Call API: /api_rate');
-        }
-
         /**
          * discontinue when specifict criteria unmeet `forbidAction`
          */
         if (!forbidAction) {
+            if (isDebug) {
+                console.log('Call API: /api_rate.php?deposit=' + amount);
+            }
             setIsLoading(true);
             setIsRateDataReady(false);
             let endpoint = apiEndpoint + '/api_rate.php?deposit=' + amount;
@@ -77,11 +81,12 @@ const AtmModalExchangeDetail = (props: any) => {
                     return response.json();
                 })
                 .then(data => {
+                    setPriceOutdateInSec(Math.floor(Date.now() / 1000));
                     setExchangeFee(data.data.exchange_fee);
                     setAfterFeeIdr(data.data.after_fee_idr);
                     setOneBtcToIdr(data.data.one_btc_to_idr);
                     setSatsReceive(data.data.sats_receive);
-                    props.setIsMachineInMaintenance(data.data.machine_in_maintenance);
+                    setIsMachineInMaintenaceLocal(data.data.machine_in_maintenance);
                     setRateData(data.data);
                 })
                 .catch(error => {
@@ -95,36 +100,75 @@ const AtmModalExchangeDetail = (props: any) => {
     }
 
     /**
-     * Update price rate when deposit amount change 
-     */
-    React.useEffect(() => {
-        console.log('Deposit Amount:', props.depositAmount);
-        console.log('Updating exchange detail...');
-        load(props.depositAmountm, props);
-    }, [props.depositAmount, apiEndpoint])
-
-    /**
-     * Refrest every 1 second
      * Update when `depositAmount` changes 
      */
     React.useEffect(() => {
-        if (props.depositAmount === undefined) {
-            return
+        console.log('depositAmount changed: ' + depositAmount);
+
+        let forbidAction = false;
+        if (depositAmount === undefined) {
+            console.log('depositAmount: undefined');
+            forbidAction = true;
         }
 
-        setDepositAmount(props.depositAmount)
-        console.log('Refreshing rate...');
+        if (!forbidAction) {
+            console.log('Refreshing rate...');
+            load(depositAmount)
+        }
+    }, [depositAmount])
+    
+
+    /**
+     * Only refresh when more than `updateInterval`sec
+     */
+    React.useEffect(() => {
+        let updatePriceIn = (updateInterval+1 - ((Math.floor(Date.now() / 1000)) - priceOutdateInSec))
+        if (isDebug) {
+            if (updatePriceIn > 0) {
+                console.log('Update price in: ' + updatePriceIn + ' sec');
+            }
+        }
+        
+        /**
+         * Update global props
+         */
+        if (updatePriceIn > 0) {
+            if (updatePriceIn > 0) {
+                props.setRecheckMachineStatusIn(priceOutdateInSec);
+            }
+        }
+        if ((Math.floor(Date.now() / 1000)) - priceOutdateInSec > updateInterval) {
+            // call update
+            load(depositAmount)
+        }
+    }, [priceOutdateInSec, depositAmount, rateTimer])
+    
+    /**
+     * OnLoad action
+     */
+    React.useEffect(() => {
+        load(depositAmount)
         const timer = setInterval(() => {
-            load(props.depositAmount, props)
-        }, 10 * 1000);
+            setRateTimer(Math.random())
+        }, 1 * 1000);
         return () => clearInterval(timer);
-    }, [props.depositAmount, props])
+    }, [])
 
-    React.useEffect(() => { 
-        console.log('Refreshing rate...');
-        load(1500, props)
-    }, [props])
+    React.useEffect(() => {
+        props.setIsMachineInMaintenance(isMachineInMaintenaceLocal)
+    }, [isMachineInMaintenaceLocal])
 
+    React.useEffect(() => {
+        setIsMachineInMaintenaceLocal(props.isMachineInMaintenance)
+    }, [props.isMachineInMaintenance])
+
+    React.useEffect(() => {
+        props.setDepositAmount(depositAmount)
+    }, [depositAmount])
+
+    React.useEffect(() => {
+        setDepositAmount(props.depositAmount)
+    }, [props.depositAmount])
 
     return (
         <>

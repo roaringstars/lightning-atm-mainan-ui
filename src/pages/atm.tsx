@@ -11,9 +11,6 @@ import BackSideLabel from '../assets/images/atm/back_label.svg';
 
 import ReactTimeAgo from 'react-time-ago'
 
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
-TimeAgo.addDefaultLocale(en)
 
 const ATM = ({ location }: any) => {
     /**
@@ -44,6 +41,7 @@ const ATM = ({ location }: any) => {
     const [lnurlData, setLnurlData] = React.useState('');
 
     const [isMachineInMaintenance, setIsMachineInMaintenance] = React.useState(false);
+    const [recheckMachineStatusIn, setRecheckMachineStatusIn] = React.useState(4);
     const [lastLocalTrx, setLastLocalTrx] = React.useState([]);
 
     /**
@@ -101,6 +99,10 @@ const ATM = ({ location }: any) => {
         }
     }, [depositAmount])
 
+    function setDepositAmountByValue(value : number) {
+        setDepositAmount(depositOption.indexOf(value));
+    }
+
     /**
      * Check previous 
      */
@@ -155,7 +157,6 @@ const ATM = ({ location }: any) => {
         localStorage.setItem('atm-config', JSON.stringify({
             'enable_flashy_effect': !isEinkEffectEnabled
         }));
-
     }
 
     /**
@@ -165,6 +166,9 @@ const ATM = ({ location }: any) => {
         if (isDebug) {
             console.log('Rebooting...');
         }
+        localStorage.setItem('atm-config', JSON.stringify({
+            'enable_flashy_effect': !isEinkEffectEnabled
+        }));
         setIsConfigModalVisible(false)
     }
     function handleOpenConfig() {
@@ -232,10 +236,10 @@ const ATM = ({ location }: any) => {
             {
                 !isDebug && isWipWarningVisible ? (
                     <div className="atm-wip">ATM di halaman ini masih dalam proses rekonstruksi,
-                        sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.<br/>
+                        sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.<br />
                         <Button onClick={() => {
                             setIsWipWarningVisible(false)
-                        }}>Bodoamat, YOLO!</Button>    
+                        }}>Bodoamat, YOLO!</Button>
                     </div>
                 ) : null
             }
@@ -279,6 +283,7 @@ const ATM = ({ location }: any) => {
                 <Modal.Body>
                     <AtmModalExchangeDetail
                         depositAmount={depositOption[depositAmount]}
+                        setDepositAmount={setDepositAmountByValue}
                         modalTitle={modalTitle}
                         setModalTitle={setModalTitle}
                         trxStep={trxStep}
@@ -286,6 +291,7 @@ const ATM = ({ location }: any) => {
                         isRateCheckerEnabled={isRateCheckerEnabled}
                         setIsRateCheckerEnabled={setIsRateCheckerEnabled}
                         setIsMachineInMaintenance={setIsMachineInMaintenance}
+                        setRecheckMachineStatusIn={setRecheckMachineStatusIn}
                     />
                     <AtmModalGenerateQris
                         depositAmount={depositOption[depositAmount]}
@@ -314,7 +320,7 @@ const ATM = ({ location }: any) => {
                             <>
                                 {
                                     isMachineInMaintenance ? (
-                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan</Button>
+                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan {recheckMachineStatusIn}</Button>
                                     ) : (
                                         <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
                                     )
@@ -392,117 +398,121 @@ const ATM = ({ location }: any) => {
                 className="modal fade modal-back-case"
                 size="lg"
             >
-                <Modal.Body>
-                    <div className=" text-center">
-                        <div className="back-label">
-                            <p>
-                                Model: BTCLN-21M<br />
-                                Version: {appUiVersion} (Beta)<br />
-                                Last Trx: -<br />
-                                Successful Trx: -<br />
-                                Today Trx: -<br />
-                            </p>
-                            <div className="screw tl"></div>
-                            <div className="screw tr r1"></div>
-                            <div className="screw bl r2"></div>
-                            <div className="screw br r3"></div>
-                            <img src={BackSideLabel} alt="back label" />
-                        </div>
-                    </div>
-                </Modal.Body>
+                {
+                    isConfigModalVisible && (
+                        <>
 
-                <Modal.Footer>
-                    <Row>
-                        <Col>
-                            Flashy E-Ink Effect
-                        </Col>
-                        <Col>
-                            <div className="pull-right">
-                                <input id="switch" type="checkbox"
-                                    checked={isEinkEffectEnabled}
-                                    onChange={() => { handleEinkToggle() }}
-                                />
-                                <div className="wrap">
-                                    <label htmlFor="switch"><span className="rib"></span><span className="rib"></span><span className="rib">
-                                    </span></label>
+                            <Modal.Body>
+                                <div className=" text-center">
+                                    <div className="back-label">
+                                        <p>
+                                            Model: BTCLN-21M<br />
+                                            Version: {appUiVersion} (Beta)<br />
+                                            Last Trx: -<br />
+                                            Successful Trx: -<br />
+                                            Today Trx: -<br />
+                                        </p>
+                                        <div className="screw tl"></div>
+                                        <div className="screw tr r1"></div>
+                                        <div className="screw bl r2"></div>
+                                        <div className="screw br r3"></div>
+                                        <img src={BackSideLabel} alt="back label" />
+                                    </div>
                                 </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            Save Config &amp; Reboot
-                        </Col>
-                        <Col>
-                            <div className="pull-right">
-                                <input id="switch-reboot" type="checkbox"
-                                    checked={!isConfigModalVisible}
-                                    onChange={() => { handleRebootBtn() }} />
-                                <div className="wrap">
-                                    <label htmlFor="switch-reboot">
-                                        <span className="rib"></span>
-                                        <span className="rib"></span>
-                                        <span className="rib"></span>
-                                    </label>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Row>
+                                    <Col>
+                                        Flashy E-Ink Effect
+                                    </Col>
+                                    <Col>
+                                        <div className="pull-right">
+                                            <input id="switch" type="checkbox"
+                                                checked={isEinkEffectEnabled}
+                                                onChange={() => { handleEinkToggle() }}
+                                            />
+                                            <div className="wrap">
+                                                <label htmlFor="switch"><span className="rib"></span><span className="rib"></span><span className="rib">
+                                                </span></label>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        Save Config &amp; Reboot
+                                    </Col>
+                                    <Col>
+                                        <div className="pull-right">
+                                            <input id="switch-reboot" type="checkbox"
+                                                checked={!isConfigModalVisible}
+                                                onChange={() => { handleRebootBtn() }} />
+                                            <div className="wrap">
+                                                <label htmlFor="switch-reboot">
+                                                    <span className="rib"></span>
+                                                    <span className="rib"></span>
+                                                    <span className="rib"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
+
+                                <div className="last-trx ">
+                                    <div className="title">Last Transaction</div>
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>TRX ID</th>
+                                                <th>Amount</th>
+                                                <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                lastLocalTrx.length < 1 ? (
+                                                    <><tr><td colSpan={3} className="text-center">Tidak Ada Transaksi Terakhir</td></tr></>
+                                                ) : (
+                                                    <>
+                                                        {
+                                                            lastLocalTrx.map((item: any) => {
+                                                                return (
+                                                                    <>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <a onClick={() => {
+                                                                                    setIsConfigModalVisible(false)
+                                                                                    setIsScreenModalVisible(true)
+                                                                                    setTrxId(item.trx_id)
+                                                                                    setModalTitle('Memuat Transaksi...')
+                                                                                    setTrxStep('waiting-rupiah-deposit')
+                                                                                    navigate('/atm/?trx_id=' + item.trx_id)
+                                                                                }}>{item.trx_id}</a>
+                                                                            </td>
+                                                                            <td>
+                                                                                {item.amount}
+                                                                            </td>
+                                                                            <td>
+                                                                                <ReactTimeAgo date={new Date(item.timestamp * 1000)} locale="en-US" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </>
+                                                                )
+                                                            })
+                                                        }
+                                                    </>
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+
                                 </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <div className="last-trx ">
-                                <div className="title">Last Transaction</div>
-                                <table className="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>TRX ID</th>
-                                            <th>Amount</th>
-                                            <th>Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            lastLocalTrx.length < 1 ? (
-                                                <><tr><td colSpan={3} className="text-center">Tidak Ada Transaksi Terakhir</td></tr></>
-                                            ) : (
-                                                <>
-                                                    {
-                                                        lastLocalTrx.map((item: any) => {
-                                                            return (
-                                                                <>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a onClick={() => {
-                                                                                setIsConfigModalVisible(false)
-                                                                                setIsScreenModalVisible(true)
-                                                                                setTrxId(item.trx_id)
-                                                                                setModalTitle('Memuat Transaksi...')
-                                                                                setTrxStep('waiting-rupiah-deposit')
-                                                                                navigate('/atm/?trx_id=' + item.trx_id)
-                                                                            }}>{item.trx_id}</a>
-                                                                        </td>
-                                                                        <td>
-                                                                            {item.amount}
-                                                                        </td>
-                                                                        <td>
-                                                                            <ReactTimeAgo date={new Date(item.timestamp * 1000)} locale="en-US" />
-                                                                        </td>
-                                                                    </tr>
-                                                                </>
-                                                            )
-                                                        })
-                                                    }
-                                                </>
-                                            )
-                                        }
-                                    </tbody>
-                                </table>
+                            </Modal.Footer>
 
-                            </div>
-                        </Col>
-                    </Row>
-                </Modal.Footer>
-
+                        </>
+                    )
+                }
             </Modal>
         </main>
     )

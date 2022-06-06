@@ -5,18 +5,9 @@ import { useState } from "react"
 import { Card, Row, Col, Table } from "react-bootstrap"
 import ContentLoader, { Facebook } from 'react-content-loader'
 import ReactTooltip from "react-tooltip"
-import TimeAgo from 'javascript-time-ago'
-
-import id from 'javascript-time-ago/locale/id'
 import ReactTimeAgo from "react-time-ago"
 
 const StatusComponent = (props: any) => {
-
-    /**
-     * Load indonesian
-     */
-    TimeAgo.addDefaultLocale(id)
-
 
     return (
         <>
