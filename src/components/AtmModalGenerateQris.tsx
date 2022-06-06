@@ -298,8 +298,7 @@ const AtmModalGenerateQris = (props: any) => {
                                 <img src={SandClockIcon} alt="Sand Clock Icon" className="big-icon" />
                             ) : (
                                 <div className="qr-qris">
-                                    <div className="qr-qris-logo" />
-                                    <QRCode value={qrisData.toString()} fgColor="#444" />
+                                    <QRCode value={qrisData.toString()} fgColor="#444" bgColor="#f1f1f1" />
                                 </div>
                             )
                         }
@@ -378,8 +377,7 @@ const AtmModalGenerateQris = (props: any) => {
                                     {
                                         paymentLnurlData !== '' && (
                                             <div className="ln">
-                                                <div className="ln-logo" />
-                                                <QRCode value={paymentLnurlData.toString()} fgColor="#444" />
+                                                <QRCode value={paymentLnurlData.toString()} fgColor="#444" bgColor="#f1f1f1" />
                                             </div>
                                         )
                                     }

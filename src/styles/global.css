@@ -68,7 +68,7 @@ footer .about {
 }
 
 .section-2 {
-    background-color: rgb(255, 235, 209);
+    background-color: #fffaf3;
     padding: 40px 20px;
 }
 
@@ -300,4 +300,18 @@ code {
 }
 .trx-not-found {
     font-size: 2rem;
+}
+
+/**
+ * Index page
+ */
+.simple-step img {
+    max-width: 200px;
+    margin: auto;
+    display: block;
+}
+.simple-step div {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3rem;
 }
