@@ -6,10 +6,10 @@ import ReactTooltip from "react-tooltip";
 import Header from "../components/Header"
 import ExchangeFeeDetail from "./ExchangeFeeDetail";
 import formatNumber from "./formatNumber";
-import SandClockIcon from '../assets/images/atm/sand_clock.png';
-import BombIcon from '../assets/images/atm/bomb.png';
-import BitcoinIcon from '../assets/images/atm/b_logo.png';
-import ExclamationIcon from '../assets/images/atm/exclamation.png';
+import SandClockIcon from '../assets/images/atm/sand_clock.svg';
+import BombIcon from '../assets/images/atm/bomb.svg';
+import BitcoinIcon from '../assets/images/atm/b_logo.svg';
+import ExclamationIcon from '../assets/images/atm/exclamation.svg';
 import QRCode from "react-qr-code";
 import { navigate } from "gatsby";
 

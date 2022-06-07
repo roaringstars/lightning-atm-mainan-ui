@@ -24,15 +24,16 @@ const IndexPage = () => {
         <Header />
         <div className="container">
 
-          <div className="jumbotron pt-5 pb-5 text-center">
+          <div className="jumbotron pt-3 pb-3 text-center">
             <h1 className="display-6">Lightning ATM <span>(Mainan)</span></h1>
             <p className="lead">Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri</p>
             <p className="lead">
               <Link className="btn btn-orange btn-lg" to="/atm" role="button">Menuju ke ATM</Link>
             </p>
           </div>
-          {/* <div className="header-anim"/> */}
-          <object type="image/svg+xml" data={IntroAnim}>svg-animation</object>
+        <div className="header-anim">
+            <object type="image/svg+xml" data={IntroAnim}>svg-animation</object>
+          </div>
         </div>
 
         <section className="section-1">
