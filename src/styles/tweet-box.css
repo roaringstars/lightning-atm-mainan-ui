@@ -1,0 +1,210 @@
+.tweet-box,
+.tweet-box:hover {
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    padding: 20px;
+    color: #111;
+    text-decoration: none;
+    cursor: default;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 0.8rem;
+}
+
+.tweet-box:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 27px #f0f0f0,
+        -5px -5px 27px #ffffff;
+}
+
+.tweet-box .twitter-logo {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.tweet-box .twitter-logo img {
+    width: 100%;
+}
+
+.tweet-box .twitter-avatar {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgb(141, 141, 141);
+}
+
+.tweet-box .twitter-avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+.tweet-box .twitter-name {
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 13px;
+    margin-left: 10px;
+    position: absolute;
+}
+.tweet-box .twitter-verified {
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-left: 5px;
+}
+
+.tweet-box .twitter-verified img {
+    width: 100%;
+}
+
+.tweet-box .twitter-text {
+    padding-top: 10px;
+}
+
+.tweet-box .twitter-text span {
+    color: rgb(29, 155, 240);
+
+}
+
+.tweet-box .twitter-image {
+    margin: 15px 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    padding: 0;
+}
+
+.tweet-box .twitter-image img {
+    width: 100%;
+}
+
+.tweet-box .tweet-media {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.tweet-box .tweet-media img{
+    width: 100%;
+    border-radius: 20px;
+}
+.tweet-box .tweet-media .media-video span{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../assets/images/tweet-box/play.png") no-repeat 50% 50%;
+    background-size: 100px;
+}
+.tweet-box .tweet-media .media-video {
+    width: 100%;
+    height: 100%;
+    background-color: rebeccapurple;
+    border-radius: 20px;
+    position: relative;
+}
+.tweet-box .tweet-media .media-video img {
+    width:100%;
+    height:auto;
+}
+
+/**
+ * two images
+ */
+.tweet-box .twitter-image .multi-images.count-2 {
+    height: 148px;
+    display: flex;
+}
+
+.tweet-box .twitter-image .multi-images.count-2 div:nth-child(1) {
+    flex-grow: 1;
+    background-position: center !important;
+    background-size: cover !important;
+    border-radius: 0;
+}
+
+.tweet-box .twitter-image .multi-images.count-2 div:nth-child(2)  {
+    flex-grow: 1;
+    background-position: center !important;
+    background-size: cover !important;
+    border-radius: 0;
+}
+
+.tweet-box .twitter-image .multi-images.count-2 div+div {
+    margin-left: 2px;
+}
+
+/**
+  * three images
+  */
+.tweet-box .twitter-image .multi-images.count-3  {
+    height: 182px;
+    display: flex;
+}
+
+.tweet-box .twitter-image .multi-images.count-3 .first-image {
+    background-size: cover !important;
+    background-position: center !important;
+    flex: 0 0 50%;
+    border-radius: 0;
+    margin-right: 5px;
+}
+
+.tweet-box .twitter-image .multi-images.count-3 .other-image  {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tweet-box .twitter-image .multi-images.count-3 .other-image div:nth-child(1) {
+    flex: 0 0 200px;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 0;
+    margin-bottom: 5px;
+}
+
+.tweet-box .twitter-image .multi-images.count-3 .other-image div:nth-child(2) {
+    flex: 0 0 200px;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 0;
+}
+
+
+/**
+  * four images
+  */
+.tweet-box .twitter-image .multi-images.count-4 {
+    height: 165px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tweet-box .twitter-image .multi-images.count-4 div:nth-child(1) {
+    flex: 0 49.7%;
+    background-size: cover !important;
+    margin-bottom: 2px;
+}
+
+.tweet-box .twitter-image .multi-images.count-4 div:nth-child(2) {
+    flex: 0 49.7%;
+    background-size: cover !important;
+    margin-bottom: 2px;
+}
+
+.tweet-box .twitter-image .multi-images.count-4 div:nth-child(3) {
+    flex: 0 49.7%;
+    background-size: cover !important;
+    margin-bottom: 0;
+}
+
+.tweet-box .twitter-image .multi-images.count-4 div:nth-child(4) {
+    flex: 0 49.7%;
+    background-size: cover !important;
+    margin-bottom: 0;
+}

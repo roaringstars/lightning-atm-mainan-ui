@@ -11,6 +11,8 @@ import ScanLnurl from '../assets/images/index/scan_lnurl.svg';
 import OwnBitcoin from '../assets/images/index/own_bitcoin.svg';
 
 import IntroAnim from '../assets/images/index/intro_anim.svg';
+import TweetBox from "../components/TweetBox";
+import Masonry from 'react-masonry-css'
 
 
 const IndexPage = () => {
@@ -37,33 +39,33 @@ const IndexPage = () => {
           <div className="container">
             <h3>Mengapa ATM ini dibuat?</h3>
             <p>
-              Masih banyak orang (terutama di-Indonesia) yang belum mengetahui teknologi Bitcoin Lightning Network 
+              Masih banyak orang (terutama di-Indonesia) yang belum mengetahui teknologi Bitcoin Lightning Network
               dan cara memegang dompet Bitcoin mereka sendiri (<i>Self Custody</i>). Sementara kebanyakan jasa penukaran Bitcoin mematok tarif yang lumayan <Link to="/perbandingan">mahal*</Link> untuk memulai belajar.
-               </p>
+            </p>
 
-              <p>
-              ATM ini memungkinan siapaun untuk mencoba belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan 
+            <p>
+              ATM ini memungkinan siapaun untuk mencoba belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan
               Rp1,500 kamu bisa mulai bereksperimen dengan Bitcoin.
             </p>
           </div>
         </section>
 
-        <section className="section-2"> 
+        <section className="section-2">
           <div className="container">
             <h3>3 Tahap Cara Menggunakan</h3>
 
             <Row className="simple-step">
               <Col>
-                <img src={ScanQris} alt="Scan Qris"/>
+                <img src={ScanQris} alt="Scan Qris" />
                 <div>Deposit menggunakan QRIS</div>
               </Col>
               <Col>
-                <img src={ScanLnurl} alt="Scan LNURL"/>
+                <img src={ScanLnurl} alt="Scan LNURL" />
                 <div>Ambil Bitcoin dengan LNURL</div>
               </Col>
               <Col>
-                <img src={OwnBitcoin} alt="Miliki Bitcoin"/>
-                <div>Bitcoin Eceran siap dipakai untuk Belajar</div>
+                <img src={OwnBitcoin} alt="Miliki Bitcoin" />
+                <div>Siap Belajar dengan Bitcoin Eceran</div>
               </Col>
             </Row>
             {/* <ul>
@@ -80,29 +82,34 @@ const IndexPage = () => {
 
         <section className="section-3">
           <div className="container">
-            <h3>Contoh Penggunaan</h3>
-            <Row>
-              <Col>
-                <TwitterTweetEmbed
-                  tweetId={'1490360523535564800'}
-                />
-              </Col>
-              <Col>
-                <TwitterTweetEmbed
-                  tweetId={'1496527510284431361'}
-                />
-              </Col>
-              <Col>
-                <TwitterTweetEmbed
-                  tweetId={'1496929201185705997'}
-                />
-              </Col>
-              <Col>
-                <TwitterTweetEmbed
-                  tweetId={'1498143245758767104'}
-                />
-              </Col>
-            </Row>
+            <h3 className="mb-4">Testimoni Pengguna</h3>
+
+            <Masonry
+              breakpointCols={{
+                default: 4,
+                1100: 3,
+                960: 2,
+                500: 1
+              }}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column">
+              <TweetBox tweetId={'1490360523535564800'} />
+              <TweetBox tweetId={'1496527510284431361'} />
+              <TweetBox tweetId={'1513577186745364485'} />
+              <TweetBox tweetId={'1514083810052538372'} verified={true}/>
+              <TweetBox tweetId={'1498143245758767104'} />
+              <TweetBox tweetId={'1533939880371204096'} />
+              <TweetBox tweetId={'1532877038738022400'} />
+              <TweetBox tweetId={'1534050411128459264'} />
+              <TweetBox tweetId={'1533476330884411393'} />
+              <TweetBox tweetId={'1496929201185705997'} />
+              <TweetBox tweetId={'1533435118991249408'} />
+              <TweetBox tweetId={'1531623761358618624'} />
+              <TweetBox tweetId={'1527124877857406977'} />
+              <TweetBox tweetId={'1530023874112262145'} />
+              <TweetBox tweetId={'1514457432142979073'} />
+              <TweetBox tweetId={'1510841968024190976'} />
+            </Masonry>
           </div>
         </section>
       </main>

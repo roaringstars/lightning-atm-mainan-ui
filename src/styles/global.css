@@ -23,6 +23,7 @@
 .navbar .justify-content-end {
     float: right
 }
+
 .nav-link svg {
     margin-right: 4px;
 }
@@ -161,7 +162,8 @@ ul.no-bullet {
     text-shadow: 0 1px 0 rgb(0 0 0 / 10%);
     padding: 0.75rem 1.25rem;
 }
-.card-danger svg, 
+
+.card-danger svg,
 .card-success svg,
 .card-default svg {
     margin-right: 10px;
@@ -185,9 +187,11 @@ ul.no-bullet {
 .tos {
     font-size: 1.2rem;
 }
+
 .tos p {
     margin-bottom: 50px;
 }
+
 code {
     background-color: #eee;
     padding: 5px;
@@ -200,42 +204,49 @@ code {
     text-align: center;
     margin: auto;
 }
+
 .center-checkbox {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 .center-placeholder::-webkit-input-placeholder,
 .center-placeholder::-moz-placeholder,
-.center-placeholder::-ms-input-placeholder
- {  
-    text-align: center; 
+.center-placeholder::-ms-input-placeholder {
+    text-align: center;
 }
+
 .center-placeholder {
-   text-align:center;
+    text-align: center;
 }
+
 .tip-invoice-code {
     inline-size: 100%;
     overflow-wrap: break-word;
     text-align: center;
 }
+
 .tip-copied {
     text-align: center;
     color: rgb(46, 175, 46);
 }
+
 .tip-checking {
     text-align: center;
-    animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite;
+    animation: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
 }
+
 .animate-pulse {
-    animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite;
+    animation: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
 }
+
 @keyframes pulse {
     50% {
-      opacity: .5;
+        opacity: .5;
     }
-  }
+}
 
 /**
  * Tip
@@ -253,15 +264,19 @@ code {
     color: #000;
     cursor: default;
 }
+
 .tip-donor-list .tip-donor:hover {
     background-color: #eee;
 }
+
 .tip-donor-list .tip-donor.clickable {
     cursor: pointer;
 }
+
 .tip-donor-list .tip-donor-name {
     margin-top: 3px;
 }
+
 .tip-donor-list .tip-donor-avatar {
     width: 30px;
     height: 30px;
@@ -272,6 +287,7 @@ code {
     margin-right: 5px;
     background-color: #ddd;
 }
+
 .tip-donor-list .tip-donor-avatar img {
     width: 100%;
 }
@@ -286,25 +302,32 @@ code {
 .trx-insight .table {
     text-align: left;
 }
+
 .trx-insight .h1 {
     font-size: 5rem;
 }
+
 .trx-insight .hide {
     display: none;
 }
+
 .trx-insight-box {
     border: none;
     padding-top: 17px;
 }
+
 .trx-insight-box .col {
     padding: 0 !important;
 }
+
 .trx-insight-box input {
     font-size: 2rem;
 }
+
 .trx-insight-box .btn {
     font-size: 2rem;
 }
+
 .trx-not-found {
     font-size: 2rem;
 }
@@ -317,8 +340,28 @@ code {
     margin: auto;
     display: block;
 }
+
 .simple-step div {
     text-align: center;
     margin-top: 20px;
     font-size: 1.3rem;
 }
+
+/** masonry grid pinterest style */
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 30px;
+  }
