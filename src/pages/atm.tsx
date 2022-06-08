@@ -26,7 +26,7 @@ const ATM = ({ location }: any) => {
      * Constant 
      */
     const isDebug = (process.env.ATM_DEBUG === 'true');
-    const depositOption = [1500, 10000, 15000];
+    const depositOption = [1500, 10000, 25000];
     const appUiVersion = process.env.ATM_UI_VERSION;
 
     /**
@@ -101,7 +101,7 @@ const ATM = ({ location }: any) => {
             setDepositAmountText('Deposit 10K')
         }
         else if (depositAmount == 1) {
-            setDepositAmountText('Deposit 15K')
+            setDepositAmountText('Deposit 25K')
         }
         else {
             setDepositAmountText('Deposit 1.5K')
