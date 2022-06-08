@@ -10,8 +10,8 @@ import { faCheckCircle, faCircleNotch, faSearch } from "@fortawesome/free-solid-
 
 import ReactTimeAgo from 'react-time-ago'
 import LoadingTrxInsight from "../components/LoadingTrxInsight";
+import TrxIdHelp from '../assets/images/wawasan-transaksi/trx_id_help.svg';
 
-import TrxIdHelp from '../assets/images/trx_id.svg';
 import metaPreviewImage from '../assets/images/meta/wawasan-transaksi.jpg';
 import { Helmet } from "react-helmet"
 
@@ -44,7 +44,7 @@ const WawasanTransaksi = ({ location }: any) => {
     const [totalTrxDuration, setTrxDuration] = React.useState(0);
     const [timePercentageLabel, setTimePercentageLabel] = React.useState([]);
     const [timePercentageValue, setTimePercentageValue] = React.useState([]);
-    
+
     const apiEndpoint = process.env.ATM_API_ENDPOINT;
 
 
