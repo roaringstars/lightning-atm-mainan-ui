@@ -12,17 +12,17 @@ services:
       - "traefik.http.middlewares.fix-the-trailing.redirectregex.regex=((?:.*([/][0-9a-z_-]{1,})$$).*$$)"
       - "traefik.http.middlewares.fix-the-trailing.redirectregex.replacement=$${1}/"
       - "traefik.http.routers.app-secure.entrypoints=websecure"
-      - "traefik.http.middlewares.app-ratelimit.ratelimit.burst=15"
-      - "traefik.http.routers.app-secure.rule=((Host(`beta.roaringstars.com`) || Host(`labs.roaringstars.com`)) && PathPrefix(`/`))"
+      - "traefik.http.routers.app-secure.rule=((Host(`roaringstars.com`) || Host(`labs.roaringstars.com`)) && PathPrefix(`/`))"
       - "traefik.http.routers.app-secure.middlewares=fix-prefix,fix-the-trailing"
       - "traefik.http.middlewares.app-ratelimit.ratelimit.average=25"
+      - "traefik.http.middlewares.app-ratelimit.ratelimit.burst=15"
     ports:
       - 5030:443
       - 1030:80
     networks:
       - proxy
     restart: always
-    mem_limit: 10m
+    mem_limit: 50m
 
 networks:
   proxy:
