@@ -31,13 +31,13 @@ const Footer = () => {
                                     Menu Utama
                                 </h6>
                                 <p>
-                                    <Link to="/status" className="text-reset">Status Layanan</Link>
-                                </p>
-                                <p>
                                     <Link to="/atm" className="text-reset">ATM</Link>
                                 </p>
                                 <p>
                                     <Link to="/bantuan" className="text-reset">Bantuan</Link>
+                                </p>
+                                <p>
+                                    <Link to="/status" className="text-reset">Status Layanan</Link>
                                 </p>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -50,10 +50,10 @@ const Footer = () => {
                                     <Link to="/kebijakan-layanan" className="text-reset">Kebijakan Layanan</Link>
                                 </p>
                                 <p>
-                                <Link to="/menerima-lightning"  className="text-reset">Menerima Lightning</Link>
+                                <Link to="/wawasan-transaksi"  className="text-reset">Wawasan Transaksi</Link>
                                 </p>
                                 <p>
-                                <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
+                                <Link to="/menerima-lightning"  className="text-reset">Menerima Lightning</Link>
                                 </p>
                             </div>
 
@@ -70,6 +70,9 @@ const Footer = () => {
                                     <Link to="https://github.com/roaringstars/" className="text-reset">
                                         Github
                                     </Link>
+                                </p>
+                                <p>
+                                <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
                                 </p>
 
                             </div>
