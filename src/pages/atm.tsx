@@ -251,8 +251,6 @@ const ATM = ({ location }: any) => {
                 <meta name="twitter:image" content={metaPreviewImage} />+
             </Helmet>
 
-            <Header />
-
             {
                 !isDebug && isWipWarningVisible ? (
                     <div className="atm-wip">ATM di halaman ini masih dalam proses rekonstruksi,

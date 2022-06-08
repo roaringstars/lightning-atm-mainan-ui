@@ -107,7 +107,7 @@ const IndexPage = () => {
 
         <section className="section-3">
           <div className="container">
-            <h3 className="mb-4">Testimoni Pengguna</h3>
+            <h3 className="mb-4">Apa Kata Mereka?</h3>
 
             <Masonry
               breakpointCols={{
