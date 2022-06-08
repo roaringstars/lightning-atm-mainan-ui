@@ -44,6 +44,8 @@ const WawasanTransaksi = ({ location }: any) => {
     const [totalTrxDuration, setTrxDuration] = React.useState(0);
     const [timePercentageLabel, setTimePercentageLabel] = React.useState([]);
     const [timePercentageValue, setTimePercentageValue] = React.useState([]);
+    
+    const apiEndpoint = process.env.ATM_API_ENDPOINT;
 
 
     /**
@@ -54,7 +56,7 @@ const WawasanTransaksi = ({ location }: any) => {
         setIsLoading(true);
         setIsDataReady(false);
         setDataNotFound(false);
-        const endpoint = 'https://roaringstars.com/' + '/api_troubleshoot_trx.php?trx_id=' + actualTrxId
+        const endpoint = apiEndpoint + '/api_troubleshoot_trx.php?trx_id=' + actualTrxId
         fetch(endpoint, {
             method: 'GET',
             headers: new Headers({
