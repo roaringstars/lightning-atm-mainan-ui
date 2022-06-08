@@ -251,7 +251,7 @@ const ATM = ({ location }: any) => {
                 <meta name="twitter:image" content={metaPreviewImage} />+
             </Helmet>
 
-            {
+            {/* {
                 !isDebug && isWipWarningVisible ? (
                     <div className="atm-wip">ATM di halaman ini masih dalam proses rekonstruksi,
                         sementara waktu gunakan versi <a href="https://roaringstars.com">sebelumnya</a>.<br />
@@ -260,7 +260,7 @@ const ATM = ({ location }: any) => {
                         }}>Bodoamat, YOLO!</Button>
                     </div>
                 ) : null
-            }
+            } */}
 
 
             <div className="main-wrapper">
