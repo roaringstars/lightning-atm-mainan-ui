@@ -3,17 +3,45 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-
 import { Card, Table } from "react-bootstrap"
 import PriceInBtc from "../components/PriceInBtc";
+import metaPreviewImage from '../assets/images/meta/perbandingan.jpg';
+import { Helmet } from "react-helmet"
 
 const Bantuan = () => {
+    /**
+     * Helmet
+     */
+    const metaDescription = "Perbandingan Biaya Layanan Exchange Kripto di Indonesia secara Realtime";
+    const metaTitle = "Perbandingan Biaya Layanan Exchange Kripto di Indonesia";
+    const metaDomain = "https://roaringstars.com";
+    const metaUrl = "https://roaringstars.com/perbandingan";
+
+    /**
+     * Const
+     */
     const [btcRate, setBtcRate] = React.useState(600000000);
 
     return (
         <main>
-            <title>Pusat Bantuan</title>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription} />
+                <meta property="og:url" content={metaUrl} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metaTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={metaPreviewImage} />
 
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content={metaDomain} />
+                <meta property="twitter:url" content={metaUrl} />
+                <meta name="twitter:title" content={metaTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={metaPreviewImage} />+
+            </Helmet>
             <Header />
 
             <article className="mb-4 section-comparison">
@@ -47,7 +75,7 @@ const Bantuan = () => {
                                         <td>Rp1,500</td>
                                         <td>10% (Fixed)</td>
                                         <td>
-                                            <FontAwesomeIcon icon={faCheckCircle} className="text-success"/>
+                                            <FontAwesomeIcon icon={faCheckCircle} className="text-success" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -56,7 +84,7 @@ const Bantuan = () => {
                                         <td>Rp100,000</td>
                                         <td>Rp300,xxx</td>
                                         <td>
-                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -65,16 +93,16 @@ const Bantuan = () => {
                                         <td>?</td>
                                         <td>?</td>
                                         <td>
-                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>TokoCrypto</td>
                                         <td>Rp50,000</td>
-                                        <td><PriceInBtc btc="0.001"/></td>
-                                        <td><PriceInBtc btc="0.0004"/></td>
+                                        <td><PriceInBtc btc="0.001" /></td>
+                                        <td><PriceInBtc btc="0.0004" /></td>
                                         <td>
-                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,7 +111,7 @@ const Bantuan = () => {
                                         <td>?</td>
                                         <td>Rp300,xxx</td>
                                         <td>
-                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -92,7 +120,7 @@ const Bantuan = () => {
                                         <td>Rp0</td>
                                         <td>Rp7,xxx (OnChain Fee)</td>
                                         <td>
-                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger"/>
+                                            <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
                                     </tr>
                                 </tbody>

@@ -20,8 +20,8 @@ const Footer = () => {
                                 <p className="mb-2">
                                     ATM Bitcoin pertama di Indonesia yang mendukung Lightning Network.</p>
                                 <p>
-                                    Memberikan ruang untuk yang ingin mencoba
-                                    Bitcoin tanpa mengeluarkan banyak uang.
+                                    Memberikan jembatan bagi siapapun yang ingin belajar
+                                    Bitcoin tanpa takut kehilangan banyak uang.
                                 </p>
                             </div>
 
@@ -45,14 +45,12 @@ const Footer = () => {
                                 <h6 className="text-uppercase fw-bold mb-4">
                                     Tautan
                                 </h6>
-                                <p>
-                                    <Link to="https://github.com/roaringstars/" className="text-reset">
-                                        Github
-                                    </Link>
-                                </p>
 
                                 <p>
                                     <Link to="/kebijakan-layanan" className="text-reset">Kebijakan Layanan</Link>
+                                </p>
+                                <p>
+                                <Link to="/menerima-lightning"  className="text-reset">Menerima Lightning</Link>
                                 </p>
                                 <p>
                                 <Link to="/liputan-media"  className="text-reset">Liputan Media</Link>
@@ -67,6 +65,11 @@ const Footer = () => {
                                 
                                 <p>
                                 <Link to="/tip"  className="text-reset">Tip &amp; Kontributor</Link>
+                                </p>
+                                <p>
+                                    <Link to="https://github.com/roaringstars/" className="text-reset">
+                                        Github
+                                    </Link>
                                 </p>
 
                             </div>

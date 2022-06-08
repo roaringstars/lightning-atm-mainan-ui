@@ -6,11 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col } from "react-bootstrap";
 import formatNumber from "../components/formatNumber";
 import SatsToIdrLoading from "../components/SatsToIdrLoading";
+import metaPreviewImage from '../assets/images/meta/sats-to-idr.jpg';
+import { Helmet } from "react-helmet"
 
 const SatsToIdr = () => {
     /**
- * Constant 
- */
+     * Helmet
+     */
+    const metaDescription = "Konversi kurs Satoshi ke Rupiah secara Realtime";
+    const metaTitle = "Satoshi to Indonesian Rupiah";
+    const metaDomain = "https://roaringstars.com";
+    const metaUrl = "https://roaringstars.com/satoshi-to-idr";
+
+    /**
+     * Constant 
+     */
     const apiEndpoint = process.env.ATM_API_ENDPOINT;
     const isDebug = process.env.ATM_DEBUG;
 
@@ -68,7 +78,24 @@ const SatsToIdr = () => {
 
     return (
         <main>
-            <title>Satoshi to IDR</title>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription} />
+                <meta property="og:url" content={metaUrl} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metaTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={metaPreviewImage} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content={metaDomain} />
+                <meta property="twitter:url" content={metaUrl} />
+                <meta name="twitter:title" content={metaTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={metaPreviewImage} />+
+            </Helmet>
 
             <Header />
 

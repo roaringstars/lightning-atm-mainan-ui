@@ -12,8 +12,18 @@ import ReactTimeAgo from 'react-time-ago'
 import LoadingTrxInsight from "../components/LoadingTrxInsight";
 
 import TrxIdHelp from '../assets/images/trx_id.svg';
+import metaPreviewImage from '../assets/images/meta/wawasan-transaksi.jpg';
+import { Helmet } from "react-helmet"
 
 const WawasanTransaksi = ({ location }: any) => {
+    /**
+     * Helmet
+     */
+     const metaDescription = "Wawasan Transaksi, mengetahui detail dari sebuah transaksi Lightning ATM (Mainan)";
+     const metaTitle = "Wawasan Transaksi";
+     const metaDomain = "https://roaringstars.com";
+     const metaUrl = "https://roaringstars.com/wawasan-transaksi";
+
     /**
      * Regex for find valid Trx ID
      */
@@ -94,7 +104,24 @@ const WawasanTransaksi = ({ location }: any) => {
 
     return (
         <main>
-            <title>Wawasan Transaksi</title>
+            <Helmet>
+                <meta charSet="utf-8"/>
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription}/>
+                <meta property="og:url" content={metaUrl}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content={metaTitle}/>
+                <meta property="og:description" content={metaDescription}/>
+                <meta property="og:image" content={metaPreviewImage}/>
+
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta property="twitter:domain" content={metaDomain}/>
+                <meta property="twitter:url" content={metaUrl}/>
+                <meta name="twitter:title" content={metaTitle}/>
+                <meta name="twitter:description" content={metaDescription}/>
+                <meta name="twitter:image" content={metaPreviewImage}/>+
+            </Helmet>
 
             <Header />
 

@@ -11,11 +11,39 @@ import Image3 from '../assets/images/menerima-lightning/coinkit.jpg';
 import Image4 from '../assets/images/menerima-lightning/ahnames.jpg';
 import Image5 from '../assets/images/menerima-lightning/microlancer.jpg';
 import Image6 from '../assets/images/menerima-lightning/ln-address.png';
+import metaPreviewImage from '../assets/images/meta/menerima-lightning.jpg';
+import { Helmet } from "react-helmet"
 
 const MenerimaLightning = () => {
+    /**
+     * Helmet
+     */
+         const metaDescription = "Dimana Saya Bisa Menggunakan Lightning?";
+         const metaTitle = "Menerima Lightning";
+         const metaDomain = "https://roaringstars.com";
+         const metaUrl = "https://roaringstars.com/menerima-lightning";
+
+         
     return (
         <main>
-            <title>Menerima Lightning</title>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription} />
+                <meta property="og:url" content={metaUrl} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metaTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={metaPreviewImage} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content={metaDomain} />
+                <meta property="twitter:url" content={metaUrl} />
+                <meta name="twitter:title" content={metaTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={metaPreviewImage} />+
+            </Helmet>
 
             <Header />
 

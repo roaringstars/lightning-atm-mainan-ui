@@ -10,9 +10,18 @@ import { Helmet } from "react-helmet"
 import BackSideLabel from '../assets/images/atm/back_label.svg';
 
 import ReactTimeAgo from 'react-time-ago'
+import metaPreviewImage from '../assets/images/meta/atm.jpg';
 
 
 const ATM = ({ location }: any) => {
+    /**
+     * Helmet
+     */
+    const metaDescription = "Exchange Indonesian Rupiah into Bitcoin over Lightning Network with very low fees — for educational purposes only.";
+    const metaTitle = "Lightning ATM (Mainan)";
+    const metaDomain = "https://roaringstars.com";
+    const metaUrl = "https://roaringstars.com/atm";
+
     /**
      * Constant 
      */
@@ -99,7 +108,7 @@ const ATM = ({ location }: any) => {
         }
     }, [depositAmount])
 
-    function setDepositAmountByValue(value : number) {
+    function setDepositAmountByValue(value: number) {
         setDepositAmount(depositOption.indexOf(value));
     }
 
@@ -223,15 +232,26 @@ const ATM = ({ location }: any) => {
 
     return (
         <main>
-            <Helmet
-                title={'ATM'}
-                meta={[
-                    {
-                        name: `viewport`,
-                        content: 'width=device-width, initial-scale=1.0',
-                    }
-                ]}
-            />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription} />
+                <meta property="og:url" content={metaUrl} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metaTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={metaPreviewImage} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content={metaDomain} />
+                <meta property="twitter:url" content={metaUrl} />
+                <meta name="twitter:title" content={metaTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={metaPreviewImage} />+
+            </Helmet>
+
+            <Header />
 
             {
                 !isDebug && isWipWarningVisible ? (

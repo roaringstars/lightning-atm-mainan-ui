@@ -8,11 +8,38 @@ import { TwitterTweetEmbed } from "react-twitter-embed"
 import { Link } from "gatsby"
 import Image1 from '../assets/images/bantuan/bitcoin.jpg';
 import Image2 from '../assets/images/bantuan/lightning-network.jpg';
+import metaPreviewImage from '../assets/images/meta/bantuan.jpg';
+import { Helmet } from "react-helmet"
 
 const Bantuan = () => {
+    /**
+     * Helmet
+     */
+    const metaDescription = "Pusat Bantuan, Apa itu Bitcoin? Apa itu Lightning Network? Bagaimana cara menggunakan Lightning ATM (Mainan)?";
+    const metaTitle = "Pusat Bantuan";
+    const metaDomain = "https://roaringstars.com";
+    const metaUrl = "https://roaringstars.com/bantuan";
+
     return (
         <main>
-            <title>Pusat Bantuan</title>
+            <Helmet>
+                <meta charSet="utf-8"/>
+                <title>{metaTitle}</title>
+                <link rel="canonical" href={metaUrl} />
+                <meta name="description" content={metaDescription}/>
+                <meta property="og:url" content={metaUrl}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content={metaTitle}/>
+                <meta property="og:description" content={metaDescription}/>
+                <meta property="og:image" content={metaPreviewImage}/>
+
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta property="twitter:domain" content={metaDomain}/>
+                <meta property="twitter:url" content={metaUrl}/>
+                <meta name="twitter:title" content={metaTitle}/>
+                <meta name="twitter:description" content={metaDescription}/>
+                <meta name="twitter:image" content={metaPreviewImage}/>+
+            </Helmet>
 
             <Header />
 
@@ -34,14 +61,14 @@ const Bantuan = () => {
 
 
                             <h2 className="section-heading mb-2">Apa itu Lightning Network?</h2>
-                                    <img src={Image2} alt="BlueWallet" className="img-fluid" />
+                            <img src={Image2} alt="BlueWallet" className="img-fluid" />
                             <Card className="mb-4">
                                 <Card.Body>
 
                                     <p className="mb-0">
-                                        Bitcoin Lightning network merupakan solusi dari isu skalabilitas Bitcoin. 
-                                        Jaringan ini menumpang diatas jaringan Bitcoin, sehingga dapat melakukan transaksi 
-                                        lebih cepat dan efisien tanpa mengorbankan desentralisasi dan keamanan Bitcoin. 
+                                        Bitcoin Lightning network merupakan solusi dari isu skalabilitas Bitcoin.
+                                        Jaringan ini menumpang diatas jaringan Bitcoin, sehingga dapat melakukan transaksi
+                                        lebih cepat dan efisien tanpa mengorbankan desentralisasi dan keamanan Bitcoin.
                                         Lightning Network menawarkan transaksi instan dan sangat menghemat biaya.
                                     </p>
                                 </Card.Body>
@@ -76,7 +103,7 @@ const Bantuan = () => {
                                         <ul>
                                             <li>
                                                 <span data-tip="React-tooltip" data-for={'idr-gopay'}>
-                                                    Gopay 
+                                                    Gopay
                                                     [<a href="https://twitter.com/roaringstars/status/1490360523535564800">1</a>]
                                                 </span>
                                                 <ReactTooltip place="right" id={'idr-gopay'} effect="solid">
@@ -85,7 +112,7 @@ const Bantuan = () => {
                                             </li>
                                             <li>
                                                 <span data-tip="React-tooltip" data-for={'idr-dana'}>
-                                                    Dana 
+                                                    Dana
                                                     [<a href="https://twitter.com/jevanjovandy/status/1498143245758767104">1</a>]
                                                 </span>
                                                 <ReactTooltip place="right" id={'idr-dana'} effect="solid">
@@ -106,44 +133,44 @@ const Bantuan = () => {
                                     <p className="mb-0">
                                         <ul>
                                             <li>
-                                               <Link to={'/dompet/muun'}>Muun</Link>
+                                                <Link to={'/dompet/muun'}>Muun</Link>
                                             </li>
                                             <li>
                                                 <Link to={'/dompet/bluewallet'} >BlueWallet</Link>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/wallet-of-satoshi'} 
-                                                        data-tip="React-tooltip" 
-                                                        data-for={'wallet-wallet-of-satoshi'}>Wallet of Satoshi</Link>
+                                                <Link to={'/dompet/wallet-of-satoshi'}
+                                                    data-tip="React-tooltip"
+                                                    data-for={'wallet-wallet-of-satoshi'}>Wallet of Satoshi</Link>
                                                 <ReactTooltip id={'wallet-wallet-of-satoshi'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/zap'} 
-                                                        data-tip="React-tooltip" 
-                                                        data-for={'wallet-zap'}>Zap</Link>
+                                                <Link to={'/dompet/zap'}
+                                                    data-tip="React-tooltip"
+                                                    data-for={'wallet-zap'}>Zap</Link>
                                                 <ReactTooltip id={'wallet-zap'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/phoenix'} 
-                                                        data-tip="React-tooltip" 
-                                                        data-for={'wallet-phoenix'}>Phoenix</Link>
+                                                <Link to={'/dompet/phoenix'}
+                                                    data-tip="React-tooltip"
+                                                    data-for={'wallet-phoenix'}>Phoenix</Link>
                                                 <ReactTooltip id={'wallet-phoenix'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/zebedee'} 
-                                                        data-tip="React-tooltip" 
-                                                        data-for={'wallet-zebedee'}>Zebedee</Link>
+                                                <Link to={'/dompet/zebedee'}
+                                                    data-tip="React-tooltip"
+                                                    data-for={'wallet-zebedee'}>Zebedee</Link>
                                                 <ReactTooltip id={'wallet-zebedee'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
                                             </li>
-                                            
+
                                             <li> ...(membutuhkan bantuan untuk melengkapi ) ⚠️</li>
                                         </ul></p>
 

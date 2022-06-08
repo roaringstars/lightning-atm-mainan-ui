@@ -1,10 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import Header from "../components/Header"
-import { Button, Row, Col } from 'react-bootstrap';
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import { Row, Col } from 'react-bootstrap';
 import Footer from "../components/Footer";
-
 
 import ScanQris from '../assets/images/index/scan_qris.svg';
 import ScanLnurl from '../assets/images/index/scan_lnurl.svg';
@@ -13,14 +11,40 @@ import OwnBitcoin from '../assets/images/index/own_bitcoin.svg';
 import IntroAnim from '../assets/images/index/intro_anim.svg';
 import TweetBox from "../components/TweetBox";
 import Masonry from 'react-masonry-css'
-
+import metaPreviewImage from '../assets/images/meta/index.jpg';
+import { Helmet } from "react-helmet"
 
 const IndexPage = () => {
+  /**
+   * Helmet
+   */
+  const metaDescription = "Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri";
+  const metaTitle = "Lightning ATM (Mainan)";
+  const metaDomain = "https://roaringstars.com";
+  const metaUrl = "https://roaringstars.com";
+  
   return (
     <>
       <main>
-        <title>Lightning ATM (Mainan)</title>
+        <Helmet>
+          <meta charSet="utf-8"/>
+          <title>{metaTitle}</title>
+          <link rel="canonical" href={metaUrl} />
+          <meta name="description" content={metaDescription}/>
+          <meta property="og:url" content={metaUrl}/>
+          <meta property="og:type" content="website"/>
+          <meta property="og:title" content={metaTitle}/>
+          <meta property="og:description" content={metaDescription}/>
+          <meta property="og:image" content={metaPreviewImage}/>
 
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta property="twitter:domain" content={metaDomain}/>
+          <meta property="twitter:url" content={metaUrl}/>
+          <meta name="twitter:title" content={metaTitle}/>
+          <meta name="twitter:description" content={metaDescription}/>
+          <meta name="twitter:image" content={metaPreviewImage}/>+
+        </Helmet>
+        
         <Header />
         <div className="container">
 

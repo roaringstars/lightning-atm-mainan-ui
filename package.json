@@ -25,6 +25,7 @@
     "frappe-charts": "^1.6.2",
     "gatsby": "^4.15.2",
     "gatsby-plugin-image": "^0.7.2",
+    "gatsby-plugin-manifest": "^4.16.0",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sharp": "^4.15.1",
     "gatsby-source-filesystem": "^4.15.0",
@@ -52,6 +53,10 @@
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-dom": "^17.0.14",
     "@types/react-edit-text": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.30.0",
     "typescript": "^4.6.3"
   }
 }
