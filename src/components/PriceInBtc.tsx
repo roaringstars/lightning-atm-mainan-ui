@@ -4,14 +4,48 @@ import ReactTooltip from 'react-tooltip';
 import formatNumber from "./formatNumber";
 
 const PriceInBtc = (props: any) => {
-    const [indodaxPrice, setIndodaxPrice] = React.useState(600000000);
-    const [indodaxPriceReady, setIndodaxPriceReady] = React.useState(true);
+    const apiEndpoint = process.env.ATM_API_ENDPOINT;
+    const [btcRate, setBtcRate] = React.useState(600000000);
+    const [btcRateReady, setBtcRateReady] = React.useState(true);
 
-    
+
     function uniqueId(btc: number) {
-        return 'id' + (props.btc * 100000000).toString();
+        return 'id-' + (props.btc * 100000000).toString();
     }
 
+    /**
+* Compose API endpoint
+*/
+    const endpoint = apiEndpoint + '/api_rate.php?deposit=1500'
+
+    /**
+     * Load latest Bitcoin price rate
+     */
+    const load = () => {
+        fetch(endpoint, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                setBtcRate(data.data.one_btc_to_idr_int);
+            })
+            .catch(error => {
+                // TODO: Log
+                // Log('error', 'Failed while sending post data', {
+                //     endpoint: apiEndpoint,
+                //     error: error
+                // })
+            })
+    }
+
+    React.useEffect(() => {
+        load();
+    }, [])
 
     return (
         <>
@@ -41,10 +75,10 @@ const PriceInBtc = (props: any) => {
                             <td>Rupiah</td>
                             <td className="text-right">
                                 {
-                                    (!indodaxPriceReady) ? (
+                                    (!btcRateReady) ? (
                                         <>Loading...</>
                                     ) : (
-                                        <>{formatNumber(indodaxPrice * props.btc)}</>
+                                        <>{formatNumber(Math.round(btcRate * props.btc))}</>
                                     )
                                 }
                             </td>

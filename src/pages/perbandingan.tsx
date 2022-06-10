@@ -17,11 +17,6 @@ const Bantuan = () => {
     const metaDomain = "https://roaringstars.com";
     const metaUrl = "https://roaringstars.com/perbandingan";
 
-    /**
-     * Const
-     */
-    const [btcRate, setBtcRate] = React.useState(600000000);
-
     return (
         <main>
             <Helmet>
@@ -81,8 +76,8 @@ const Bantuan = () => {
                                     <tr>
                                         <td>Indodax</td>
                                         <td>Rp10,000</td>
-                                        <td>Rp100,000</td>
-                                        <td>Rp300,xxx</td>
+                                        <td><PriceInBtc btc="0.001" /></td>
+                                        <td><PriceInBtc btc="0.0005" /></td>
                                         <td>
                                             <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>
@@ -100,7 +95,7 @@ const Bantuan = () => {
                                         <td>TokoCrypto</td>
                                         <td>Rp50,000</td>
                                         <td><PriceInBtc btc="0.001" /></td>
-                                        <td><PriceInBtc btc="0.0004" /></td>
+                                        <td><PriceInBtc btc="0.0002" /></td>
                                         <td>
                                             <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>

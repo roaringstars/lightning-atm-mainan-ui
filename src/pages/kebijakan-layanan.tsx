@@ -91,7 +91,7 @@ const TOS = () => {
                                 yang melanggar hukum di Republik Indonesia.
                                 <br />
                                 <br />
-                                Kami tidak bertanggun jawab atas pelanggaran tersebut.
+                                Kami tidak bertanggung jawab atas pelanggaran tersebut.
                             </p>
 
 
@@ -117,7 +117,7 @@ const TOS = () => {
                             </p>
 
                             <p className="text-justify mt-5">
-                                <i>Terakhir Diperbarui: 19 Mei 2022</i>
+                                <i>Terakhir Diperbarui: 10 Juni 2022</i>
 
                             </p>
                         </div>
