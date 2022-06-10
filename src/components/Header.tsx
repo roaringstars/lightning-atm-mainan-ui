@@ -16,10 +16,11 @@ const Header = () => {
                         <Nav>
                             <Link to="/atm" className="nav-link">ATM</Link>
                             <Link to="/bantuan" className="nav-link">Bantuan</Link>
-                                <Link to="https://twitter.com/roaringstars" className="nav-link">
-                                <FontAwesomeIcon icon={faTwitter}/>
+                            <Link to="/legalitas" className="nav-link">Legalitas</Link>
+                            <Link to="https://twitter.com/roaringstars" className="nav-link">
+                                <FontAwesomeIcon icon={faTwitter} />
                                 @roaringstars
-                                </Link>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
