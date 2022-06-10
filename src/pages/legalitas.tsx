@@ -118,7 +118,7 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Pada Oktober 2018  Menteri Perdaganan mengeluarkan peraturan yang memperbolehkan jual-beli Aset Kripto namun tidak menyinggung perihal Kripto sebagai alat pembayaran.
+                                Pada Oktober 2018 Menteri Perdagangan mengeluarkan peraturan yang memperbolehkan jual-beli Aset Kripto namun tidak menyinggung perihal Kripto sebagai alat pembayaran.
 
                                 <blockquote className="blockquote">
                                     <p>"Aset Kripto (Crypto Asset) ditetapkan sebagai Komoditi yang dapat dijadikan Subjek Kontrak Berjangka yang diperdagangkan di Bursa Berjangka."</p>
@@ -265,7 +265,7 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Selain hal tersebut ada beberap poin yang perlu diperhatikan tentang adanya Lightning ATM (Mainan) ini:
+                                Selain hal tersebut ada beberapa poin yang perlu diperhatikan tentang adanya Lightning ATM (Mainan) ini:
                                 <ul>
                                     <li>
                                         Kami terpaksa mengizinkan pembelian Bitcoin tanpa mengetahui identitas pembeli (non-kyc) dengan tujuan agar proses menjadi sangat sederhana untuk orang awam.
