@@ -54,7 +54,7 @@ const Legalitas = () => {
                                 dompet pengguna (tidak disimpan oleh ATM).
                                 <br/>
                                 <br/>
-                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan tujuan dasar yaitu mencerdaskan kehidupan bangsa.
+                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                             <div className="dashed-line" />
@@ -187,10 +187,10 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Padahal faktanya, Bitcoin dan kripto lain belum sepenuhnya teruji sebagai teknologi yang berhasil. Saya berani berkata kalau Bitcoin masih sebatas mata uang eksperimen yang baru berumur 13 tahun, dibandingakan E-mail yang sudah berumur 57 tahun. Sehingga alangkah baiknya jika tidak memasukan uang terlalu banyak kedalam teknologi ini kecuali sudah memahami bagaiman teknologi tersebut bekerja.
+                                Padahal faktanya, Bitcoin dan kripto lain belum sepenuhnya teruji sebagai teknologi yang berhasil. Saya berani berkata kalau Bitcoin masih sebatas mata uang eksperimen yang baru berumur 13 tahun, dibandingakan E-mail yang sudah berumur 57 tahun. Sehingga alangkah baiknya jika tidak memasukan uang terlalu banyak kedalam teknologi ini kecuali sudah memahami bagaimana teknologi tersebut bekerja.
                             </p>
                             <p className="text-justify">
-                                Melihat kondisi ini saya tidak bisa diam, saya perlu menyuarakan bahwasanya perlu untuk memahami Bitcoin secara teknis sebelum menaruh uang dalam jumlah yang besar. Namun, masalahnya belum terdapat sebuah alat peraga yang rendah biaya yang bisa digunakan orang awam untuk mencoba dan belajar Bitcoin.
+                                Melihat kondisi ini saya tidak bisa diam, saya perlu menyuarakan bahwasanya masyarakat awam perlu untuk memahami Bitcoin secara teknis sebelum menaruh uang dalam jumlah yang besar. Namun, masalahnya belum terdapat sebuah alat peraga yang rendah biaya yang bisa digunakan orang awam untuk mencoba dan belajar Bitcoin.
                             </p>
 
                             <p className="text-justify">
@@ -244,7 +244,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Dampak Positif dan Pencegahan Pelanggaran</b></div>
                             <p className="text-justify mt-3">
-                                Sejalan dengan peraturan BI dan OJK untuk mencegah penggunaan mata uang virtual sebagai tindak kejahatan, maka Lightning ATM (Mainan) ini melakukan beberapa hal berikut.
+                                Sejalan dengan peraturan BI dan OJK untuk mencegah penggunaan mata uang virtual sebagai tindak kejahatan, maka Lightning ATM (Mainan) ini melakukan beberapa hal berikut sebagai pencegahan:
                                 <ul>
                                     <li>
                                         Membatasi nominal transaksi maksimal Rp25rb, dengan asumsi menjadikan pencucian uang tidak efisien dan memakan banyak waktu.
@@ -256,10 +256,10 @@ const Legalitas = () => {
                                         Mengharuskan menggunakan dompet pribadi, untuk mencegah kehilangan Bitcoin jika mesin ATM diretas.
                                     </li>
                                     <li>
-                                        Melarang penggunaan Bitcoin untuk transaksi ilegal.
+                                        Melarang penggunaan Bitcoin untuk melakukan transaksi ilegal.
                                     </li>
                                     <li>
-                                        Membatasi jumlah total transaksi harian maksimal 200.
+                                        Membatasi jumlah total transaksi harian hanya maksimal 200.
                                     </li>
                                 </ul>
                             </p>
@@ -293,7 +293,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Kesimpulan</b></div>
                             <p className="text-justify mt-3">
-                                Jika disimpulkan, mesikupun belum mendapat izin resmi untuk beroperasi namun terdapat lebih banyak manfaat dari adanya mesin Lightning ATM (Mainan) ini. Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan tujuan dasar yaitu mencerdaskan kehidupan bangsa.
+                                Jika disimpulkan, mesikupun belum mendapat izin resmi untuk beroperasi namun terdapat lebih banyak manfaat dari adanya mesin Lightning ATM (Mainan) ini. Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                         </div>
