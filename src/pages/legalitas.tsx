@@ -54,7 +54,7 @@ const Legalitas = () => {
                                 dompet pengguna (tidak disimpan oleh ATM).
                                 <br/>
                                 <br/>
-                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
+                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                             <div className="dashed-line" />
@@ -293,7 +293,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Kesimpulan</b></div>
                             <p className="text-justify mt-3">
-                                Jika disimpulkan, mesikupun belum mendapat izin resmi untuk beroperasi namun terdapat lebih banyak manfaat dari adanya mesin Lightning ATM (Mainan) ini. Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tidak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
+                                Jika disimpulkan, mesikupun belum mendapat izin resmi untuk beroperasi namun terdapat lebih banyak manfaat dari adanya mesin Lightning ATM (Mainan) ini. Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan dan memberikan akses informasi seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                         </div>
