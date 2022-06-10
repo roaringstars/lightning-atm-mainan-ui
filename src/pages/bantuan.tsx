@@ -133,12 +133,6 @@ const Bantuan = () => {
                                     <p className="mb-0">
                                         <ul>
                                             <li>
-                                                <Link to={'/dompet/muun'}>Muun</Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'/dompet/bluewallet'} >BlueWallet</Link>
-                                            </li>
-                                            <li>
                                                 <Link to={'/dompet/wallet-of-satoshi'}
                                                     data-tip="React-tooltip"
                                                     data-for={'wallet-wallet-of-satoshi'}>Wallet of Satoshi</Link>
@@ -147,6 +141,12 @@ const Bantuan = () => {
                                                 </ReactTooltip>
                                             </li>
                                             <li>
+                                                <Link to={'/dompet/muun'}>Muun</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={'/dompet/bluewallet'} >BlueWallet</Link>
+                                            </li>
+                                            {/* <li>
                                                 <Link to={'/dompet/zap'}
                                                     data-tip="React-tooltip"
                                                     data-for={'wallet-zap'}>Zap</Link>
@@ -161,7 +161,7 @@ const Bantuan = () => {
                                                 <ReactTooltip id={'wallet-phoenix'} effect="solid">
                                                     Halaman belum ada, membutuhkan bantuan untuk melengkapi info
                                                 </ReactTooltip>
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <Link to={'/dompet/zebedee'}
                                                     data-tip="React-tooltip"
