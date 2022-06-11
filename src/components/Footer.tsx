@@ -31,13 +31,13 @@ const Footer = () => {
                                     Menu Utama
                                 </h6>
                                 <p>
-                                    <Link to="/atm" className="text-reset">ATM</Link>
-                                </p>
-                                <p>
                                     <Link to="/bantuan" className="text-reset">Bantuan</Link>
                                 </p>
                                 <p>
                                     <Link to="/status" className="text-reset">Status Layanan</Link>
+                                </p>
+                                <p>
+                                    <Link to="/kurs-bitcoin" className="text-reset">Kurs Bitcoin</Link>
                                 </p>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">

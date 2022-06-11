@@ -127,7 +127,7 @@ const KursBitcoin = () => {
                                                                 <Col className="h1">{formatNumber(Math.round(data.average.in_idr), 'IDR ', '')}</Col>
                                                             </Row>
                                                             <Row>
-                                                                <Col className="h4">rata-rata dari 2 sumber yang berbeda</Col>
+                                                                <Col className="h4">rata-rata dari {data.external.length} sumber yang berbeda</Col>
                                                             </Row>
                                                         </Card.Body>
                                                     </Card>
