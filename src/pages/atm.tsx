@@ -4,7 +4,6 @@ import { Button, Col, Modal, Row, Table } from "react-bootstrap"
 import CopyToClipboard from "react-copy-to-clipboard";
 import AtmModalExchangeDetail from "../components/AtmModalExchangeDetail";
 import AtmModalGenerateQris from "../components/AtmModalGenerateQris";
-import Header from "../components/Header"
 import '../styles/atm.css'
 import { Helmet } from "react-helmet"
 import BackSideLabel from '../assets/images/atm/back_label.svg';

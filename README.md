@@ -8,9 +8,3 @@ Repositori ini adalah ruang uji coba untuk aplikasi Lightning ATM (Mainan) versi
 
 ### Link Penting
 - <a href="docs/kontribusi.md">Cara Berkontribusi </a>
-
-
-### Todo (v0.0.4)
-- [ ] Menulis turoial versi web sederhana cara menggunakan ATM
-- [ ] Menulis versi web cara berkontribusi
-- [ ] Membuat UI untuk ATM berdasarkan v0.0.3
