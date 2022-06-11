@@ -20,7 +20,7 @@ const Footer = () => {
                                 <p className="mb-2">
                                     ATM Bitcoin pertama di Indonesia yang mendukung Lightning Network.</p>
                                 <p>
-                                    Memberikan jembatan bagi siapapun yang ingin belajar
+                                    Menyediakan jembatan bagi siapapun yang ingin belajar
                                     Bitcoin tanpa takut kehilangan banyak uang.
                                 </p>
                             </div>

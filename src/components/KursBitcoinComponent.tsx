@@ -35,7 +35,7 @@ const KursBitcoinComponent = (props: any) => {
                                                         <Table>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Direkam Pada</td>
+                                                                    <td>Direkam</td>
                                                                     <td className="text-right">
                                                                         <ReactTimeAgo date={props.data[item].created_at * 1000} />
                                                                     </td>
