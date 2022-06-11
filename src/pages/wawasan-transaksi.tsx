@@ -466,7 +466,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                     <tr>
                                                                                         <td>Jeda Pembayaran</td>
                                                                                         <td>
-                                                                                            {Math.round((idrPaidAt - trxCreatedAt) / 60)} menit
+                                                                                            {Math.round((idrPaidAt - trxCreatedAt) )} detik
                                                                                         </td>
                                                                                     </tr>
                                                                                 </>
