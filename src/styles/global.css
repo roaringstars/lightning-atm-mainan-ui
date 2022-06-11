@@ -301,7 +301,20 @@ code {
  */
 .trx-insight .table {
     text-align: left;
+    border: 1px solid #eee;
 }
+.trx-insight .table tbody tr td:nth-child(1){
+   width: 20%;
+}
+
+.trx-insight .trx-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
 
 .trx-insight .h1 {
     font-size: 5rem;
