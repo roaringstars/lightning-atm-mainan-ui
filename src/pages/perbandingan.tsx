@@ -85,8 +85,8 @@ const Bantuan = () => {
                                     <tr>
                                         <td>Binance</td>
                                         <td>Rp20,000</td>
-                                        <td>?</td>
-                                        <td>?</td>
+                                        <td><PriceInBtc btc="0.001" /></td>
+                                        <td><PriceInBtc btc="0.0002" /></td>
                                         <td>
                                             <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />
                                         </td>

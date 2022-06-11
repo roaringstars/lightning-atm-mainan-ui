@@ -69,8 +69,7 @@ const IndexPage = () => {
             </p>
 
             <p>
-              ATM ini memungkinan siapaun untuk mencoba belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan
-              &nbsp;<b>Rp1,500</b> kamu bisa mulai bereksperimen dengan Bitcoin.
+              ATM ini memungkinkan siapaun untuk mencoba belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan&nbsp;<b>Rp1,500</b> kamu bisa mulai bereksperimen dengan Bitcoin.
             </p>
           </div>
         </section>
