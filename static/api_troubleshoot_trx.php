@@ -1,25 +1,4 @@
 {
-    "trx_id": "23b36720-d85c-441b-92c4-e690638119b8",
-    "trx_status": "withdraw",
-    "idr_amount": 25000,
-    "satoshi_amount": 5239,
-    "is_refundable": true,
-    "trx_created_at": 1654876171,
-    "idr_paid_at": 1654876171,
-    "closing_trx_at": null,
-    "lnurl_created_at": 1654876171,
-    "lnurl_scan_at": 1654876171,
-    "lnurl_paid_at": null,
-    "lnurl_pr_data": "lnbc5238999m1p32x6s9pp572r3yplhcseezc6rh72q2eyqrl4y4fyg9xath4chgwrn4tv3mncsdp5g4hx5mmeypuk7atjypfkzar0wd5xjgpgfa29gw3qdaj9wdt3dq5scqzpgxqyz5vqsp5344rz964c3dnv0dvkfu5amyk895q6fe7st4hy9zwek8tdssj393s9qyyssqqz2v30gvfhax05eq6xy7t4ku8246alsxquzndedkyuzdm3hvurxyua5xlfz7tr8e2ypafccw4u36uufcwkqwq36v9fgq77cyysq9j6cp05edql",
-    "lnurl_fee": 0,
-    "lnurl_ott": "odW5qh",
-    "lnurl_status": "notfound",
-    "lnurl_status_error_message": "The amount provided does not match the amount on the associated invoice",
-    "pr_amount_valid": false,
-    "pr_amount": 523899900000,
-    "pr_hash": "f2871207f7c433916343bf940564801fea4aa48829babbd71743873aad91dcf1",
-    "pr_pubkey": "02c3be1b43f90f089fddeff84014dca38fd0f6ab4224dbf6c18a5e36d55d7917cc",
-    "total_trx_time_sec": 0,
-    "time_percentage_label": [],
-    "time_percentage_value": []
+"success": false,
+"message": "Older than 3 days"
 }

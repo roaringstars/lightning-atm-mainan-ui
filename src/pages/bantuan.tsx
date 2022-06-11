@@ -75,7 +75,7 @@ const Bantuan = () => {
                             </Card>
 
 
-                            <h2 className="section-heading mb-2">Apa itu Bitcoin Wallet?</h2>
+                            {/* <h2 className="section-heading mb-2">Apa itu Bitcoin Wallet?</h2>
                             <Card className="mb-4">
                                 <Card.Body>
 
@@ -92,7 +92,7 @@ const Bantuan = () => {
                                     <p className="mb-0">(membutuhkan bantuan untuk melengkapi penjelasan LNURL) ⚠️
                                     </p>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
 
 
                             <h2 className="section-heading mb-2">Pembayaran Rupiah Yang Didukung</h2>
@@ -100,6 +100,7 @@ const Bantuan = () => {
                                 <Card.Body>
 
                                     <p className="mb-0">
+                                        Medukung semua jenis pembayaran yang masuk kedalam QRIS seperti:
                                         <ul>
                                             <li>
                                                 <span data-tip="React-tooltip" data-for={'idr-gopay'}>
@@ -119,9 +120,8 @@ const Bantuan = () => {
                                                     Terakhir diuji coba 28 Feb 2022
                                                 </ReactTooltip>
                                             </li>
-                                            <li> ... need help add more</li>
+                                            <li> ... dll</li>
                                         </ul>
-                                        (membutuhkan bantuan untuk melengkapi ) ⚠️
                                     </p>
                                 </Card.Body>
                             </Card>
@@ -129,7 +129,6 @@ const Bantuan = () => {
                             <h2 className="section-heading mb-2">Dompet Bitcoin LN Yang Didukung</h2>
                             <Card className="mb-4">
                                 <Card.Body>
-
                                     <p className="mb-0">
                                         <ul>
                                             <li>

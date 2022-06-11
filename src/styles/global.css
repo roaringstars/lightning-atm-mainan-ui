@@ -70,6 +70,12 @@ footer .about {
     color: #222;
     padding: 40px 20px;
 }
+.section-1 h3{
+    font-weight: bold;
+}
+.section-1 p {
+    font-size: 1.3rem;
+}
 
 .section-2 {
     background-color: #fffaf3;

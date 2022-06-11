@@ -116,6 +116,10 @@ const WawasanTransaksi = ({ location }: any) => {
                     }
 
                     if (data.trx_status == 'complete') {
+                        setIdrPaidAt(data.idr_paid_at);
+                        setLnurlCreatedAt(data.lnurl_created_at);
+                        setLnurlScannedAt(data.lnurl_scan_at);
+
                         setTrxDuration(data.total_trx_time_sec);
                         setTimePercentageLabel(data.time_percentage_label);
                         setTimePercentageValue(data.time_percentage_value);
@@ -253,8 +257,6 @@ const WawasanTransaksi = ({ location }: any) => {
                             {
                                 isDataReady && !dataNotFound ? (
                                     <>
-
-
                                         <Card body className="trx-insight">
                                             {
                                                 trxStatus == 'complete' && (
@@ -512,7 +514,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                     }
 
                                                     {
-                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && lnurlScannedAt !== null && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && lnurlScannedAt != undefined && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail Withdraw Request

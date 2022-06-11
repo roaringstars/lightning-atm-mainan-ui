@@ -70,7 +70,7 @@ const IndexPage = () => {
 
             <p>
               ATM ini memungkinan siapaun untuk mencoba belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan
-              Rp1,500 kamu bisa mulai bereksperimen dengan Bitcoin.
+              &nbsp;<b>Rp1,500</b> kamu bisa mulai bereksperimen dengan Bitcoin.
             </p>
           </div>
         </section>
