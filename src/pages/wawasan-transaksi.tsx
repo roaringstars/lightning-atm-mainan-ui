@@ -43,6 +43,7 @@ const WawasanTransaksi = ({ location }: any) => {
     const [trxId, setTrxId] = React.useState(null);
     const [lnurlCreatedAt, setLnurlCreatedAt] = React.useState(0);
     const [lnurlScannedAt, setLnurlScannedAt] = React.useState(0);
+    const [lnurlPaidAt, setLnurlPaidAt] = React.useState(0);
     const [lnurlPrData, setLnurlPrData] = React.useState(null);
     const [lnurlFee, setLnurlFee] = React.useState(0);
     const [lnurlOtt, setLnurlOtt] = React.useState(null);
@@ -113,12 +114,14 @@ const WawasanTransaksi = ({ location }: any) => {
                         setIdrPaidAt(data.idr_paid_at);
                         setLnurlCreatedAt(data.lnurl_created_at);
                         setLnurlScannedAt(data.lnurl_scan_at);
+                        setLnurlScannedAt(data.lnurl_paid_at);
                     }
 
                     if (data.trx_status == 'complete') {
                         setIdrPaidAt(data.idr_paid_at);
                         setLnurlCreatedAt(data.lnurl_created_at);
                         setLnurlScannedAt(data.lnurl_scan_at);
+                        setLnurlScannedAt(data.lnurl_paid_at);
 
                         setTrxDuration(data.total_trx_time_sec);
                         setTimePercentageLabel(data.time_percentage_label);
@@ -521,6 +524,19 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                 </div>
                                                                 <Table>
                                                                     <tbody>
+
+                                                                        {
+                                                                            lnurlScannedAt !== undefined && (
+                                                                                <>
+                                                                                    <tr>
+                                                                                        <td>LNURL Discan Pada</td>
+                                                                                        <td>
+                                                                                            <Moment unix>{lnurlScannedAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </>
+                                                                            )
+                                                                        }
                                                                         {
                                                                             trxCreatedAt !== undefined && (<>
                                                                                 {/* Detail if status in withdraw */}
@@ -630,6 +646,21 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                     )
                                                                                 }
                                                                             </>)
+                                                                        }
+
+{
+                                                                            lnurlPaidAt !== undefined ? (
+                                                                                <>
+                                                                                    <tr>
+                                                                                        <td>LNURL Diproses Pada</td>
+                                                                                        <td>
+                                                                                            <Moment unix>{lnurlPaidAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </>
+                                                                            ) : (
+                                                                                <>-</>
+                                                                            )
                                                                         }
                                                                     </tbody>
                                                                 </Table>
