@@ -135,8 +135,9 @@ const KursBitcoin = () => {
                                             ) : null
 
                                         }
-
-                                        <KursBitcoinComponent data={data.external}/>
+                                        <div className="kurs-external">
+                                         <KursBitcoinComponent data={data.external}/>
+                                        </div>
                                     </>
                                 )
                             }

@@ -22,3 +22,16 @@
     font-size: 0.7rem;
     color: #aaa;
 }
+
+
+.kurs-external {
+    margin-top: 100px;
+}
+.kurs-external .card-default {
+    border-radius: 20px;
+    border-color: transparent;
+    box-shadow:
+        3.5px 1.4px 10px rgba(0, 0, 0, 0.035),
+        28px 11px 80px rgba(0, 0, 0, 0.07)
+    ;
+}
