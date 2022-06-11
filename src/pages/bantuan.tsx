@@ -136,7 +136,7 @@ const Bantuan = () => {
                                                     data-tip="React-tooltip"
                                                     data-for={'wallet-wallet-of-satoshi'}>Wallet of Satoshi</Link>
                                                 <ReactTooltip id={'wallet-wallet-of-satoshi'} effect="solid">
-                                                    Halaman belum ada, membutuhkan bantuan untuk melengkapi info
+                                                    Direkomendasikan jika baru mencoba Lightning Network
                                                 </ReactTooltip>
                                             </li>
                                             <li>

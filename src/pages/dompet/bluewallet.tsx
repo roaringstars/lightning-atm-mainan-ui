@@ -69,6 +69,9 @@ const Muun = () => {
                             <p>
                                 <ul className="no-bullet">
                                     <li>
+                                        <FontAwesomeIcon icon={faTimesCircle} /> ⚠️ Terdapat bug tidak bisa membuat invoice saat pakai LNURL dan mata uang Rupiah
+                                    </li>
+                                    <li>
                                         <FontAwesomeIcon icon={faTimesCircle} /> Tidak bisa swap, harus menggunakan Exchange (contoh. Zigzag, FixedFloat)
                                     </li>
                                     <li>
