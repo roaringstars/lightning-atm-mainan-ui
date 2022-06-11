@@ -11,7 +11,7 @@ import { Row, Col } from "react-bootstrap";
 import { faCheckCircle, faTimesCircle, faCheck, faQuestionCircle, faTimes, faExclamation, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MarketPriceLoading from "../components/MarketPriceLoading"
-import metaPreviewImage from '../assets/images/meta/status.jpg';
+import metaPreviewImage from '../assets/images/meta/sats-to-idr.jpg';
 import { Helmet } from "react-helmet"
 import '../styles/kurs-bitcoin.css'
 import formatNumber from "../components/formatNumber";
