@@ -38,7 +38,7 @@ const Bantuan = () => {
                 <meta property="twitter:url" content={metaUrl}/>
                 <meta name="twitter:title" content={metaTitle}/>
                 <meta name="twitter:description" content={metaDescription}/>
-                <meta name="twitter:image" content={metaPreviewImage}/>+
+                <meta name="twitter:image" content={metaPreviewImage}/>
             </Helmet>
 
             <Header />
