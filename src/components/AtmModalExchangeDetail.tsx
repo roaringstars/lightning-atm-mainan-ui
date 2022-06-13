@@ -90,6 +90,7 @@ const AtmModalExchangeDetail = (props: any) => {
                     setIsMachineInMaintenaceLocal(data.data.machine_in_maintenance);
                     setExchangeFeePercentage(data.data.exchange_fee_percentage);
                     setRateData(data.data);
+                    props.setIsPriceLoading(false);
 
                     // disable machine if run out of quota
                     if (data.data.trx_quota < 1) {

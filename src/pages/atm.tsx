@@ -34,7 +34,6 @@ const ATM = ({ location }: any) => {
     const [isScreenModalVisible, setIsScreenModalVisible] = React.useState(false);
     const [isConfigModalVisible, setIsConfigModalVisible] = React.useState(true);
     const [isEinkEffectEnabled, setIsEinkEffectEnabled] = React.useState(true);
-    const [isWipWarningVisible, setIsWipWarningVisible] = React.useState(true);
     const [depositAmount, setDepositAmount] = React.useState(0);
     const [depositAmountText, setDepositAmountText] = React.useState('Deposit 10K');
     const [trxStep, setTrxStep] = React.useState('agreement');
@@ -50,6 +49,7 @@ const ATM = ({ location }: any) => {
 
     const [isReachingQuotaLimit, setIsReachingQuotaLimit] = React.useState(false);
     const [isMachineInMaintenance, setIsMachineInMaintenance] = React.useState(false);
+    const [isPriceLoading, setIsPriceLoading] = React.useState(true);
     const [recheckMachineStatusIn, setRecheckMachineStatusIn] = React.useState(4);
     const [lastLocalTrx, setLastLocalTrx] = React.useState([]);
 
@@ -315,6 +315,7 @@ const ATM = ({ location }: any) => {
                         setIsMachineInMaintenance={setIsMachineInMaintenance}
                         setIsReachingQuotaLimit={setIsReachingQuotaLimit}
                         setRecheckMachineStatusIn={setRecheckMachineStatusIn}
+                        setIsPriceLoading={setIsPriceLoading}
                     />
                     <AtmModalGenerateQris
                         depositAmount={depositOption[depositAmount]}
@@ -342,17 +343,25 @@ const ATM = ({ location }: any) => {
                         trxStep === 'agreement' && (
                             <>
                                 {
-                                    isMachineInMaintenance && (
-                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan</Button>
+                                    isPriceLoading && (
+                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>Loading</Button>
                                     )
                                 }
                                 {
-                                    isReachingQuotaLimit && (
-                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>Kuota Harian Habis</Button>
+                                    (isMachineInMaintenance || isReachingQuotaLimit) && !isPriceLoading && (
+                                        <>
+                                            {
+                                                isReachingQuotaLimit ? (
+                                                    <Button className="btn btn-primary float-start btn-8bit disabled" disabled>Kuota Harian Habis</Button>
+                                                ) : (
+                                                    <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan</Button>
+                                                )
+                                            }
+                                        </>
                                     )
                                 }
                                 {
-                                    !isReachingQuotaLimit && !isMachineInMaintenance &&  (
+                                    !isReachingQuotaLimit && !isMachineInMaintenance && !isPriceLoading && (
                                         <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
                                     )
                                 }
