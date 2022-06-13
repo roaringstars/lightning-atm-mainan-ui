@@ -13,38 +13,18 @@ import TweetBox from "../components/TweetBox";
 import Masonry from 'react-masonry-css'
 import metaPreviewImage from '../assets/images/meta/index.jpg';
 import { Helmet } from "react-helmet"
+import MetaTags from "../components/MetaTags";
 
 const IndexPage = () => {
-  /**
-   * Helmet
-   */
-  const metaDescription = "Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri";
-  const metaTitle = "Lightning ATM (Mainan)";
-  const metaDomain = "https://roaringstars.com";
-  const metaUrl = "https://roaringstars.com";
-  
   return (
     <>
       <main>
-        <Helmet>
-          <meta charSet="utf-8"/>
-          <title>{metaTitle}</title>
-          <link rel="canonical" href={metaUrl} />
-          <meta name="description" content={metaDescription}/>
-          <meta property="og:url" content={metaUrl}/>
-          <meta property="og:type" content="website"/>
-          <meta property="og:title" content={metaTitle}/>
-          <meta property="og:description" content={metaDescription}/>
-          <meta property="og:image" content={metaPreviewImage}/>
+        <MetaTags
+          // metaDescription="Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri"
+          // metaTitle="Lightning ATM (Mainan)"
+          // metaPath="/"
+        />
 
-          <meta name="twitter:card" content="summary_large_image"/>
-          <meta property="twitter:domain" content={metaDomain}/>
-          <meta property="twitter:url" content={metaUrl}/>
-          <meta name="twitter:title" content={metaTitle}/>
-          <meta name="twitter:description" content={metaDescription}/>
-          <meta name="twitter:image" content={metaPreviewImage}/>
-        </Helmet>
-        
         <Header />
         <div className="container">
 
@@ -55,7 +35,7 @@ const IndexPage = () => {
               <Link className="btn btn-orange btn-lg" to="/atm" role="button">Menuju ke ATM</Link>
             </p>
           </div>
-        <div className="header-anim">
+          <div className="header-anim">
             <object type="image/svg+xml" data={IntroAnim}>svg-animation</object>
           </div>
         </div>
@@ -120,7 +100,7 @@ const IndexPage = () => {
               <TweetBox tweetId={'1490360523535564800'} />
               <TweetBox tweetId={'1496527510284431361'} />
               <TweetBox tweetId={'1513577186745364485'} />
-              <TweetBox tweetId={'1514083810052538372'} verified={true}/>
+              <TweetBox tweetId={'1514083810052538372'} verified={true} />
               <TweetBox tweetId={'1498143245758767104'} />
               <TweetBox tweetId={'1533939880371204096'} />
               <TweetBox tweetId={'1532877038738022400'} />

@@ -2,29 +2,17 @@ import * as React from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-import { Card, Table } from "react-bootstrap"
-import ReactTooltip from "react-tooltip"
-import { TwitterTweetEmbed } from "react-twitter-embed"
-import { Link } from "gatsby"
+import { Card } from "react-bootstrap"
 import { Row, Col } from "react-bootstrap";
 
 import { faCheckCircle, faTimesCircle, faCheck, faQuestionCircle, faTimes, faExclamation, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StatusLoading from "../components/StatusLoading"
-import { faFantasyFlightGames } from "@fortawesome/free-brands-svg-icons"
 import StatusComponent from "../components/StatusComponent"
 import metaPreviewImage from '../assets/images/meta/status.jpg';
-import { Helmet } from "react-helmet"
+import MetaTags from "../components/MetaTags";
 
 const Status = () => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Halaman untuk mengetahui status layanan Lightning ATM (Mainan)";
-    const metaTitle = "Status Layanan";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/status";
-
     /**
      * Endpoint 
      */
@@ -80,25 +68,12 @@ const Status = () => {
 
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8"/>
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription}/>
-                <meta property="og:url" content={metaUrl}/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:title" content={metaTitle}/>
-                <meta property="og:description" content={metaDescription}/>
-                <meta property="og:image" content={metaPreviewImage}/>
-
-                <meta name="twitter:card" content="summary_large_image"/>
-                <meta property="twitter:domain" content={metaDomain}/>
-                <meta property="twitter:url" content={metaUrl}/>
-                <meta name="twitter:title" content={metaTitle}/>
-                <meta name="twitter:description" content={metaDescription}/>
-                <meta name="twitter:image" content={metaPreviewImage}/>
-            </Helmet>
-
+            <MetaTags
+                metaDescription="Halaman untuk mengetahui status layanan Lightning ATM (Mainan)"
+                metaTitle="Status Layanan"
+                metaPath="/status"
+                metaPreviewImage={metaPreviewImage}
+            />
             <Header />
 
             <article className="mb-4">

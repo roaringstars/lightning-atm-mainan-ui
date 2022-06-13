@@ -13,22 +13,14 @@ import LoadingTrxInsight from "../components/LoadingTrxInsight";
 import TrxIdHelp from '../assets/images/wawasan-transaksi/trx_id_help.svg';
 
 import metaPreviewImage from '../assets/images/meta/wawasan-transaksi.jpg';
-import { Helmet } from "react-helmet"
 
 import { Chrono } from "react-chrono";
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 import { Timeline, Event } from "../components/Timeline";
 import Moment from 'react-moment';
+import MetaTags from "../components/MetaTags";
 
 const WawasanTransaksi = ({ location }: any) => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Wawasan Transaksi, mengetahui detail dari sebuah transaksi Lightning ATM (Mainan)";
-    const metaTitle = "Wawasan Transaksi";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/wawasan-transaksi";
-
     /**
      * Regex for find valid Trx ID
      */
@@ -148,26 +140,12 @@ const WawasanTransaksi = ({ location }: any) => {
 
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription} />
-                <meta property="og:url" content={metaUrl} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={metaTitle} />
-                <meta property="og:description" content={metaDescription} />
-                <meta property="og:image" content={metaPreviewImage} />
-
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta property="twitter:domain" content={metaDomain} />
-                <meta property="twitter:url" content={metaUrl} />
-                <meta name="twitter:title" content={metaTitle} />
-                <meta name="twitter:description" content={metaDescription} />
-                <meta name="twitter:image" content={metaPreviewImage} />
-
-                <meta name={`robots`} content={`noindex, nofollow`} />
-            </Helmet>
+            <MetaTags
+                metaDescription="Wawasan Transaksi, mengetahui detail dari sebuah transaksi Lightning ATM (Mainan)"
+                metaTitle="Wawasan Transaksi"
+                metaPath="/wawasan-transaksi"
+                metaPreviewImage={metaPreviewImage}
+            />
 
             <Header />
 
@@ -471,7 +449,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                     <tr>
                                                                                         <td>Jeda Pembayaran</td>
                                                                                         <td>
-                                                                                            {Math.round((idrPaidAt - trxCreatedAt) )} detik
+                                                                                            {Math.round((idrPaidAt - trxCreatedAt))} detik
                                                                                         </td>
                                                                                     </tr>
                                                                                 </>
@@ -626,31 +604,31 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                 lnurlErrorMessage == null ? (
                                                                                                     <>
                                                                                                         <tr>
-                                                                                                <td>LNURL Error Message</td>
-                                                                                                <td>
-                                                                                                    -
-                                                                                                </td>
-                                                                                            </tr>
+                                                                                                            <td>LNURL Error Message</td>
+                                                                                                            <td>
+                                                                                                                -
+                                                                                                            </td>
+                                                                                                        </tr>
                                                                                                     </>
                                                                                                 ) : (
                                                                                                     <>
-    <tr>
-                                                                                                <td>LNURL Error Message</td>
-                                                                                                <td>
-                                                                                                    {lnurlErrorMessage} 
-                                                                                                </td>
-                                                                                            </tr>
+                                                                                                        <tr>
+                                                                                                            <td>LNURL Error Message</td>
+                                                                                                            <td>
+                                                                                                                {lnurlErrorMessage}
+                                                                                                            </td>
+                                                                                                        </tr>
                                                                                                     </>
                                                                                                 )
                                                                                             }
-                                                                                            
+
                                                                                         </>
                                                                                     )
                                                                                 }
                                                                             </>)
                                                                         }
 
-{
+                                                                        {
                                                                             lnurlPaidAt !== undefined ? (
                                                                                 <>
                                                                                     <tr>

@@ -9,37 +9,17 @@ import { Link } from "gatsby"
 import Image1 from '../assets/images/bantuan/bitcoin.jpg';
 import Image2 from '../assets/images/bantuan/lightning-network.jpg';
 import metaPreviewImage from '../assets/images/meta/bantuan.jpg';
-import { Helmet } from "react-helmet"
+import MetaTags from "../components/MetaTags"
 
 const Bantuan = () => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Pusat Bantuan, Apa itu Bitcoin? Apa itu Lightning Network? Bagaimana cara menggunakan Lightning ATM (Mainan)?";
-    const metaTitle = "Pusat Bantuan";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/bantuan";
-
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8"/>
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription}/>
-                <meta property="og:url" content={metaUrl}/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:title" content={metaTitle}/>
-                <meta property="og:description" content={metaDescription}/>
-                <meta property="og:image" content={metaPreviewImage}/>
-
-                <meta name="twitter:card" content="summary_large_image"/>
-                <meta property="twitter:domain" content={metaDomain}/>
-                <meta property="twitter:url" content={metaUrl}/>
-                <meta name="twitter:title" content={metaTitle}/>
-                <meta name="twitter:description" content={metaDescription}/>
-                <meta name="twitter:image" content={metaPreviewImage}/>
-            </Helmet>
+            <MetaTags
+                metaDescription="Pusat Bantuan, Apa itu Bitcoin? Apa itu Lightning Network? Bagaimana cara menggunakan Lightning ATM (Mainan)?"
+                metaTitle= "Pusat Bantuan"
+                metaPath="/bantuan"
+                metaPreviewImage={metaPreviewImage}
+            />
 
             <Header />
 

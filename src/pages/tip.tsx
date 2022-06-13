@@ -12,17 +12,9 @@ import User from '../assets/images/user.jpg';
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import metaPreviewImage from '../assets/images/meta/tip.jpg';
-import { Helmet } from "react-helmet"
+import MetaTags from "../components/MetaTags";
 
 const Tip = () => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Tip dan Kontributor, terimakasih kepada semua yang telah membantu membuat Lightning ATM (Mainan) jadi kenyataan";
-    const metaTitle = "Tip dan Kontributor";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/tip";
-
     /**
      * Endpoint 
      */
@@ -202,25 +194,12 @@ const Tip = () => {
 
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8"/>
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription}/>
-                <meta property="og:url" content={metaUrl}/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:title" content={metaTitle}/>
-                <meta property="og:description" content={metaDescription}/>
-                <meta property="og:image" content={metaPreviewImage}/>
-
-                <meta name="twitter:card" content="summary_large_image"/>
-                <meta property="twitter:domain" content={metaDomain}/>
-                <meta property="twitter:url" content={metaUrl}/>
-                <meta name="twitter:title" content={metaTitle}/>
-                <meta name="twitter:description" content={metaDescription}/>
-                <meta name="twitter:image" content={metaPreviewImage}/>
-            </Helmet>
-
+            <MetaTags
+                metaDescription="Tip dan Kontributor, terimakasih kepada semua yang telah membantu membuat Lightning ATM (Mainan) jadi kenyataan"
+                metaTitle="Tip dan Kontributor"
+                metaPath="/tip"
+                metaPreviewImage={metaPreviewImage}
+            />
             <Header />
 
             <article className="mb-4">

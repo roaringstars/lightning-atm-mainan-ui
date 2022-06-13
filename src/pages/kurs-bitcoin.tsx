@@ -12,20 +12,12 @@ import { faCheckCircle, faTimesCircle, faCheck, faQuestionCircle, faTimes, faExc
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MarketPriceLoading from "../components/MarketPriceLoading"
 import metaPreviewImage from '../assets/images/meta/sats-to-idr.jpg';
-import { Helmet } from "react-helmet"
 import '../styles/kurs-bitcoin.css'
 import formatNumber from "../components/formatNumber";
 import KursBitcoinComponent from "../components/KursBitcoinComponent"
+import MetaTags from "../components/MetaTags"
 
 const KursBitcoin = () => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Membandingkan Harga Bitcoin";
-    const metaTitle = "Kurs Bitcoin";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/kurs-bitcoin";
-
     /**
      * Endpoint 
      */
@@ -81,24 +73,12 @@ const KursBitcoin = () => {
 
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription} />
-                <meta property="og:url" content={metaUrl} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={metaTitle} />
-                <meta property="og:description" content={metaDescription} />
-                <meta property="og:image" content={metaPreviewImage} />
-
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta property="twitter:domain" content={metaDomain} />
-                <meta property="twitter:url" content={metaUrl} />
-                <meta name="twitter:title" content={metaTitle} />
-                <meta name="twitter:description" content={metaDescription} />
-                <meta name="twitter:image" content={metaPreviewImage} />
-            </Helmet>
+            <MetaTags
+                metaDescription="Rata-rata harga Bitcoin dari berbagai sumber"
+                metaTitle="Kurs Bitcoin"
+                metaPath="/kurs-bitcoin"
+                metaPreviewImage={metaPreviewImage}
+            />
 
             <Header />
 
@@ -136,14 +116,11 @@ const KursBitcoin = () => {
 
                                         }
                                         <div className="kurs-external">
-                                         <KursBitcoinComponent data={data.external}/>
+                                            <KursBitcoinComponent data={data.external} />
                                         </div>
                                     </>
                                 )
                             }
-
-
-
                         </div>
                     </div>
                 </div>

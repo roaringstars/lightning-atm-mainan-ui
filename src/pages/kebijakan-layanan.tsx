@@ -4,37 +4,18 @@ import ExchangeFeeDetail from "../components/ExchangeFeeDetail"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import metaPreviewImage from '../assets/images/meta/kebijakan-layanan.jpg';
-import { Helmet } from "react-helmet"
+import MetaTags from "../components/MetaTags"
 
 const TOS = () => {
-    /**
-     * Helmet
-     */
-    const metaDescription = "Kami sangat mengedepankan privasi data anda. Transparasi Potongan Biaya 10% sepenuhnya digunakan untuk menutup biaya operasional ATM (Mainan)";
-    const metaTitle = "Kebijakan Layanan";
-    const metaDomain = "https://roaringstars.com";
-    const metaUrl = "https://roaringstars.com/kebijakan-layanan";
-
     return (
         <main>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{metaTitle}</title>
-                <link rel="canonical" href={metaUrl} />
-                <meta name="description" content={metaDescription} />
-                <meta property="og:url" content={metaUrl} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={metaTitle} />
-                <meta property="og:description" content={metaDescription} />
-                <meta property="og:image" content={metaPreviewImage} />
+            <MetaTags
+                metaDescription="Kami sangat mengedepankan privasi data anda. Transparasi Potongan Biaya 10% sepenuhnya digunakan untuk menutup biaya operasional ATM (Mainan)"
+                metaTitle= "Kebijakan Layanan"
+                metaPath="/kebijakan-layanan"
+                metaPreviewImage={metaPreviewImage}
+            />
 
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta property="twitter:domain" content={metaDomain} />
-                <meta property="twitter:url" content={metaUrl} />
-                <meta name="twitter:title" content={metaTitle} />
-                <meta name="twitter:description" content={metaDescription} />
-                <meta name="twitter:image" content={metaPreviewImage} />+
-            </Helmet>
             <Header />
 
             <article className="mb-4 tos">
