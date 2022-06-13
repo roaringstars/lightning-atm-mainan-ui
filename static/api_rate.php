@@ -3,10 +3,11 @@
     "message": "Rate",
     "data": {
     "idr_deposit_amount": "IDR 1,500",
-    "payment_gateway_fee": "IDR -30",
-    "payment_gateway_fee_int": -30111,
+    "payment_gateway_fee": "IDR 0",
+    "payment_gateway_fee_int": 0,
     "exchange_fee": "IDR -105",
     "exchange_fee_int": -105,
+    "exchange_fee_percentage": 12,
     "after_fee_idr": "IDR 1,365",
     "one_btc_to_idr": "IDR 588,002,000",
     "one_btc_to_idr_int": 588002000,

@@ -1,9 +1,17 @@
 import * as React from "react"
 
-const ExchangeFeeDetail = () => {
+const ExchangeFeeDetail = (props: any) => {
     return (
         <>
-            Potongan biaya 10% sepenuhnya digunakan untuk menutup biaya
+            Potongan biaya 
+            {
+                props.exchangeFeePercentage != undefined ? (
+                    <> {props.exchangeFeePercentage}% </>
+                ) : (
+                    <>&nbsp;</>
+                )
+            }
+             sepenuhnya digunakan untuk menutup biaya
             operasional ATM (Mainan) ini, hal tersebut meliputi:
             <br />
             <ul className="mt-2">

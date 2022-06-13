@@ -24,10 +24,10 @@ const AtmModalExchangeDetail = (props: any) => {
     const [depositAmount, setDepositAmount] = React.useState(parseInt(props.depositAmount));
 
     const [exchangeFee, setExchangeFee] = React.useState(0);
+    const [exchangeFeePercentage, setExchangeFeePercentage] = React.useState(12);
     const [afterFeeIdr, setAfterFeeIdr] = React.useState(0);
     const [oneBtcToIdr, setOneBtcToIdr] = React.useState(0);
     const [satsReceive, setSatsReceive] = React.useState(0);
-    const exchangeFeePercentage = 10;
     const updateInterval = 3;
 
     const [priceOutdateInSec, setPriceOutdateInSec] = React.useState(0);
@@ -88,6 +88,7 @@ const AtmModalExchangeDetail = (props: any) => {
                     setOneBtcToIdr(data.data.one_btc_to_idr);
                     setSatsReceive(data.data.sats_receive);
                     setIsMachineInMaintenaceLocal(data.data.machine_in_maintenance);
+                    setExchangeFeePercentage(data.data.exchange_fee_percentage);
                     setRateData(data.data);
 
                     // disable machine if run out of quota
@@ -233,7 +234,7 @@ const AtmModalExchangeDetail = (props: any) => {
 
                                         <ReactTooltip place="bottom" id={'exchange-fee-detail'} effect="solid">
                                             <div style={{ maxWidth: "500px", textAlign: "left" }}>
-                                                <ExchangeFeeDetail />
+                                                <ExchangeFeeDetail exchangeFeePercentage={exchangeFeePercentage}/>
                                             </div>
                                         </ReactTooltip>
                                     </td>
