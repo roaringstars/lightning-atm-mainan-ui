@@ -352,6 +352,9 @@ h1 {
 .alert-8bit ul {
     margin-left: -15px !important;
 }
+.alert-8bit a {
+    color: #f1f1f1;
+}
 
 .modal.modal-8bit .btn {
     border-radius: 0;

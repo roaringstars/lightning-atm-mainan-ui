@@ -316,12 +316,12 @@ const AtmModalExchangeDetail = (props: any) => {
                         <div className="alert alert-8bit">
                             <p className="text-center mb-1">- Mohon Baca Sebelum Melakukan Pembayaran -</p>
                             <ul>
-                                <li>Mendukung semua pembayaran QRIS (OVO, Gopay, DANA, LinkAja, ShopeePay, BCA, CIMB).</li>
-                                <li>Jika membutuhkan bantuan DM <b>@roaringstars</b> dengan menyertakan nomor Trx ID.</li>
+                                <li>Mendukung semua pembayaran QRIS (OVO, Gopay, DANA, dll).</li>
 
-                                <li>Mesin ini dibuat untuk tujuan edukasi, kehilangan Bitcoin setelah transaksi selesai/menggunakan
-                                    untuk hal dilarang hukum merupakan tanggung jawab sendiri.
+                                <li>Mesin ini dibuat untuk tujuan edukasi, <u>kehilangan Bitcoin setelah transaksi selesai</u> atau <u>melakukan tindakan melanggar hukum merupakan tanggung jawab sendiri</u>.
                                 </li>
+                                <li>Jika membutuhkan bantuan DM <b>@roaringstars</b> dengan menyertakan nomor Trx ID.</li>
+                                <li>Harap membaca <a href="/kebijakan-layanan" target="_blank"><b>Kebijakan Layanan</b></a> sebelum memulai.</li>
                             </ul>
                         </div>
 
