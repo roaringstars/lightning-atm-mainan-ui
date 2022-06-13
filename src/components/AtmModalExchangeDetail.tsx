@@ -198,7 +198,7 @@ const AtmModalExchangeDetail = (props: any) => {
                             <tbody>
 
                                 <tr className="tr-bordered">
-                                    <td>Jumlah Deposit Rupiah</td>
+                                    <td>Jumlah Deposit</td>
                                     <td className="idr-deposit-amount text-end">
                                         {
                                             <> {formatNumber(depositAmount, 'IDR ', '')}</>
@@ -288,7 +288,7 @@ const AtmModalExchangeDetail = (props: any) => {
                             <tbody>
 
                                 <tr className="tr-bordered">
-                                    <td>Kamu Akan Menerima</td>
+                                    <td>Akan Menerima</td>
                                     <td className="sats-received text-end">
                                         {
                                             isLoading && (
