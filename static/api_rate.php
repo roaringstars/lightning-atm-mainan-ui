@@ -12,7 +12,7 @@
     "one_btc_to_idr_int": 588002000,
     "sats_receive": "232 sats",
     "price_last_update": 1649937624,
-    "machine_in_maintenance": false,
+    "machine_in_maintenance": true,
     "trx_quota": 40
     }
     }

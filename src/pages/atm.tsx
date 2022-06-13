@@ -48,6 +48,7 @@ const ATM = ({ location }: any) => {
     const [lnurlBtnLabel, setLnurlBtnLabel] = React.useState('^');
     const [lnurlData, setLnurlData] = React.useState('');
 
+    const [isReachingQuotaLimit, setIsReachingQuotaLimit] = React.useState(false);
     const [isMachineInMaintenance, setIsMachineInMaintenance] = React.useState(false);
     const [recheckMachineStatusIn, setRecheckMachineStatusIn] = React.useState(4);
     const [lastLocalTrx, setLastLocalTrx] = React.useState([]);
@@ -312,6 +313,7 @@ const ATM = ({ location }: any) => {
                         isRateCheckerEnabled={isRateCheckerEnabled}
                         setIsRateCheckerEnabled={setIsRateCheckerEnabled}
                         setIsMachineInMaintenance={setIsMachineInMaintenance}
+                        setIsReachingQuotaLimit={setIsReachingQuotaLimit}
                         setRecheckMachineStatusIn={setRecheckMachineStatusIn}
                     />
                     <AtmModalGenerateQris
@@ -340,12 +342,21 @@ const ATM = ({ location }: any) => {
                         trxStep === 'agreement' && (
                             <>
                                 {
-                                    isMachineInMaintenance ? (
-                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan {recheckMachineStatusIn}</Button>
-                                    ) : (
+                                    isMachineInMaintenance && (
+                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>ATM Sedang Gangguan</Button>
+                                    )
+                                }
+                                {
+                                    isReachingQuotaLimit && (
+                                        <Button className="btn btn-primary float-start btn-8bit disabled" disabled>Kuota Harian Habis</Button>
+                                    )
+                                }
+                                {
+                                    !isReachingQuotaLimit && !isMachineInMaintenance &&  (
                                         <Button className="btn btn-primary float-start btn-8bit" onClick={() => { acceptAndDeposit() }}>Setuju &amp; Deposit</Button>
                                     )
                                 }
+
                                 <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { closeModal() }}>Tutup</Button>
                                 <Button className="btn btn-secondary float-end btn-8bit" onClick={() => { changeDepositAmount() }}>{depositAmountText}</Button>
                             </>

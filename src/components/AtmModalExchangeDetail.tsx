@@ -33,6 +33,7 @@ const AtmModalExchangeDetail = (props: any) => {
     const [priceOutdateInSec, setPriceOutdateInSec] = React.useState(0);
     const [rateTimer, setRateTimer] = React.useState(0);
     const [isMachineInMaintenaceLocal, setIsMachineInMaintenaceLocal] = React.useState(false);
+    const [isReachingQuotaLimitLocal, setIsReachingQuotaLimitLocal] = React.useState(false);
 
     /**
      * Load latest Bitcoin price rate
@@ -88,6 +89,12 @@ const AtmModalExchangeDetail = (props: any) => {
                     setSatsReceive(data.data.sats_receive);
                     setIsMachineInMaintenaceLocal(data.data.machine_in_maintenance);
                     setRateData(data.data);
+
+                    // disable machine if run out of quota
+                    if (data.data.trx_quota < 1) {
+                        setIsReachingQuotaLimitLocal(true);
+                    }
+                    
                 })
                 .catch(error => {
                     // TODO: Log
@@ -154,6 +161,16 @@ const AtmModalExchangeDetail = (props: any) => {
         return () => clearInterval(timer);
     }, [])
 
+    // quota
+    React.useEffect(() => {
+        props.setIsReachingQuotaLimit(isReachingQuotaLimitLocal)
+    }, [isReachingQuotaLimitLocal])
+
+    React.useEffect(() => {
+        setIsReachingQuotaLimitLocal(props.isReachingQuotaLimit)
+    }, [props.isReachingQuotaLimit])
+
+    // machine in maintenance
     React.useEffect(() => {
         props.setIsMachineInMaintenance(isMachineInMaintenaceLocal)
     }, [isMachineInMaintenaceLocal])
