@@ -24,7 +24,7 @@ const AtmModalExchangeDetail = (props: any) => {
     const [depositAmount, setDepositAmount] = React.useState(parseInt(props.depositAmount));
 
     const [exchangeFee, setExchangeFee] = React.useState(0);
-    const [exchangeFeePercentage, setExchangeFeePercentage] = React.useState(12);
+    const [exchangeFeePercentage, setExchangeFeePercentage] = React.useState(0);
     const [afterFeeIdr, setAfterFeeIdr] = React.useState(0);
     const [oneBtcToIdr, setOneBtcToIdr] = React.useState(0);
     const [satsReceive, setSatsReceive] = React.useState(0);
@@ -213,7 +213,12 @@ const AtmModalExchangeDetail = (props: any) => {
                                 <tr>
                                     <td>
                                         <span data-tip="React-tooltip" data-for={'exchange-fee-detail'}>
-                                            Biaya Penukaran ({exchangeFeePercentage}%)
+                                            Biaya Penukaran
+                                            {
+                                                exchangeFee != 0 && (
+                                                   <> ({exchangeFeePercentage}%)</>
+                                                )
+                                            }
                                         </span>
                                     </td>
                                     <td className="exchange-fee text-end">
