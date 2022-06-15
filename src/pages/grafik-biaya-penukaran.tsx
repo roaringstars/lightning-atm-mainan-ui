@@ -80,6 +80,13 @@ const GrafikBiayaPenukaran = () => {
                             yAxisID: 'y',
                         },
                         {
+                            label: 'Harga Bitcoin saat Refill',
+                            data: data.data.rate_at_refill.reverse(),
+                            borderColor: 'rgba(200, 100, 100, 1)',
+                            backgroundColor: 'rgba(200, 100, 100, 0.5)',
+                            yAxisID: 'y',
+                        },
+                        {
                             label: 'Potongan Biaya (%)',
                             data: data.data.fee.reverse(),
                             borderColor: 'rgb(53, 162, 235)',
