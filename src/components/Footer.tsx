@@ -39,6 +39,9 @@ const Footer = () => {
                                 <p>
                                     <Link to="/kurs-bitcoin" className="text-reset">Kurs Bitcoin</Link>
                                 </p>
+                                <p>
+                                    <Link to="/grafik-biaya-penukaran" className="text-reset">Biaya Penukaran</Link>
+                                </p>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
