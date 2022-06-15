@@ -350,6 +350,14 @@ code {
 .trx-not-found {
     font-size: 2rem;
 }
+.trx-insight .lightnig-decoder-logo {
+    width: 20px;
+    margin-left: 10px;
+}
+.trx-insight .one-ml-logo {
+    height: 15px;
+    margin-left: 10px;
+}
 
 /**
  * Index page

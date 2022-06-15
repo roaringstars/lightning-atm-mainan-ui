@@ -11,6 +11,8 @@ import { faCheckCircle, faCircleNotch, faExclamation, faSearch } from "@fortawes
 import ReactTimeAgo from 'react-time-ago'
 import LoadingTrxInsight from "../components/LoadingTrxInsight";
 import TrxIdHelp from '../assets/images/wawasan-transaksi/trx_id_help.svg';
+import lightningDecoderLogo from '../assets/images/wawasan-transaksi/lightning_decoder_logo.png';
+import oneMlLogo from '../assets/images/wawasan-transaksi/1ml-logo.png';
 
 import metaPreviewImage from '../assets/images/meta/wawasan-transaksi.jpg';
 
@@ -45,6 +47,9 @@ const WawasanTransaksi = ({ location }: any) => {
     const [prAmount, setPrAmount] = React.useState(0);
     const [prHash, setPrHash] = React.useState(null);
     const [prPubkey, setPrPubkey] = React.useState(null);
+    const [prPayeeNodeKey, setPrPayeeNodeKey] = React.useState(null);
+    const [prExpires, setPrExpires] = React.useState(null);
+    const [prSignature, setPrSignature] = React.useState(null);
     const [trxStatus, setTrxStatus] = React.useState(null);
     const [idrAmount, setIdrAmount] = React.useState(0);
     const [satoshiAmount, setSatoshiAmount] = React.useState(0);
@@ -101,6 +106,9 @@ const WawasanTransaksi = ({ location }: any) => {
                     setPrAmount(data.pr_amount);
                     setPrHash(data.pr_hash);
                     setPrPubkey(data.pr_pubkey);
+                    setPrSignature(data.pr_signature);
+                    setPrExpires(data.pr_expires);
+                    setPrPayeeNodeKey(data.pr_payee_node_key);
 
                     if (data.trx_status == 'withdraw' || data.trx_status == 'complete') {
                         setIdrPaidAt(data.idr_paid_at);
@@ -519,124 +527,140 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                         }
                                                                         {
                                                                             trxCreatedAt !== undefined && (<>
-                                                                                
-                                                                                            <tr>
-                                                                                                <td>Payment Request</td>
-                                                                                                <td>
-                                                                                                    <div style={{ wordWrap: "break-word", width: "600px" }}>
-                                                                                                        {lnurlPrData}
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            {
-                                                                                                prAmount != null ? (
-                                                                                                    <>
-                                                                                                        {
-                                                                                                            isPrAmountValid ? (
-                                                                                                                <tr>
-                                                                                                                    <td>PR Amount</td>
-                                                                                                                    <td>
-                                                                                                                        {prAmount.toLocaleString()} Satoshi
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            ) : (
-                                                                                                                <tr>
-                                                                                                                    <td>PR Amount</td>
-                                                                                                                    <td>
-                                                                                                                        {prAmount.toLocaleString()} Satoshi
-                                                                                                                        <span className="text-danger ml-3">
-                                                                                                                            &nbsp;⚠️ Jumlah tidak sama dengan nominal deposit!
-                                                                                                                        </span>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            )
-                                                                                                        }
-                                                                                                    </>
-                                                                                                ) : (
-                                                                                                    <>
-                                                                                                        <tr>
-                                                                                                            <td>PR Amount</td>
-                                                                                                            <td>-
-                                                                                                                <span className="text-danger ml-3">
-                                                                                                                    &nbsp;⚠️ Gagal mendeteksi nominal dari PR
-                                                                                                                </span>
-                                                                                                            </td>
-                                                                                                        </tr>
 
+                                                                                <tr>
+                                                                                    <td>Payment Request</td>
+                                                                                    <td>
+                                                                                        <div style={{ wordWrap: "break-word", width: "600px" }}>
+                                                                                            {lnurlPrData || '-'}
+                                                                                            {
+                                                                                                lnurlPrData != null && (
+                                                                                                    <>
+                                                                                                        <a href={'https://lightningdecoder.com/' + lnurlPrData} target="_blank">
+                                                                                                            <img src={lightningDecoderLogo} alt="Buka di LightningDecoder.com" className="lightnig-decoder-logo"/>
+                                                                                                        </a>
                                                                                                     </>
                                                                                                 )
                                                                                             }
-
-                                                                                            <tr>
-                                                                                                <td>PR Hash</td>
-                                                                                                <td>
-                                                                                                    {prHash}
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>PR Pubkey</td>
-                                                                                                <td>
-                                                                                                    {prPubkey}
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>LNURL Fee</td>
-                                                                                                <td>
-                                                                                                    {lnurlFee.toLocaleString()} Satoshi
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>LNURL Status</td>
-                                                                                                <td>
-                                                                                                    {
-                                                                                                        lnurlStatus == 'confirmed' && (
-                                                                                                            <Badge bg="success">Terkonfirmasi</Badge>
-                                                                                                        )
-                                                                                                    }
-                                                                                                    {
-                                                                                                        lnurlStatus == 'pending' && (
-                                                                                                            <Badge bg="warning">Terjeda</Badge>
-                                                                                                        )
-                                                                                                    }
-                                                                                                    {
-                                                                                                        lnurlStatus == 'failed' && (
-                                                                                                            <Badge bg="danger">Gagal</Badge>
-                                                                                                        )
-                                                                                                    }
-                                                                                                    {
-                                                                                                        lnurlStatus == 'error' && (
-                                                                                                            <Badge bg="danger">Error</Badge>
-                                                                                                        )
-                                                                                                    }
-                                                                                                    {
-                                                                                                        lnurlStatus == 'notfound' && (
-                                                                                                            <Badge bg="secondary">Tidak Ditemukan</Badge>
-                                                                                                        )
-                                                                                                    }
-                                                                                                </td>
-                                                                                            </tr>
-
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {
+                                                                                    prAmount != null ? (
+                                                                                        <>
                                                                                             {
-                                                                                                lnurlErrorMessage == null ? (
-                                                                                                    <>
-                                                                                                        <tr>
-                                                                                                            <td>LNURL Error Message</td>
-                                                                                                            <td>
-                                                                                                                -
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                    </>
+                                                                                                isPrAmountValid ? (
+                                                                                                    <tr>
+                                                                                                        <td>PR Amount</td>
+                                                                                                        <td>
+                                                                                                            {prAmount.toLocaleString()} Satoshi
+                                                                                                        </td>
+                                                                                                    </tr>
                                                                                                 ) : (
-                                                                                                    <>
-                                                                                                        <tr>
-                                                                                                            <td>LNURL Error Message</td>
-                                                                                                            <td>
-                                                                                                                {lnurlErrorMessage}
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                    </>
+                                                                                                    <tr>
+                                                                                                        <td>PR Amount</td>
+                                                                                                        <td>
+                                                                                                            {prAmount.toLocaleString()} Satoshi
+                                                                                                            <span className="text-danger ml-3">
+                                                                                                                &nbsp;⚠️ Jumlah tidak sama dengan nominal deposit!
+                                                                                                            </span>
+                                                                                                        </td>
+                                                                                                    </tr>
                                                                                                 )
                                                                                             }
+                                                                                        </>
+                                                                                    ) : (
+                                                                                        <>
+                                                                                            <tr>
+                                                                                                <td>PR Amount</td>
+                                                                                                <td>-
+                                                                                                    <span className="text-danger ml-3">
+                                                                                                        &nbsp;⚠️ Gagal mendeteksi nominal dari PR
+                                                                                                    </span>
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                        </>
+                                                                                    )
+                                                                                }
+
+                                                                                <tr>
+                                                                                    <td>PR Hash</td>
+                                                                                    <td>
+                                                                                        {prHash || '-'}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>PR Pubkey</td>
+                                                                                    <td>
+                                                                                        {prPubkey || '-'}
+                                                                                        {
+                                                                                                prPubkey != null && (
+                                                                                                    <>
+                                                                                                        <a href={'https://1ml.com/node/' + prPubkey} target="_blank">
+                                                                                                            <img src={oneMlLogo} alt="Buka di 1ml.com" className="one-ml-logo"/>
+                                                                                                        </a>
+                                                                                                    </>
+                                                                                                )
+                                                                                        }
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>PR Payee Node Key</td>
+                                                                                    <td>
+                                                                                        {prPayeeNodeKey || '-'}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>PR Signature</td>
+                                                                                    <td>
+                                                                                        {prSignature || '-'}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>LNURL Fee</td>
+                                                                                    <td>
+                                                                                        {lnurlFee.toLocaleString()} Satoshi
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>LNURL Status</td>
+                                                                                    <td>
+                                                                                        {
+                                                                                            lnurlStatus == 'confirmed' && (
+                                                                                                <Badge bg="success">Terkonfirmasi</Badge>
+                                                                                            )
+                                                                                        }
+                                                                                        {
+                                                                                            lnurlStatus == 'pending' && (
+                                                                                                <Badge bg="warning">Terjeda</Badge>
+                                                                                            )
+                                                                                        }
+                                                                                        {
+                                                                                            lnurlStatus == 'failed' && (
+                                                                                                <Badge bg="danger">Gagal</Badge>
+                                                                                            )
+                                                                                        }
+                                                                                        {
+                                                                                            lnurlStatus == 'error' && (
+                                                                                                <Badge bg="danger">Error</Badge>
+                                                                                            )
+                                                                                        }
+                                                                                        {
+                                                                                            lnurlStatus == 'notfound' && (
+                                                                                                <Badge bg="secondary">Tidak Ditemukan</Badge>
+                                                                                            )
+                                                                                        }
+                                                                                    </td>
+                                                                                </tr>
+
+
+                                                                                <tr>
+                                                                                    <td>LNURL Error Message</td>
+                                                                                    <td>
+                                                                                        {lnurlErrorMessage || '-'}
+                                                                                    </td>
+                                                                                </tr>
                                                                             </>)
                                                                         }
 
