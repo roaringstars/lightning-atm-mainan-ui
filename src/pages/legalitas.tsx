@@ -178,7 +178,7 @@ const Legalitas = () => {
                             <p className="text-justify">
                                 Kemudian saya bereksperimen untuk membuat sebuah ATM Bitcoin (Mainan) yang berfungsi sebagai pintu gerbang untuk memahami teknis Bitcoin. Sehingga masyarakat dapat berdiskusi dan menimbang, apa saja manfaat dan resiko Bitcoin sebagai mata uang.  <span className="highlight">Dimana hal ini saya rasa belum dilakukan pemerintah atau <a href="https://tekno.kompas.com/read/2021/11/12/08032907/mui-tetapkan-kripto-haram-jadi-mata-uang-untuk-jual-beli?page=all" target="_blank">kelompok agama</a> sebelum menetapkan sebuah peraturan, saya belum mendengar adanya pengambilan opini publik tentang manfaat Bitcoin ini.</span>
                                 <sup>
-                                    [<a href="https://www.epa.gov/international-cooperation/public-participation-guide-introduction-public-participation" target="_blank">14</a>] [<a href="https://www.scitepress.org/Papers/2018/100525/100525.pdf" target="_blank">15</a>]
+                                    [<a href="https://www.epa.gov/international-cooperation/public-participation-guide-introduction-public-participation" target="_blank">14</a>] [<a href="https://www.scitepress.org/Papers/2018/100525/100525.pdf" target="_blank">15</a>] [<a href="https://www.google.com/search?q=opini+publik+bitcoin+site%3Ago.id" target="_blank">16</a>]
                                 </sup>
 
                             </p>
@@ -207,7 +207,7 @@ const Legalitas = () => {
                                 Sehingga dalam waktu dekat, ATM ini tidak dimungkinkan untuk mendapat izin resmi dari pemerintah karena keterbatasan hukum yang ada. Sehubungan dengan hal tersebut saya memutuskan untuk menimbang berdasarkan hukum dasar yang ada dan etika moral yang tidak berentangan dengan hukum di Indonesia. Hukum yang mendasari proyek ini berangkat dari UU ITE Nomor 11 Tahun 2008 Pasal 4 yang berbunyi:
 
                                 <sup>
-                                    [<a href="https://www.dpr.go.id/doksetjen/dokumen/-Regulasi-UU.-No.-11-Tahun-2008-Tentang-Informasi-dan-Transaksi-Elektronik-1552380483.pdf" target="_blank">16</a>]
+                                    [<a href="https://www.dpr.go.id/doksetjen/dokumen/-Regulasi-UU.-No.-11-Tahun-2008-Tentang-Informasi-dan-Transaksi-Elektronik-1552380483.pdf" target="_blank">17</a>]
                                 </sup>
 
                                 <blockquote className="blockquote">
