@@ -4,6 +4,7 @@ import Footer from "../components/Footer"
 
 import metaPreviewImage from '../assets/images/meta/index.jpg';
 import MetaTags from "../components/MetaTags";
+import { Link } from "gatsby";
 
 const Legalitas = () => {
     return (
@@ -129,7 +130,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Januari 2022 — Scam Kripto Merebak</b></div>
                             <p className="text-justify mt-3">
-                                I-coin dan Asix token sempat menjadi berita publik perihal pembuatan koin kripto yang kemudian harga aset tersebut jatuh dan membuat pemilik aset rugi besar. Hal tersebut diduga karena pengembang koin hanya mengajak pengguna untuk membeli aset tanpa memberikan edukasi perihal resiko aset kripto.
+                                I-coin dan Asix token sempat menjadi berita publik perihal pembuatan koin kripto yang kemudian harga aset tersebut jatuh dan membuat pemilik aset rugi besar. Hal tersebut diduga karena <span className="highlight">pengembang koin hanya mengajak pengguna untuk membeli aset tanpa memberikan edukasi perihal resiko aset kripto.</span>
                                 <sup>
                                     [<a href="https://kumparan.com/kumparantech/makin-anjlok-kabar-terkini-harga-token-asix-anang-dan-i-coin-wirda-mansur-1xmNBuLGi0f/1" target="_blank">12</a>]
 
@@ -171,7 +172,7 @@ const Legalitas = () => {
                                 Padahal faktanya, Bitcoin dan kripto lain belum sepenuhnya teruji sebagai teknologi yang berhasil. Saya berani berkata kalau Bitcoin masih sebatas mata uang eksperimen yang baru berumur 13 tahun, dibandingakan E-mail yang sudah berumur 57 tahun. Sehingga alangkah baiknya jika tidak memasukan uang terlalu banyak kedalam teknologi ini kecuali sudah memahami bagaimana teknologi tersebut bekerja.
                             </p>
                             <p className="text-justify">
-                                Melihat kondisi ini saya tidak bisa diam, saya perlu menyuarakan bahwasanya masyarakat awam perlu untuk memahami Bitcoin secara teknis sebelum menaruh uang dalam jumlah yang besar. Namun, masalahnya belum terdapat sebuah alat peraga yang rendah biaya yang bisa digunakan orang awam untuk mencoba dan belajar Bitcoin.
+                                Melihat kondisi ini saya tidak bisa diam, saya perlu menyuarakan bahwasanya <span className="highlight">masyarakat awam perlu untuk memahami Bitcoin secara teknis sebelum menaruh uang dalam jumlah yang besar. Namun, masalahnya belum terdapat sebuah alat peraga yang rendah biaya yang bisa digunakan orang awam untuk mencoba dan belajar Bitcoin.</span>
                             </p>
 
                             <p className="text-justify">
@@ -181,7 +182,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Dilema Etika</b></div>
                             <p className="text-justify mt-3">
-                                Pembuatan Lightning ATM (Mainan) tidak selalu berjalan mulus, ada beberapa hal yang dapat dikaitkan dengan pelanggaran hukum di-Indonesia. Meski begitu saya yakin kalau semua teknologi perlu untuk di demokratisasi, perlu lebih banyak orang yang memahami teknis teknologi tersebut. </p>
+                                Pembuatan Lightning ATM (Mainan) tidak selalu berjalan mulus, ada beberapa hal yang dapat dikaitkan dengan pelanggaran hukum di-Indonesia. Meski begitu <span className="highlight">saya yakin kalau semua teknologi perlu untuk di demokratisasi, perlu lebih banyak orang yang memahami teknis teknologi tersebut.</span> </p>
 
                             <p className="text-justify">
                                 Hal ini sangat penting, karena mengikuti sifat alami teknologi baru yaitu selalu memiliki dua sisi (baik dan buruk). Ketika hanya sedikit orang yang mengetahui teknologi tersebut, bahaya dapat datang tak terduga, karena tidak ada manusia lain yang mencegah aktifitas tersebut terjadi. </p>
@@ -190,7 +191,7 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Sebagai tambahan jika dilihat dari sisi pendidikan, Indonesia bisa dibilang tertinggal sangat jauh perihal kemajuan ilmu pengetahuan dan teknologi, hal inilah yang perlu untuk digaris bawahi terhadap penetapan peraturan dimasa mendatang.
+                                Sebagai tambahan jika dilihat <span className="highlight">dari sisi pendidikan, Indonesia bisa dibilang tertinggal sangat jauh perihal kemajuan ilmu pengetahuan dan teknologi, hal inilah yang perlu untuk digaris bawahi terhadap penetapan peraturan dimasa mendatang.</span>
                             </p>
 
                             <div className="h3"><b>Legalitas</b></div>
@@ -253,7 +254,7 @@ const Legalitas = () => {
 
                                     </li>
                                     <li>
-                                        Kami mengambil potongan 10% untuk setiap transaksi yang diperuntukan untuk menjaga ATM ini tetap berjalan (biaya operasional).
+                                        Kami mengambil <Link to={'/grafik-biaya-penukaran'}>potongan biaya</Link> untuk setiap transaksi yang diperuntukan untuk menjaga ATM ini tetap berjalan (biaya operasional).
 
                                     </li>
                                     <li>
@@ -262,6 +263,11 @@ const Legalitas = () => {
                                     </li>
                                     <li>
                                         Setiap transaksi yang gagal karena kesalahan sistem, berhak mendapatkan ganti rugi (refund).
+
+                                    </li>
+                                    <li>
+                                        Terdapat <Link to={'/kebijakan-layanan'}> Kebijakan Layanan</Link> yang jelas dan transaparan terhadap batasan dan 
+                                        resiko penggunaan layanan.
 
                                     </li>
                                     <li>
