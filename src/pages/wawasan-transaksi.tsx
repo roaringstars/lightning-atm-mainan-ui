@@ -106,14 +106,14 @@ const WawasanTransaksi = ({ location }: any) => {
                         setIdrPaidAt(data.idr_paid_at);
                         setLnurlCreatedAt(data.lnurl_created_at);
                         setLnurlScannedAt(data.lnurl_scan_at);
-                        setLnurlScannedAt(data.lnurl_paid_at);
+                        setLnurlPaidAt(data.lnurl_paid_at);
                     }
 
                     if (data.trx_status == 'complete') {
                         setIdrPaidAt(data.idr_paid_at);
                         setLnurlCreatedAt(data.lnurl_created_at);
                         setLnurlScannedAt(data.lnurl_scan_at);
-                        setLnurlScannedAt(data.lnurl_paid_at);
+                        setLnurlPaidAt(data.lnurl_paid_at);
 
                         setTrxDuration(data.total_trx_time_sec);
                         setTimePercentageLabel(data.time_percentage_label);
@@ -519,10 +519,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                         }
                                                                         {
                                                                             trxCreatedAt !== undefined && (<>
-                                                                                {/* Detail if status in withdraw */}
-                                                                                {
-                                                                                    (trxStatus == 'withdraw' || trxStatus == 'complete') && (
-                                                                                        <>
+                                                                                
                                                                                             <tr>
                                                                                                 <td>Payment Request</td>
                                                                                                 <td>
@@ -532,25 +529,44 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                 </td>
                                                                                             </tr>
                                                                                             {
-                                                                                                isPrAmountValid ? (
-                                                                                                    <tr>
-                                                                                                        <td>PR Amount</td>
-                                                                                                        <td>
-                                                                                                            {prAmount.toLocaleString()} Satoshi
-                                                                                                        </td>
-                                                                                                    </tr>
+                                                                                                prAmount != null ? (
+                                                                                                    <>
+                                                                                                        {
+                                                                                                            isPrAmountValid ? (
+                                                                                                                <tr>
+                                                                                                                    <td>PR Amount</td>
+                                                                                                                    <td>
+                                                                                                                        {prAmount.toLocaleString()} Satoshi
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            ) : (
+                                                                                                                <tr>
+                                                                                                                    <td>PR Amount</td>
+                                                                                                                    <td>
+                                                                                                                        {prAmount.toLocaleString()} Satoshi
+                                                                                                                        <span className="text-danger ml-3">
+                                                                                                                            &nbsp;⚠️ Jumlah tidak sama dengan nominal deposit!
+                                                                                                                        </span>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            )
+                                                                                                        }
+                                                                                                    </>
                                                                                                 ) : (
-                                                                                                    <tr>
-                                                                                                        <td>PR Amount</td>
-                                                                                                        <td>
-                                                                                                            {prAmount.toLocaleString()} Satoshi
-                                                                                                            <span className="text-danger ml-3">
-                                                                                                                &nbsp;⚠️ Jumlah tidak sama dengan nominal deposit!
-                                                                                                            </span>
-                                                                                                        </td>
-                                                                                                    </tr>
+                                                                                                    <>
+                                                                                                        <tr>
+                                                                                                            <td>PR Amount</td>
+                                                                                                            <td>-
+                                                                                                                <span className="text-danger ml-3">
+                                                                                                                    &nbsp;⚠️ Gagal mendeteksi nominal dari PR
+                                                                                                                </span>
+                                                                                                            </td>
+                                                                                                        </tr>
+
+                                                                                                    </>
                                                                                                 )
                                                                                             }
+
                                                                                             <tr>
                                                                                                 <td>PR Hash</td>
                                                                                                 <td>
@@ -621,10 +637,6 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                     </>
                                                                                                 )
                                                                                             }
-
-                                                                                        </>
-                                                                                    )
-                                                                                }
                                                                             </>)
                                                                         }
 
