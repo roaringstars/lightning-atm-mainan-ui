@@ -44,12 +44,6 @@ const TOS = () => {
                                 perangkat belum didukung.
                                 <br />
                                 <br />
-
-                                Kami menyarankan untuk membuka ATM (Mainan) ini di browser komputer, dikarenakan
-                                kami belum dapat menjamin mesin dapat bekerja dalam tampilan ponsel.
-
-
-                                <br /><br />
                                 Sehubungan hal tersebut, kami sarankan menunggu
                                 dan mencoba kembali beberapa menit kemudian.
                                 <br />
@@ -90,7 +84,7 @@ const TOS = () => {
 
                             <div className="mb-2"><b>Penggunaan Optimal</b></div>
                             <p className="text-justify">
-                                Lightning ATM (Mainan) ini tidak ditujuan untuk pembelian berkala,
+                                Lightning ATM (Mainan) ini tidak ditujkuan untuk pembelian berkala,
                                 penggunaan yang optimal adalah kurang
                                 dari 10 kali transaksi, jika melebihi jumlah tersebut
                                 disarankan untuk menggunakan layanan penukaran kripto <Link to="/perbandingan">lainnya</Link>.
@@ -98,7 +92,7 @@ const TOS = () => {
                             </p>
 
                             <p className="text-justify mt-5">
-                                <i>Terakhir Diperbarui: 10 Juni 2022</i>
+                                <i>Terakhir Diperbarui: 20 Juni 2022</i>
 
                             </p>
                         </div>

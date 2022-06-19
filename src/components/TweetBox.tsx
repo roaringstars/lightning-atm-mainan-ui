@@ -95,7 +95,7 @@ const TweetBox = (props: any) => {
             "id": "1514083810052538372",
             "username": "cnbcindonesia",
             "text": "Netizen Indonesia Bikin ATM Bitcoin, Minimal Tukar Rp 1.500<br/><span>cnbcindonesia.com/tech/202204...",
-            "image": ["https://pbs.twimg.com/card_img/1529828825344815105/yd9vrOde?format=jpg&name=small"]
+            "image": ["https://awsimages.detik.net.id/visual/2021/11/19/bitcoin-el-salvador_43.jpeg?w=250&q=90"]
         },
         {
             "id": "1530023874112262145",

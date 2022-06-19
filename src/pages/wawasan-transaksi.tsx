@@ -306,7 +306,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                         isRefundable ? (
                                                                                             <Badge bg="success">Masih Bisa Refund</Badge>
                                                                                         ) : (
-                                                                                            <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
+                                                                                           <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
                                                                                         )
                                                                                     } </div>
                                                                             </td>
@@ -391,7 +391,11 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                             isRefundable ? (
                                                                                 <Badge bg="success">Masih Bisa Refund</Badge>
                                                                             ) : (
-                                                                                <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
+                                                                                trxStatus == 'waiting' || trxStatus == 'cancelled' ? (
+                                                                                    <Badge bg="secondary">Tidak Bisa Refund karena Deposit belum diterima</Badge>
+                                                                                ) : (
+                                                                                    <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
+                                                                                )
                                                                             )
                                                                         } </div>
                                                                 </td>
@@ -409,7 +413,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                             <>
                                                                                 -
                                                                                 {trxStatus == 'waiting' && (
-                                                                                    <>&nbsp;⚠️ Nominal Satoshi ditentukan setelah deposit diterima</>
+                                                                                    <>&nbsp;&nbsp;⚠️ Nominal Satoshi ditentukan setelah deposit diterima</>
                                                                                 )}
                                                                             </>
                                                                         ) : (
@@ -438,7 +442,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                     </Table>
 
                                                     {
-                                                        (trxStatus == 'waiting' || trxStatus == 'withdraw' || trxStatus == 'complete') && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail Deposit

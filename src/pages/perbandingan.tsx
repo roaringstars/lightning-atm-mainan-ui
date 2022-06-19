@@ -102,7 +102,7 @@ const Bantuan = () => {
                                     </tr>
                                     <tr>
                                         <td>Pintu</td>
-                                        <td>Rp50,000</td>
+                                        <td>Rp30,000</td>
                                         <td>?</td>
                                         <td>Rp300,xxx</td>
                                         <td>
