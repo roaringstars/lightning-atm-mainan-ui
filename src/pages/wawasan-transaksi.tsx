@@ -49,6 +49,7 @@ const WawasanTransaksi = ({ location }: any) => {
     const [prPubkey, setPrPubkey] = React.useState(null);
     const [prPayeeNodeKey, setPrPayeeNodeKey] = React.useState(null);
     const [prExpires, setPrExpires] = React.useState(null);
+    const [prProcessedAt, setPrProcessedAt] = React.useState(null);
     const [prSignature, setPrSignature] = React.useState(null);
     const [trxStatus, setTrxStatus] = React.useState(null);
     const [idrAmount, setIdrAmount] = React.useState(0);
@@ -109,6 +110,7 @@ const WawasanTransaksi = ({ location }: any) => {
                     setPrSignature(data.pr_signature);
                     setPrExpires(data.pr_expires);
                     setPrPayeeNodeKey(data.pr_payee_node_key);
+                    setPrProcessedAt(data.pr_processed_at);
 
                     if (data.trx_status == 'withdraw' || data.trx_status == 'complete') {
                         setIdrPaidAt(data.idr_paid_at);
@@ -529,6 +531,18 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                 </>
                                                                             )
                                                                         }
+                                                                         {
+                                                                            prProcessedAt !== undefined && (
+                                                                                <>
+                                                                                    <tr>
+                                                                                        <td>PR Diproses Pada</td>
+                                                                                        <td>
+                                                                                            <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </>
+                                                                            )
+                                                                        }
                                                                         {
                                                                             trxCreatedAt !== undefined && (<>
 
@@ -672,9 +686,16 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                             lnurlPaidAt !== undefined ? (
                                                                                 <>
                                                                                     <tr>
-                                                                                        <td>LNURL Diproses Pada</td>
+                                                                                        <td>LNURL Terkonfirmasi Pada</td>
                                                                                         <td>
-                                                                                            <Moment unix>{lnurlPaidAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                            {
+                                                                                                lnurlPaidAt != null ? (
+                                                                                                    <Moment unix>{lnurlPaidAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                                ) : (
+                                                                                                    <>-</>
+                                                                                                )
+                                                                                            }
+                                                                                            
                                                                                         </td>
                                                                                     </tr>
                                                                                 </>
