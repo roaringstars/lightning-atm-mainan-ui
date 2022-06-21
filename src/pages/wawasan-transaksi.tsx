@@ -531,18 +531,6 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                 </>
                                                                             )
                                                                         }
-                                                                         {
-                                                                            prProcessedAt !== undefined && (
-                                                                                <>
-                                                                                    <tr>
-                                                                                        <td>PR Diproses Pada</td>
-                                                                                        <td>
-                                                                                            <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </>
-                                                                            )
-                                                                        }
                                                                         {
                                                                             trxCreatedAt !== undefined && (<>
 
@@ -563,6 +551,19 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
+
+                                                                                {
+                                                                                    prProcessedAt !== undefined && (
+                                                                                        <>
+                                                                                            <tr>
+                                                                                                <td>PR Diproses Pada</td>
+                                                                                                <td>
+                                                                                                    <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </>
+                                                                                    )
+                                                                                }
                                                                                 {
                                                                                     prAmount != null ? (
                                                                                         <>
