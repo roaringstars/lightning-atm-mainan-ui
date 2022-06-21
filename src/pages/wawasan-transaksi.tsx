@@ -553,12 +553,20 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                 </tr>
 
                                                                                 {
-                                                                                    prProcessedAt !== undefined && (
+                                                                                    prProcessedAt != undefined && (
                                                                                         <>
                                                                                             <tr>
                                                                                                 <td>PR Diproses Pada</td>
                                                                                                 <td>
-                                                                                                    <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
+                                                                                                    {
+                                                                                                        prProcessedAt == null ? (
+                                                                                                            <>-</>
+                                                                                                        ) : (
+                                                                                                            <>
+                                                                                                               <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
+                                                                                                            </>
+                                                                                                        )
+                                                                                                    }
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </>
@@ -691,7 +699,9 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                         <td>
                                                                                             {
                                                                                                 lnurlPaidAt != null ? (
-                                                                                                    <Moment unix>{lnurlPaidAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                                    <>
+                                                                                                        <Moment unix>{lnurlPaidAt}</Moment> (<ReactTimeAgo date={new Date(lnurlCreatedAt * 1000)} locale="en-US" />)
+                                                                                                    </>
                                                                                                 ) : (
                                                                                                     <>-</>
                                                                                                 )
