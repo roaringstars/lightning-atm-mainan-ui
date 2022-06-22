@@ -416,7 +416,7 @@ const WawasanTransaksi = ({ location }: any) => {
 
 
                                                     {
-                                                        (trxStatus == 'withdraw' || trxStatus == 'complete' || trxStatus == 'failed') && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'complete' || trxStatus == 'failed')  && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail LNURL
@@ -440,7 +440,13 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                         <tr>
                                                                             <td>LNURL OTT</td>
                                                                             <td>
-                                                                                {lnurlOtt}
+                                                                                {
+                                                                                    lnurlScannedAt == null ? (
+                                                                                        <>-</>
+                                                                                    ) : (
+                                                                                        lnurlOtt
+                                                                                    )
+                                                                                }
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
