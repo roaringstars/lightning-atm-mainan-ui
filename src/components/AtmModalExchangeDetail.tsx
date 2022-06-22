@@ -327,6 +327,7 @@ const AtmModalExchangeDetail = (props: any) => {
                                 </li>
                                 <li>Jika membutuhkan bantuan DM <b>@roaringstars</b> dengan menyertakan nomor Trx ID.</li>
                                 <li>Harap membaca <a href="/kebijakan-layanan" target="_blank"><b>Kebijakan Layanan</b></a> sebelum memulai.</li>
+                                <li><div className="danger-flash">[!] Wallet Muun dilaporkan bermasalah, disarankan pakai <a href="/dompet/wallet-of-satoshi" target="_blank">Wallet of Satoshi</a></div></li>
                             </ul>
                         </div>
 

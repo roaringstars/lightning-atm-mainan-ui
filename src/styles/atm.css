@@ -279,6 +279,32 @@ h1 {
     }
 }
 
+@keyframes e-ink-flash-hard {
+    0% {
+        background-color: #444;
+        color: #f1f1f1;
+    }
+    
+    49% {
+        background-color: #444;
+        color: #f1f1f1;
+    }
+
+    50% {
+        background-color: #f1f1f1;
+        color: #444;
+    }
+    99% {
+        background-color: #f1f1f1;
+        color: #444;
+    }
+
+
+    100% {
+        filter: invert(0%);
+    }
+}
+
 .modal.modal-8bit {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.7rem;
@@ -428,6 +454,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+
+.danger-flash, .danger-flash a {
+    animation-name: e-ink-flash-hard;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
 
 /**
  * Switch
