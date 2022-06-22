@@ -6,6 +6,9 @@ import { Card } from "react-bootstrap"
 import ReactTooltip from "react-tooltip"
 import { TwitterTweetEmbed } from "react-twitter-embed"
 import { Link } from "gatsby"
+import MoneyHistory from '../assets/images/bantuan/money_history.svg';
+import OnChainTrx from '../assets/images/bantuan/on_chain_trx.svg';
+import OffChainTrx from '../assets/images/bantuan/off_chain_trx.svg';
 import Image1 from '../assets/images/bantuan/bitcoin.jpg';
 import Image2 from '../assets/images/bantuan/lightning-network.jpg';
 import metaPreviewImage from '../assets/images/meta/bantuan.jpg';
@@ -24,55 +27,108 @@ const Bantuan = () => {
             <Header />
 
             <article className="mb-4">
+
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-10 col-xl-10">
+                            <img src={MoneyHistory} alt="..." className="img-fluid" />                            </div>
+                    </div>
+                </div>
                 <div className="container px-4 px-lg-5">
                     <div className="row gx-4 gx-lg-5 justify-content-center">
                         <div className="col-md-10 col-lg-8 col-xl-7">
-                            <h2 className="section-heading mb-2">Apa itu Bitcoin?</h2>
-                            <Card className="mb-4">
-                                <Card.Body>
-
-                                    <p className="mb-0">Bitcoin adalah mata uang digital yang didistribusikan secara elektronik dan tidak dikendalikan oleh pemerintah mana pun.
-                                        Bitcoin merupakan sebuah repository open-source yakni seluruh desain arsitekturnya dipublikasi,
-                                        siapa saja dapat melihat isi dari software Bitcoin itu sendiri.
-                                        Yang artinya bersifat transparan akan segala konsep dan cara kerja teknologinya.
+                            <div className="mb-5 mt-4">
+                            <h2 className="section-heading mb-2">Bitcoin itu apa si njir?</h2>
+                                    <p className="mb-0">Penjelasan yang paling sederhana Bitcoin adalah mata uang digital
+                                    tapi tidak memerlukan pihak sentral seperti Bank, Pemerintah, atau Perusahaan untuk menjamin 
+                                    transaksi valid antar penggunanya. <br/> <br/>
+                                    
+                                    Melainkan menggunakan kesepakatan bersama
+                                    untuk memverifikasi setiap transaksi secara publik, saat ini ada sekitar 17 ribu node yang
+                                    memverifikasi dan mencatat setiap transaksi. Selama ribuan node ini saling tidak percaya satu 
+                                    sama lain, maka tidak ada transaksi yang terlewat dan tidak ada orang yang 
+                                    bisa curang mengubah data didalamnya.
+                                    <br/> <br/>
+                                    Bitcoin tidak memerlukan informasi pengguna seperti Nama, Foto, atau Tanda Tangan. 
+                                    Melainkan transaksi diwajibkan untuk dipublikasi dan diverifikasi ribuan node tersebut. 
+                                    Setiap pengguna harus memiliki Wallet yang fungsinya mirip Rekening Tabungan, berisi Public Key 
+                                    dan Private Key.
+                                    <br/><br/>
+                                    Public Key itu berfungsi seperti Nomor Rekening yang orang bisa kirim uang kedalamnya, sedangkan
+                                    Private Key adalah berfungsi sebagai kata sandi yang hanya pemilik Rekening Tabungan yang dapat 
+                                    memindahkan uang di Wallet tersebut.
                                     </p>
-                                </Card.Body>
-                            </Card>
+                            </div>
+                            </div>
+                     </div>
+                </div>
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-10 col-xl-10">
+                            <img src={OnChainTrx} alt="..." className="img-fluid" />                            </div>
+                    </div>
+                </div>
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-8 col-xl-7">
+                            <div className="mb-5 mt-4">
+                                <h2 className="section-heading mb-2">Transaksi On-Chain itu apa?</h2>
 
+                                        <p className="mb-0">
+                                            Hmm, transaksi yang dicatat di setiap node Bitcoin (17 ribu tadi). Ciri-ciri dari
+                                            transaksi ini adalah bisa dilihat semua orang melalui layanan Block Explorer. 
+                                            <br/>
+                                            <br/>
+                                            Kekurangan dari transaksi On-Chain adalah butuh waktu lama untuk terkonfirmasi
+                                            dan tidak efisien untuk nominal pembayaran yang kecil. Namun kelebihannya adalah
+                                            sederhana karena cukup kirim ke Public Key tujuan dan tidak memerlukan 
+                                            koneksi internet yang stabil.
 
-                            <h2 className="section-heading mb-2">Apa itu Lightning Network?</h2>
-                            <img src={Image2} alt="BlueWallet" className="img-fluid" />
-                            <Card className="mb-4">
-                                <Card.Body>
+                                            <br/>
+                                            <br/>
+                                            Kareana memiliki kekurangan, dibuatlah Jaringan Lightning (Off-Chain) yang memanfaatkan 
+                                            jaringan On-Chain ini yang memungkinkan menyelesaikan masalah keterbatasan transaksi,
+                                            waktu yang lama, dan biaya yang tinggi.
+                                        </p>
+                            </div>
 
-                                    <p className="mb-0">
-                                        Bitcoin Lightning network merupakan solusi dari isu skalabilitas Bitcoin.
-                                        Jaringan ini menumpang diatas jaringan Bitcoin, sehingga dapat melakukan transaksi
-                                        lebih cepat dan efisien tanpa mengorbankan desentralisasi dan keamanan Bitcoin.
-                                        Lightning Network menawarkan transaksi instan dan sangat menghemat biaya.
-                                    </p>
-                                </Card.Body>
-                            </Card>
+                            </div>
+                     </div>
+                </div>
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-10 col-xl-10">
+                            <img src={OffChainTrx} alt="..." className="img-fluid" />                            </div>
+                    </div>
+                </div>
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-8 col-xl-7">
+                            <div className="mb-5 mt-4">
+                                <h2 className="section-heading mb-2">Lah, trus Transaksi Lightning itu apa?</h2>
 
+                                        <p className="mb-0">
+                                            Pengembang Bitcoin berpikir ketika kita sering membeli Kopi (misal 10 ribu Rupiah) itu tidak perlu 
+                                            dikabarkan ke seluruh dunia (17 ribu node tadi). Melainkan cukup Penjual Kopi (misal Tejo) dan Pembeli Kopi (Wowotek)
+                                            yang perlu tau detail transaksinya. 
+                                            <br/>
+                                            <br/>
+                                            Transaksi yang perlu dikabarkan ke seluruh dunia adalah saat 
+                                            Wowotek memulai transaksi dengan Tejo dan mengakhiri transaksi tersebut. Orang-orang tidak perlu tau 
+                                            berapa kali Wowotek membeli kopi, yang perlu setiap orang catat adalah berapa total Wowotek harus membayar ke Tejo.
 
-                            {/* <h2 className="section-heading mb-2">Apa itu Bitcoin Wallet?</h2>
-                            <Card className="mb-4">
-                                <Card.Body>
-
-                                    <p className="mb-0">(membutuhkan bantuan untuk melengkapi penjelasan Bitcoin Wallet) ⚠️
-                                    </p>
-                                </Card.Body>
-                            </Card>
-
-
-                            <h2 className="section-heading mb-2">Apa itu LNURL?</h2>
-                            <Card className="mb-4">
-                                <Card.Body>
-
-                                    <p className="mb-0">(membutuhkan bantuan untuk melengkapi penjelasan LNURL) ⚠️
-                                    </p>
-                                </Card.Body>
-                            </Card> */}
+                                            <br/>
+                                            <br/>
+                                            Transaksi ini juga disebut Off-Chain, karena tidak berlangsung di jaringan Bitcoin. Ciri dari transaksi ini 
+                                            adalah private, atau tidak bisa diketahui masyarakat umum. Setiap transaksi menggunakan sebuah kode Invoice yang 
+                                            biasanya lebih panjang dari Public Key dan sekali pakai.
+                                            <br/>
+                                            <br/>
+                                            Kekurangannya adalah baik Tejo dan Wowotek 
+                                            harus selalu terhubung ke internet untuk melakukan transaksi. Kelebihannya transaksi tiap membeli Kopi tadi 
+                                            bisa sangat murah bahkan gratis, jika kedua pihak sepakat untuk tidak menentukan biaya transaksi.
+                                        </p>
+                            </div>
 
 
                             <h2 className="section-heading mb-2">Pembayaran Rupiah Yang Didukung</h2>
@@ -120,7 +176,7 @@ const Bantuan = () => {
                                                 </ReactTooltip>
                                             </li>
                                             <li>
-                                                <Link to={'/dompet/muun'}>Muun</Link>
+                                                <Link to={'/dompet/muun'}>Muun</Link>  ⚠️Banyak yang melaporkan transaksi lambat
                                             </li>
                                             <li>
                                                 <Link to={'/dompet/bluewallet'} >BlueWallet</Link>
