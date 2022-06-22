@@ -112,19 +112,13 @@ const WawasanTransaksi = ({ location }: any) => {
                     setPrExpires(data.pr_expires);
                     setPrPayeeNodeKey(data.pr_payee_node_key);
                     setPrProcessedAt(data.pr_processed_at);
+                    setIdrPaidAt(data.idr_paid_at);
 
-                    if (data.trx_status == 'withdraw' || data.trx_status == 'complete') {
-                        setIdrPaidAt(data.idr_paid_at);
-                        setLnurlCreatedAt(data.lnurl_created_at);
-                        setLnurlScannedAt(data.lnurl_scan_at);
-                        setLnurlPaidAt(data.lnurl_paid_at);
-                    }
-
+                    setLnurlCreatedAt(data.lnurl_created_at);
+                    setLnurlScannedAt(data.lnurl_scan_at);
+                    setLnurlPaidAt(data.lnurl_paid_at);
+                    
                     if (data.trx_status == 'complete') {
-                        setIdrPaidAt(data.idr_paid_at);
-                        setLnurlCreatedAt(data.lnurl_created_at);
-                        setLnurlScannedAt(data.lnurl_scan_at);
-                        setLnurlPaidAt(data.lnurl_paid_at);
 
                         setTrxDuration(data.total_trx_time_sec);
                         setTimePercentageLabel(data.time_percentage_label);
@@ -356,7 +350,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                 <td>
 
                                                                     {
-                                                                        trxStatus == 'waiting' || trxStatus == 'failed' || trxStatus == 'cancelled' ? (
+                                                                        trxStatus == 'waiting' || trxStatus == 'cancelled' ? (
                                                                             <>
                                                                                 -
                                                                                 {trxStatus == 'waiting' && (
@@ -397,7 +391,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                 <Table>
                                                                     <tbody>
                                                                         {
-                                                                            idrPaidAt !== undefined && (
+                                                                            idrPaidAt !== undefined  && (
                                                                                 <>
                                                                                     <tr>
                                                                                         <td>Deposit Diterima</td>
