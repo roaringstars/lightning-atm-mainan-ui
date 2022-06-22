@@ -73,7 +73,7 @@ const GrafikBiayaPenukaran = () => {
                     labels,
                     datasets: [
                         {
-                            label: 'Harga Bitcoin',
+                            label: 'Harga Bitcoin saat ini',
                             data: data.data.rate.reverse(),
                             borderColor: 'rgba(100, 100, 100, 0.1)',
                             backgroundColor: 'rgba(100, 100, 100, 0.1)',

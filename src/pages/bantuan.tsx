@@ -44,7 +44,7 @@ const Bantuan = () => {
                                     transaksi valid antar penggunanya. <br/> <br/>
                                     
                                     Melainkan menggunakan kesepakatan bersama
-                                    untuk memverifikasi setiap transaksi secara publik, saat ini ada sekitar 17 ribu node yang
+                                    untuk memverifikasi setiap transaksi secara publik, saat ini ada sekitar 15 ribu node yang
                                     memverifikasi dan mencatat setiap transaksi. Selama ribuan node ini saling tidak percaya satu 
                                     sama lain, maka tidak ada transaksi yang terlewat dan tidak ada orang yang 
                                     bisa curang mengubah data didalamnya.
@@ -75,18 +75,18 @@ const Bantuan = () => {
                                 <h2 className="section-heading mb-2">Transaksi On-Chain itu apa?</h2>
 
                                         <p className="mb-0">
-                                            Hmm, transaksi yang dicatat di setiap node Bitcoin (17 ribu tadi). Ciri-ciri dari
+                                            Hmm, sederhananya adalah transaksi yang dicatat setiap node Bitcoin (15 ribu tadi). Ciri-ciri dari
                                             transaksi ini adalah bisa dilihat semua orang melalui layanan Block Explorer. 
                                             <br/>
                                             <br/>
-                                            Kekurangan dari transaksi On-Chain adalah butuh waktu lama untuk terkonfirmasi
+                                            Kekurangan dari transaksi On-Chain adalah membutuhkan waktu lama untuk terkonfirmasi
                                             dan tidak efisien untuk nominal pembayaran yang kecil. Namun kelebihannya adalah
                                             sederhana karena cukup kirim ke Public Key tujuan dan tidak memerlukan 
                                             koneksi internet yang stabil.
 
                                             <br/>
                                             <br/>
-                                            Kareana memiliki kekurangan, dibuatlah Jaringan Lightning (Off-Chain) yang memanfaatkan 
+                                            Karena kekurangan tadi, dibuatlah Jaringan Lightning (Off-Chain) yang memanfaatkan 
                                             jaringan On-Chain ini yang memungkinkan menyelesaikan masalah keterbatasan transaksi,
                                             waktu yang lama, dan biaya yang tinggi.
                                         </p>
@@ -109,7 +109,7 @@ const Bantuan = () => {
 
                                         <p className="mb-0">
                                             Pengembang Bitcoin berpikir ketika kita sering membeli Kopi (misal 10 ribu Rupiah) itu tidak perlu 
-                                            dikabarkan ke seluruh dunia (17 ribu node tadi). Melainkan cukup Penjual Kopi (misal Tejo) dan Pembeli Kopi (Wowotek)
+                                            dikabarkan ke seluruh dunia (15 ribu node tadi). Melainkan cukup Penjual Kopi (misal Tejo) dan Pembeli Kopi (Wowotek)
                                             yang perlu tau detail transaksinya. 
                                             <br/>
                                             <br/>
@@ -131,7 +131,7 @@ const Bantuan = () => {
                             </div>
 
 
-                            <h2 className="section-heading mb-2">Pembayaran Rupiah Yang Didukung</h2>
+                            {/* <h2 className="section-heading mb-2">Pembayaran Rupiah Yang Didukung</h2>
                             <Card className="mb-4">
                                 <Card.Body>
 
@@ -160,11 +160,9 @@ const Bantuan = () => {
                                         </ul>
                                     </p>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
 
-                            <h2 className="section-heading mb-2">Dompet Bitcoin LN Yang Didukung</h2>
-                            <Card className="mb-4">
-                                <Card.Body>
+                            <h2 className="section-heading mb-2">Dompet Bitcoin Lightning Network</h2>
                                     <p className="mb-0">
                                         <ul>
                                             <li>
@@ -209,8 +207,6 @@ const Bantuan = () => {
                                             <li> ...(membutuhkan bantuan untuk melengkapi ) ⚠️</li>
                                         </ul></p>
 
-                                </Card.Body>
-                            </Card>
 
                         </div>
                     </div>
