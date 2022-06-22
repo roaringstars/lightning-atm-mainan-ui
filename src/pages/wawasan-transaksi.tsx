@@ -21,6 +21,7 @@ import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 import { Timeline, Event } from "../components/Timeline";
 import Moment from 'react-moment';
 import MetaTags from "../components/MetaTags";
+import WawasanTrxStatus from "../components/WawasanTrxStatus";
 
 const WawasanTransaksi = ({ location }: any) => {
     /**
@@ -279,38 +280,11 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                         <tr>
                                                                             <td>Status</td>
                                                                             <td>
-                                                                                {
-                                                                                    trxStatus == 'complete' ? (
-                                                                                        <Badge bg="success">Selesai &nbsp;
-                                                                                            <FontAwesomeIcon icon={faCheckCircle} />
-                                                                                        </Badge>
-                                                                                    ) : null
-                                                                                }
-                                                                                {
-                                                                                    trxStatus == 'waiting' ? (
-                                                                                        <Badge bg="primary">Dalam Proses</Badge>
-                                                                                    ) : null
-                                                                                }
-                                                                                {
-                                                                                    trxStatus == 'withdraw' ? (
-                                                                                        <Badge bg="primary">Withdraw</Badge>
-                                                                                    ) : null
-                                                                                }
-                                                                                {
-                                                                                    trxStatus == 'cancelled' ? (
-                                                                                        <Badge bg="secondary">Dibatalkan</Badge>
-                                                                                    ) : null
-                                                                                }
-                                                                                <div className="ml-1 d-inline-block">
-
-
-                                                                                    {
-                                                                                        isRefundable ? (
-                                                                                            <Badge bg="success">Masih Bisa Refund</Badge>
-                                                                                        ) : (
-                                                                                           <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
-                                                                                        )
-                                                                                    } </div>
+                                                                                <WawasanTrxStatus
+                                                                                    trxStatus={trxStatus}
+                                                                                    lnurlStatus={lnurlStatus}
+                                                                                    isRefundable={isRefundable}
+                                                                                />
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -366,40 +340,11 @@ const WawasanTransaksi = ({ location }: any) => {
                                                             <tr>
                                                                 <td>Status Transaksi</td>
                                                                 <td>
-                                                                    {
-                                                                        trxStatus == 'complete' ? (
-                                                                            <Badge bg="success">Selesai &nbsp;
-                                                                                <FontAwesomeIcon icon={faCheckCircle} />
-                                                                            </Badge>
-                                                                        ) : null
-                                                                    }
-                                                                    {
-                                                                        trxStatus == 'waiting' ? (
-                                                                            <Badge bg="primary">Dalam Proses</Badge>
-                                                                        ) : null
-                                                                    }
-                                                                    {
-                                                                        trxStatus == 'withdraw' ? (
-                                                                            <Badge bg="primary">Withdraw</Badge>
-                                                                        ) : null
-                                                                    }
-                                                                    {
-                                                                        trxStatus == 'cancelled' ? (
-                                                                            <Badge bg="secondary">Dibatalkan</Badge>
-                                                                        ) : null
-                                                                    }
-                                                                    <div className="ml-1 d-inline-block">
-                                                                        {
-                                                                            isRefundable ? (
-                                                                                <Badge bg="success">Masih Bisa Refund</Badge>
-                                                                            ) : (
-                                                                                trxStatus == 'waiting' || trxStatus == 'cancelled' ? (
-                                                                                    <Badge bg="secondary">Tidak Bisa Refund karena Deposit belum diterima</Badge>
-                                                                                ) : (
-                                                                                    <Badge bg="secondary">Sudah Tidak Bisa Refund</Badge>
-                                                                                )
-                                                                            )
-                                                                        } </div>
+                                                                    <WawasanTrxStatus
+                                                                        trxStatus={trxStatus}
+                                                                        lnurlStatus={lnurlStatus}
+                                                                        isRefundable={isRefundable}
+                                                                    />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -411,7 +356,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                 <td>
 
                                                                     {
-                                                                        trxStatus == 'waiting' || trxStatus == 'cancelled' ? (
+                                                                        trxStatus == 'waiting' || trxStatus == 'failed' || trxStatus == 'cancelled' ? (
                                                                             <>
                                                                                 -
                                                                                 {trxStatus == 'waiting' && (
@@ -444,7 +389,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                     </Table>
 
                                                     {
-                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'failed' || trxStatus == 'complete') && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail Deposit
@@ -477,7 +422,7 @@ const WawasanTransaksi = ({ location }: any) => {
 
 
                                                     {
-                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'complete' || trxStatus == 'failed') && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail LNURL
@@ -511,7 +456,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                     }
 
                                                     {
-                                                        (trxStatus == 'withdraw' || trxStatus == 'complete') && lnurlScannedAt != undefined && (
+                                                        (trxStatus == 'withdraw' || trxStatus == 'complete' || trxStatus == 'failed') && lnurlScannedAt != undefined && (
                                                             <>
                                                                 <div className="trx-title">
                                                                     Detail Withdraw Request
@@ -543,7 +488,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                 lnurlPrData != null && (
                                                                                                     <>
                                                                                                         <a href={'https://lightningdecoder.com/' + lnurlPrData} target="_blank">
-                                                                                                            <img src={lightningDecoderLogo} alt="Buka di LightningDecoder.com" className="lightnig-decoder-logo"/>
+                                                                                                            <img src={lightningDecoderLogo} alt="Buka di LightningDecoder.com" className="lightnig-decoder-logo" />
                                                                                                         </a>
                                                                                                     </>
                                                                                                 )
@@ -551,7 +496,20 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
-
+                                                                                <tr>
+                                                                                    <td>PR Kadaluarsa Pada (HTLC)</td>
+                                                                                    <td>
+                                                                                        {
+                                                                                            prExpires != undefined ? (
+                                                                                                <>
+                                                                                                    <Moment unix>{prExpires}</Moment> (<ReactTimeAgo date={new Date(prExpires * 1000)} locale="en-US" />)
+                                                                                                </>
+                                                                                            ) : (
+                                                                                                <>-</>
+                                                                                            )
+                                                                                        }
+                                                                                    </td>
+                                                                                </tr>
                                                                                 {
                                                                                     prProcessedAt != undefined && (
                                                                                         <>
@@ -563,7 +521,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                             <>-</>
                                                                                                         ) : (
                                                                                                             <>
-                                                                                                               <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
+                                                                                                                <Moment unix>{prProcessedAt}</Moment> (<ReactTimeAgo date={new Date(prProcessedAt * 1000)} locale="en-US" />)
                                                                                                             </>
                                                                                                         )
                                                                                                     }
@@ -572,6 +530,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                         </>
                                                                                     )
                                                                                 }
+
                                                                                 {
                                                                                     prAmount != null ? (
                                                                                         <>
@@ -622,13 +581,13 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                     <td>
                                                                                         {prPubkey || '-'}
                                                                                         {
-                                                                                                prPubkey != null && (
-                                                                                                    <>
-                                                                                                        <a href={'https://1ml.com/node/' + prPubkey} target="_blank">
-                                                                                                            <img src={oneMlLogo} alt="Buka di 1ml.com" className="one-ml-logo"/>
-                                                                                                        </a>
-                                                                                                    </>
-                                                                                                )
+                                                                                            prPubkey != null && (
+                                                                                                <>
+                                                                                                    <a href={'https://1ml.com/node/' + prPubkey} target="_blank">
+                                                                                                        <img src={oneMlLogo} alt="Buka di 1ml.com" className="one-ml-logo" />
+                                                                                                    </a>
+                                                                                                </>
+                                                                                            )
                                                                                         }
                                                                                     </td>
                                                                                 </tr>
@@ -706,7 +665,7 @@ const WawasanTransaksi = ({ location }: any) => {
                                                                                                     <>-</>
                                                                                                 )
                                                                                             }
-                                                                                            
+
                                                                                         </td>
                                                                                     </tr>
                                                                                 </>
