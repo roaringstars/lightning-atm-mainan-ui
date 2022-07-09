@@ -47,6 +47,7 @@ const Bantuan = () => {
                                         <li><AnchorLink to="/bantuan#apakah-bitcoin-asli">Meski (Mainan) apakah Bitcoin-nya asli?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#mengapa-fee-mahal">Mengapa Fee-nya mahal?</AnchorLink></li>
                                         <li><AnchorLink to="/kebijakan-layanan#transaksi-gagal">Bagaimana Jika Transaksi Gagal?</AnchorLink></li>
+                                        <li><AnchorLink to="/bantuan#kenapa-saya-jomblo">Kenapa saya jomblo?</AnchorLink></li>
                                     </ul>
                                 </Card.Body>
                             </Card>
@@ -299,6 +300,11 @@ const Bantuan = () => {
                                 <br/>
                                 Biaya penukaran (fee) digunakan untuk <AnchorLink to="/kebijakan-layanan#transparansi-potongan-biaya">membuat website/mesin tetap berjalan</AnchorLink>.
                                 Perubahan biaya penukaran bisa dilihat pada <Link to="/grafik-biaya-penukaran">grafik berikut</Link>.
+                            </p>
+
+                            <h2 className="section-heading mb-2 mt-5" id="kenapa-saya-jomblo">Kenapa Saya Jomblo?</h2>
+                            <p className="mb-0">
+                                Nah, kalau itu saya tidak tau 😅
                             </p>
 
                            <br/>            
