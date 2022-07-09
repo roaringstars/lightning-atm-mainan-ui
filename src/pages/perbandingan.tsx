@@ -22,7 +22,7 @@ const Bantuan = () => {
      * Endpoint 
      */
      const apiEndpoint = process.env.ATM_API_ENDPOINT;
-     const endpoint = apiEndpoint + '/api_rate.php'
+     const endpoint = apiEndpoint + '/api_rate.php?deposit=1500'
  
      /**
       * Declare state
