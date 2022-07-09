@@ -732,6 +732,44 @@ h1 {
 .btn-small-screen {
     display: none;
 }
+
+/**
+ * Bottom bar 
+ */
+
+.bottom-bar {
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+}
+.bottom-bar a {
+    color: #000;
+}
+.bottom-bar-container {
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    display: inline-block;
+    padding: 10px 20px;
+    box-shadow:
+        -4.7px -4.7px 17.1px rgba(0, 0, 0, 0.101),
+        0.3px 0.3px 56.3px rgba(0, 0, 0, 0.149),
+        100px 100px 234px rgba(0, 0, 0, 0.25)
+    ;
+    
+}
+.bottom-bar .created-by {
+    display: inline-block;
+}
+.bottom-bar .faq {
+    display: inline-block;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #ddd;
+}
+
+
 @media only screen and (max-width: 600px) {
     .box {
         min-width: 370px;
@@ -789,6 +827,21 @@ h1 {
     .modal.modal-back-case .modal-footer {
         font-size: 1rem;
     }
+
+    .bottom-bar {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right: initial;
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .bottom-bar-container {
+        margin: 0 auto;
+        display: inline-block;
+        
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -813,6 +866,21 @@ h1 {
         position: fixed;
         right: 10px;
         bottom: 10px;
+    }
+
+    .bottom-bar {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right: initial;
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .bottom-bar-container {
+        margin: 0 auto;
+        display: inline-block;
+        
     }
 }
 
@@ -847,6 +915,21 @@ h1 {
             right: 10px;
             bottom: 10px;
         }
+
+    .bottom-bar {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right: initial;
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .bottom-bar-container {
+        margin: 0 auto;
+        display: inline-block;
+        
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -872,6 +955,22 @@ h1 {
         right: 10px;
         bottom: 10px;
     }
+
+
+    .bottom-bar {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right: initial;
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .bottom-bar-container {
+        margin: 0 auto;
+        display: inline-block;
+        
+    }
 }
 
 @media only screen and (max-width: 350px) {
@@ -888,6 +987,25 @@ h1 {
         position: fixed;
         right: 10px;
         bottom: 10px;
+    }
+
+    .bottom-bar {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        right: initial;
+        font-size: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .bottom-bar-container {
+        margin: 0 auto;
+        display: inline-block;
+        
+    }
+
+    .bottom-bar {
+        display: none;
     }
 }
 
@@ -1015,3 +1133,4 @@ h1 {
         display: block;
     }
 }
+

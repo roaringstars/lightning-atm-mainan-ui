@@ -7,6 +7,7 @@ import { Card, Table } from "react-bootstrap"
 import PriceInBtc from "../components/PriceInBtc";
 import metaPreviewImage from '../assets/images/meta/perbandingan.jpg';
 import { Helmet } from "react-helmet"
+import { Link } from "gatsby";
 
 const Bantuan = () => {
     /**
@@ -16,6 +17,59 @@ const Bantuan = () => {
     const metaTitle = "Perbandingan Biaya Layanan Exchange Kripto di Indonesia";
     const metaDomain = "https://roaringstars.com";
     const metaUrl = "https://roaringstars.com/perbandingan";
+
+    /**
+     * Endpoint 
+     */
+     const apiEndpoint = process.env.ATM_API_ENDPOINT;
+     const endpoint = apiEndpoint + '/api_rate.php'
+ 
+     /**
+      * Declare state
+      */
+     const [isLoading, setIsLoading] = React.useState(true);
+     const [data, setData] = React.useState({
+         atm: undefined,
+         lnpay: undefined,
+     });
+     const [isDataReady, setIsDataReady] = React.useState(false);
+     const [isDataFailed, setIsDataFailed] = React.useState(false);
+ 
+     /**
+      * Get status on page load
+      */
+     const load = () => {
+         setIsLoading(true);
+         fetch(endpoint, {
+             method: 'GET',
+             headers: new Headers({
+                 'Content-Type': 'application/json',
+             }),
+         })
+             .then(response => {
+                 setIsLoading(false);
+                 if (response.ok) {
+                     setIsDataReady(true);
+                 } else {
+                     setIsDataFailed(true);
+                 }
+                 return response.json();
+             })
+             .then(data => {
+                 setData(data.data);
+             })
+             .catch(error => {
+                 // TODO: Log
+                 // Log('error', 'Failed while sending post data', {
+                 //     endpoint: apiEndpoint,
+                 //     error: error
+                 // })
+             })
+     }
+
+    React.useEffect(() => {
+        load();
+    }, [])
 
     return (
         <main>
@@ -40,20 +94,25 @@ const Bantuan = () => {
             <Header />
 
             <article className="mb-4 section-comparison">
+
                 <div className="container ">
                     <div className="row gx-4 gx-lg-5 justify-content-center">
                         <div className="col-md-10 col-lg-10 col-xl-7">
-                            <h2 className="section-heading mb-2">Perbandingan Biaya Self-Custody</h2>
-                            <Card className="mb-4">
-                                <Card.Body>
-
-                                    <p className="mb-0">Berikut tabel perbandingan biaya yang dibutuhkan untuk memegang Bitcoin kamu
-                                        sendiri sesuai tujuan awal Bitcoin.
+                            <h2 className="section-heading mb-2 text-center">Perbandingan Biaya Self-Custody</h2>
+                                    <p className="mb-5 text-center">Berikut tabel perbandingan biaya yang dibutuhkan untuk memegang Bitcoin kamu
+                                        sendiri.
                                     </p>
-                                </Card.Body>
-                            </Card>
 
-                            <Table striped bordered hover size="lg">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-10 col-xl-10">
+                            
+                        <Table striped bordered hover size="lg">
                                 <thead>
                                     <tr>
                                         <th>Nama Layanan</th>
@@ -68,7 +127,15 @@ const Bantuan = () => {
                                         <td>Lightning ATM (Mainan)</td>
                                         <td>Rp1,500</td>
                                         <td>Rp1,500</td>
-                                        <td>10% (Fixed)</td>
+                                        <td>
+                                            {
+                                                isDataReady ? (
+                                                    <><Link to="/grafik-biaya-penukaran">{data.exchange_fee_percentage}%</Link></>
+                                                ) : (
+                                                    <>Loading...</>
+                                                )
+                                            }
+                                        </td>
                                         <td>
                                             <FontAwesomeIcon icon={faCheckCircle} className="text-success" />
                                         </td>
@@ -120,7 +187,7 @@ const Bantuan = () => {
                                     </tr>
                                 </tbody>
                             </Table>
-                        </div>
+                         </div>
                     </div>
                 </div>
             </article>

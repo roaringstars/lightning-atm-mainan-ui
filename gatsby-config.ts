@@ -16,6 +16,12 @@ const config: GatsbyConfig = {
         icon: 'src/assets/images/icon.png',
       },
     },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        duration: 200
+      }
+    }
   ],
 };
 

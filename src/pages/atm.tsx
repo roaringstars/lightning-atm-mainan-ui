@@ -268,6 +268,13 @@ const ATM = ({ location }: any) => {
                     </div>
                 </div>
             </div>
+            
+            <div className="bottom-bar">
+                <div className="bottom-bar-container">
+                    <Link to="/tip"><div className="created-by">Created by @roaringstars</div></Link>
+                    <Link to="/bantuan"><div className="faq">FAQ</div></Link>
+                </div>
+            </div>
 
             {/* <!-- Exchange Detail Modal --> */}
             <Modal

@@ -35,7 +35,7 @@ const TOS = () => {
                                 kemanan ganda 2FA.
                             </p>
 
-                            <div className="mb-2"><b>Resiko Transaksi Gagal</b></div>
+                            <div className="mb-2" id="transaksi-gagal"><b>Resiko Transaksi Gagal</b></div>
                             <p className="text-justify">
 
                                 Transaksi gagal dapat terjadi dikarenakan banyak faktor,
@@ -77,7 +77,7 @@ const TOS = () => {
                                 pembuatan ATM sebagai edukasi.
                             </p>
 
-                            <div className="mb-2"><b>Transparasi Potongan Biaya</b></div>
+                            <div className="mb-2" id="transparansi-potongan-biaya"><b>Transparasi Potongan Biaya</b></div>
 
                             <p className="text-justify">
                                 <ExchangeFeeDetail /> </p>

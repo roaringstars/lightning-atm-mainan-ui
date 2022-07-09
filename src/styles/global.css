@@ -92,7 +92,7 @@ footer .about {
  */
 
 .section-comparison table {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 }
 
 .text-right {
@@ -467,4 +467,20 @@ code {
 }
 .legality .blockquote p {
     font-style: italic;
+}
+
+/**
+ * Help 
+ */
+.help-section a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dashed #ddd;
+    font-weight: 500;
+}
+.help-section li {
+    margin-bottom: 10px;
+}
+.help-section .shortcut {
+    margin-bottom: 100px;
 }
