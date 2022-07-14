@@ -46,7 +46,7 @@ const Bantuan = () => {
                                         <li><AnchorLink to="/bantuan#dompet-ln">Dompet apa yang mendukung Lightning Network?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#kenapa-mainan">Kenapa dinamakan (Mainan)?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#apakah-bitcoin-asli">Meski (Mainan) apakah Bitcoin-nya asli?</AnchorLink></li>
-                                        <li><AnchorLink to="/bantuan#mengapa-fee-mahal">Mengapa Fee-nya mahal?</AnchorLink></li>
+                                        <li><AnchorLink to="/bantuan#mengapa-fee-mahal">Mengapa Biaya Tukarnya mahal?</AnchorLink></li>
                                         <li><AnchorLink to="/kebijakan-layanan#transaksi-gagal">Bagaimana Jika Transaksi Gagal?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#public-key">Apa itu Public Key?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#private-key">Apa itu Private Key?</AnchorLink></li>
