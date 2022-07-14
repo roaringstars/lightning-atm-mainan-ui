@@ -58,6 +58,15 @@ footer .about {
     padding: 10px 20px;
 }
 
+.help-text a {
+    color: #444;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.help-text a span {
+    border-bottom: 1px dashed #f39300;
+}
+
 .btn-xs {
     font-size: 0.5rem;
     padding: 3px 10px;
@@ -85,6 +94,9 @@ footer .about {
 .section-3 {
     background-color: #fff;
     padding: 40px 20px;
+    animation: fade-in ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 /**
@@ -428,12 +440,40 @@ code {
 
 .header-anim {
     overflow: hidden;
+    min-height: 500px;
+    animation: fade-in ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .header-anim object{
     width: 120%;
     margin: auto;
     margin-left: -10%;
+}
+@media only screen and (max-width: 1280px) {
+    .header-anim {
+        overflow: hidden;
+        min-height: 380px;
+    }  
+}
+@media only screen and (max-width: 900px) {
+    .header-anim {
+        overflow: hidden;
+        min-height: 300px;
+    }  
+}
+@media only screen and (max-width: 600px) {
+    .header-anim {
+        overflow: hidden;
+        min-height: 250px;
+    }  
+}
+@media only screen and (max-width: 400px) {
+    .header-anim {
+        overflow: hidden;
+        min-height: 150px;
+    }  
 }
 
 
@@ -486,4 +526,17 @@ code {
 }
 .text-sm {
     font-size: 0.9rem;
+}
+
+
+/**
+ * Animation
+ */ 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
 }

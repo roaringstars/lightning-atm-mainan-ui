@@ -37,6 +37,9 @@ const Bantuan = () => {
 
                             <Card className="pb-0 mt-4 shortcut">
                                 <Card.Body>
+                                    <ul className="mb-3">
+                                        <li><AnchorLink to="/bantuan#cara-menggunakan-atm">Bagaimana Cara Menggunakan Lightning ATM?</AnchorLink></li>
+                                    </ul>
                                     <ul>
                                         <li><AnchorLink to="/bantuan#apa-itu-bitcoin">Apa itu Bitcoin?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#apa-itu-transaksi-on-chain">Apa itu Transaksi On-Chain Bitcoin?</AnchorLink></li>
@@ -364,6 +367,41 @@ const Bantuan = () => {
                                 <br/>
                                 Ketika <i>Private Key</i> atau <i>Seed Phrase</i> diketahui orang lain, segera buat dompet baru dan pindahkan 
                                 saldo Bitcoin ke dompet baru.
+                            </p>
+
+
+                            <h2 className="section-heading mb-2 mt-5" id="cara-menggunakan-atm">Bagaimana Cara Menggunakan Lightning ATM (Mainan)?</h2>
+                            <p className="mb-0">
+                                Sederhananya, melalui langkah berikut:
+                                <ol className="mt-2">
+                                    <li>
+                                        Siapkan <AnchorLink to="/bantuan#dompet-ln">dompet Bitcoin Custodial yang mendukung transaksi Lightning, </AnchorLink> pastikan 
+                                        juga mendukung <AnchorLink to="/bantuan#apa-itu-lnurl">LNURL withdaw</AnchorLink>.
+                                    </li>
+                                    <li>
+                                        Buka <a href="/atm" target={'_blank'}>halaman ATM</a>, dan pilih nominal transaksi. 
+                                        Disarankan nominal Rp1,500 jika baru pertama kali.
+                                    </li>
+                                    <li>
+                                        Selesaikan pembayaran menggunakan E-wallet yang mendukung QRIS seperti Ovo, Gopay, atau Link Aja.
+                                    </li>
+                                    <li>
+                                       Tunggu proses verifikasi pembayaran, biasanya berlangsung kurang dari 10 menit.
+                                    </li>
+                                    <li>
+                                        Setelah terkonfirmasi, scan kode LNURL menggunakan dompet Lightning.
+                                    </li>
+                                    <li>
+                                        Bitcoin akan sampai dalam sekejap melalui jaringan Lightning.
+                                    </li>
+                                </ol>
+                                <br/>
+                                Beriku beberapa tutorial dari komunitas dalam bentuk video dan blog:
+                                <ul className="mt-2">
+                                    <li><a href="https://www.youtube.com/watch?v=Iwk-rRCy6qU" target="_blank">Tutorial Video oleh @bukan_rastaman</a></li>
+                                    <li><a href="https://www.youtube.com/watch?v=R9Qec-mV6iE" target="_blank">Tutorial Video oleh @kantongcrypto</a></li>
+                                    <li><a href="https://orangkamar.com/lightning-atm-beli-bitcoin-eceran-dan-belajar-self-custody/" target="_blank">Tutorial oleh @orangkamar</a></li>
+                                </ul>
                             </p>
 
 

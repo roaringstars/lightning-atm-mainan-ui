@@ -14,6 +14,7 @@ import Masonry from 'react-masonry-css'
 import metaPreviewImage from '../assets/images/meta/index.jpg';
 import { Helmet } from "react-helmet"
 import MetaTags from "../components/MetaTags";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const IndexPage = () => {
   return (
@@ -34,6 +35,9 @@ const IndexPage = () => {
             <p className="lead">
               <Link className="btn btn-orange btn-lg" to="/atm" role="button">Menuju ke ATM</Link>
             </p>
+            <div className="help-text">
+              <AnchorLink to="/bantuan#cara-menggunakan-atm">Atau pelajari dulu <span>Cara Menggunakan Lightning ATM</span></AnchorLink>
+            </div>
           </div>
           <div className="header-anim">
             <object type="image/svg+xml" data={IntroAnim}>svg-animation</object>
