@@ -333,7 +333,7 @@ const Bantuan = () => {
                                 kode <i>Private Key</i> maka dia bisa memindahkan atau memiliki Bitcoin dalam dompet tersebut.
                                 <br/>
                                 <br/>
-                                Sehingga ada istilah <i><b>"Not Your Keys, Not Your Money"</b></i>, 
+                                Sehingga ada istilah <i><b>"Not Your Keys, Not Your Coins"</b></i>, 
                                 yang berarti jika membeli Bitcoin namun tidak memiliki <i>Private Key</i>, maka dipertanyakan 
                                 kepemilikan Bitcoin tersebut.
                                 <br/>
