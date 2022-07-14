@@ -484,3 +484,6 @@ code {
 .help-section .shortcut {
     margin-bottom: 100px;
 }
+.text-sm {
+    font-size: 0.9rem;
+}

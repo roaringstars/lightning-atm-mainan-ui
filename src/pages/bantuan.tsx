@@ -14,6 +14,7 @@ import Image2 from '../assets/images/bantuan/lightning-network.jpg';
 import metaPreviewImage from '../assets/images/meta/bantuan.jpg';
 import MetaTags from "../components/MetaTags"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import QRCode from "react-qr-code";
 
 const Bantuan = () => {
     return (
@@ -47,6 +48,8 @@ const Bantuan = () => {
                                         <li><AnchorLink to="/bantuan#apakah-bitcoin-asli">Meski (Mainan) apakah Bitcoin-nya asli?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#mengapa-fee-mahal">Mengapa Fee-nya mahal?</AnchorLink></li>
                                         <li><AnchorLink to="/kebijakan-layanan#transaksi-gagal">Bagaimana Jika Transaksi Gagal?</AnchorLink></li>
+                                        <li><AnchorLink to="/bantuan#public-key">Apa itu Public Key?</AnchorLink></li>
+                                        <li><AnchorLink to="/bantuan#private-key">Apa itu Private Key?</AnchorLink></li>
                                         <li><AnchorLink to="/bantuan#kenapa-saya-jomblo">Kenapa saya jomblo?</AnchorLink></li>
                                     </ul>
                                 </Card.Body>
@@ -65,25 +68,27 @@ const Bantuan = () => {
                     <div className="row gx-4 gx-lg-5 justify-content-center">
                         <div className="col-md-10 col-lg-8 col-xl-7">
                             <div className="mb-5 mt-4">
-                                <h2 className="section-heading mb-2">Bitcoin itu apa si njir?</h2>
-                                <p className="mb-0">Penjelasan yang paling sederhana Bitcoin adalah mata uang digital
+                                <h2 className="section-heading mb-2">Bitcoin itu apa si?</h2>
+                                <p className="mb-0">Sederhananya, Bitcoin adalah mata uang digital
                                     tapi tidak memerlukan pihak sentral seperti Bank, Pemerintah, atau Perusahaan untuk menjamin
                                     transaksi valid antar penggunanya. <br /> <br />
 
                                     Melainkan menggunakan kesepakatan bersama
-                                    untuk memverifikasi setiap transaksi secara publik, saat ini ada sekitar 15 ribu node yang
+                                    untuk memverifikasi setiap transaksi secara publik dan otomatis menggunakan algoritma, saat ini ada 
+                                    sekitar <a href="https://bitnodes.io/">15 ribu node</a> yang
                                     memverifikasi dan mencatat setiap transaksi. Selama ribuan node ini saling tidak percaya satu
                                     sama lain, maka tidak ada transaksi yang terlewat dan tidak ada orang yang
                                     bisa curang mengubah data didalamnya.
                                     <br /> <br />
                                     Bitcoin tidak memerlukan informasi pengguna seperti Nama, Foto, atau Tanda Tangan.
                                     Melainkan transaksi diwajibkan untuk dipublikasi dan diverifikasi ribuan node tersebut.
-                                    Setiap pengguna harus memiliki Wallet yang fungsinya mirip Rekening Tabungan, berisi Public Key
-                                    dan Private Key.
+                                    Setiap pengguna harus memiliki Wallet yang fungsinya mirip Rekening Tabungan, 
+                                    berisi <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink>&nbsp;
+                                    dan <AnchorLink to="/bantuan#private-key"><i>Private Key</i></AnchorLink>.
                                     <br /><br />
-                                    Public Key itu berfungsi seperti Nomor Rekening yang orang bisa kirim uang kedalamnya, sedangkan
-                                    Private Key adalah berfungsi sebagai kata sandi yang hanya pemilik Rekening Tabungan yang dapat
-                                    memindahkan uang di Wallet tersebut.
+                                    <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink> itu berfungsi seperti Nomor Rekening yang orang bisa kirim uang kedalamnya, 
+                                    sedangkan <AnchorLink to="/bantuan#private-key"><i>Private Key</i></AnchorLink> berfungsi sebagai kata sandi yang 
+                                    hanya pemilik Rekening Tabungan yang dapat memindahkan uang di Wallet tersebut.
                                 </p>
                             </div>
                         </div>
@@ -102,18 +107,18 @@ const Bantuan = () => {
                                 <h2 className="section-heading mb-2">Transaksi On-Chain itu apa?</h2>
 
                                 <p className="mb-0">
-                                    Hmm, sederhananya adalah transaksi yang dicatat setiap node Bitcoin (15 ribu tadi). Ciri-ciri dari
-                                    transaksi ini adalah bisa dilihat semua orang melalui layanan Block Explorer.
+                                    Hmm, sederhananya transaksi yang dicatat setiap node Bitcoin (15 ribu node tadi). Ciri-ciri dari
+                                    transaksi ini adalah bisa dilihat semua orang melalui layanan <a href="https://mempool.space/" target="_blank">Block Explorer</a>.
                                     <br />
                                     <br />
                                     Kekurangan dari transaksi On-Chain adalah membutuhkan waktu lama untuk terkonfirmasi
                                     dan tidak efisien untuk nominal pembayaran yang kecil. Namun kelebihannya adalah
-                                    sederhana karena cukup kirim ke Public Key tujuan dan tidak memerlukan
+                                    sederhana karena hanya memerlukan <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink> tujuan dan tidak memerlukan
                                     koneksi internet yang stabil.
 
                                     <br />
                                     <br />
-                                    Karena kekurangan tadi, dibuatlah Jaringan Lightning (Off-Chain) yang memanfaatkan
+                                    Karena kekurangan tadi, dibuatlah <AnchorLink to="/bantuan#apa-itu-transaksi-ln">Jaringan Lightning (Off-Chain)</AnchorLink> yang memanfaatkan
                                     jaringan On-Chain ini yang memungkinkan menyelesaikan masalah keterbatasan transaksi,
                                     waktu yang lama, dan biaya yang tinggi.
                                 </p>
@@ -137,23 +142,25 @@ const Bantuan = () => {
                                 <p className="mb-0">
                                     Pengembang Bitcoin berpikir ketika kita sering membeli Kopi (misal 10 ribu Rupiah) itu tidak perlu
                                     dikabarkan ke seluruh dunia (15 ribu node tadi). Melainkan cukup Penjual Kopi (misal Tejo) dan Pembeli Kopi (Wowotek)
-                                    yang perlu tau detail transaksinya.
+                                    yang perlu tahu detail transaksinya.
                                     <br />
                                     <br />
                                     Transaksi yang perlu dikabarkan ke seluruh dunia adalah saat
-                                    Wowotek memulai transaksi dengan Tejo dan mengakhiri transaksi tersebut. Orang-orang tidak perlu tau
+                                    Wowotek memulai transaksi dengan Tejo dan mengakhiri transaksi tersebut. Orang-orang tidak perlu tahu
                                     berapa kali Wowotek membeli kopi, yang perlu setiap orang catat adalah berapa total Wowotek harus membayar ke Tejo.
 
                                     <br />
                                     <br />
-                                    Transaksi ini juga disebut Off-Chain, karena tidak berlangsung di jaringan Bitcoin. Ciri dari transaksi ini
-                                    adalah private, atau tidak bisa diketahui masyarakat umum. Setiap transaksi menggunakan sebuah kode Invoice yang
-                                    biasanya lebih panjang dari Public Key dan sekali pakai.
+                                    Transaksi ini juga disebut Off-Chain, karena tidak berlangsung di <AnchorLink to="/bantuan#apa-itu-transaksi-on-chain">jaringan utama Bitcoin</AnchorLink>. Ciri dari transaksi ini
+                                    adalah <i>private</i>, atau tidak bisa diketahui masyarakat umum. Setiap transaksi menggunakan sebuah kode <AnchorLink to="/bantuan#apa-itu-invoice-ln"><i>Invoice</i></AnchorLink> yang
+                                    biasanya lebih panjang dari <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink> dan hanya sekali pakai.
                                     <br />
                                     <br />
                                     Kekurangannya adalah baik Tejo dan Wowotek
-                                    harus selalu terhubung ke internet untuk melakukan transaksi. Kelebihannya transaksi tiap membeli Kopi tadi
-                                    bisa sangat murah bahkan gratis, jika kedua pihak sepakat untuk tidak menentukan biaya transaksi.
+                                    harus selalu terhubung ke internet untuk melakukan transaksi, 
+                                    namun bisa diatasi dengan menggunakan Dompet Kustodial atau menyewa <a href="https://voltage.cloud/">Lightning Node</a>. 
+                                    Kelebihan Lightning adalah setiap transaksi bisa sangat murah bahkan gratis, 
+                                    jika kedua pihak sepakat untuk tidak menentukan biaya transaksi.
                                 </p>
                             </div>
 
@@ -192,40 +199,62 @@ const Bantuan = () => {
 
                             <h2 className="section-heading mb-2 mt-5" id="apa-itu-invoice-ln">Apa itu Invoice Lightning Network?</h2>
                             <p className="mb-0">
-                                Untuk menerima Bitcoin melalui lapisan Lightning Network, maka penerima 
-                                harus memberikan invoice ke pengirim. Contoh invoice Lightning Network adalah sebagai berikut.
+                                Untuk menerima Bitcoin melalui lapisan <AnchorLink to="/bantuan#apa-itu-transaksi-ln">Lightning Network</AnchorLink>, maka penerima 
+                                harus memberikan <i>invoice</i> ke pengirim. Contoh <i>invoice</i> Lightning Network adalah sebagai berikut.
                             </p>
-                            <blockquote className="blockquote">
+                            <blockquote className="blockquote mt-3 text-sm">
                             <code>
                                 
                                 lnbc15u1p3v3uw2pp5lcemeh5tyg9mvpurr599plh89rsp6y2l9krquzgzwlhel430rjlsdp8v9hx7mned4hh2ueq9pmxjcfqf389qs2e9e3k72gcqzpgxqyz5vqsp5msw5978y04kd05tq9n2a7kng3420g53q9whfp2h0nvllxnd8daws9qyyssq6zd2acqdhndnluf6zj02rfww0k6772vuar2dmqmp4te47h42hw2ytunhpykzyfnj6frqn89y4hjld679skglw4fldwadmdug09rkzrspvrk88m
                            
                             </code>
                             </blockquote>
-                           
+                            <p className="mb-0">
+                                Umumnya, <i>invoice</i> akan di-<i>encode</i> dalam sebuah kode QR untuk memudahkan pembayaran.
+                            </p>
+                            <div className="mt-3 text-center">
+                                <QRCode value={'lnbc15u1p3v3uw2pp5lcemeh5tyg9mvpurr599plh89rsp6y2l9krquzgzwlhel430rjlsdp8v9hx7mned4hh2ueq9pmxjcfqf389qs2e9e3k72gcqzpgxqyz5vqsp5msw5978y04kd05tq9n2a7kng3420g53q9whfp2h0nvllxnd8daws9qyyssq6zd2acqdhndnluf6zj02rfww0k6772vuar2dmqmp4te47h42hw2ytunhpykzyfnj6frqn89y4hjld679skglw4fldwadmdug09rkzrspvrk88m'} fgColor="#444" bgColor="#fff" />
+                            </div>
+                            <p className="mt-4">
+                                <i>Invoice</i> Lightning bisa dibuat melalui aplikasi dompet Bitcoin yang sudah mendukung Lightning. 
+                                Sebuah <i>Invoice</i> Lightning juga aman untuk dipublikasi karena tidak mengandung informasi sensitif.
+                                 
+                            </p>
 
                             <h2 className="section-heading mb-2 mt-5" id="apa-itu-lnurl">Apa itu LNURL?</h2>
                             <p className="mb-0">
-                                LNURL ada karena penerima perlu mengirim invoice merupakan hal yang tidak praktis, dengan 
-                                LNURL penerima tidak perlu lagi memberikan invoice untuk menerima Bitcoin. 
-                                Hanya perlu memberikan sekali kode LNURL dan pengirim bisa mengirimkan berkali-kali.
+                                LNURL diciptakan karena pengembang Bitcoin merasa mengirim invoice setiap kali melakukan transaksi merupakan hal yang tidak praktis, 
+                                dengan LNURL penerima tidak perlu lagi memberikan <i>invoice</i> untuk menerima <AnchorLink to="/bantuan#apa-itu-bitcoin">Bitcoin</AnchorLink>. 
+                                Penerima hanya perlu memberikan sekali kode LNURL dan pengirim bisa mengirimkan berkali-kali.
                                 <br/>
                                 <br/>
-                                Dalam kasus Lightning ATM, LNURL withdraw digunakan untuk mengambil Bitcoin secara 
-                                otomatis setelah pembeli Bitcoin menscan kode LNURL yang dibuat oleh Lightning ATM.
+                                Dalam aplikasi Lightning ATM, LNURL <i>withdraw</i> digunakan untuk mengambil Bitcoin 
+                                secara <i>seamless</i> setelah pembeli Bitcoin memindai kode LNURL yang dibuat oleh Lightning ATM.
 
                                 <br/>
                                 <br/>
-                                Contoh dari LNURL adalah sebagai berikut: 
+                                Contoh dari kode LNURL adalah sebagai berikut: 
                             </p>
-                            <blockquote className="blockquote">
+                            <blockquote className="blockquote text-sm mt-3">
                             <code>
                                 
                             LNURL1DP68GURN8GHJ7UM9WFMXJCM99E3K7MF0V9CXJ0M385EKVCENXC6R2C35XVUKXEFCV5MKVV34X5EKZD3EV56NYD3HXQURZEPEXEJXXEPNXSCRVWFNV9NXZCN9XQ6XYEFHVGCXXCMYXYMNSERXFQ5FNS
                            
                             </code>
                             </blockquote>
+                            <p className="mb-0">
+                                Umumnya, <i>LNURL</i> akan di-<i>encode</i> dalam sebuah kode QR untuk memudahkan proses pembayaran.
+                            </p>
+                            <div className="mt-3 text-center">
+                                <QRCode value={'LNURL1DP68GURN8GHJ7UM9WFMXJCM99E3K7MF0V9CXJ0M385EKVCENXC6R2C35XVUKXEFCV5MKVV34X5EKZD3EV56NYD3HXQURZEPEXEJXXEPNXSCRVWFNV9NXZCN9XQ6XYEFHVGCXXCMYXYMNSERXFQ5FNS'} fgColor="#444" bgColor="#fff" />
+                            </div>
 
+                            <p className="mt-4">
+                                Saat ini tengah dikembangkan berbagai macam variasi baru LNURL, sebagai contoh untuk
+                                melakukan Login atau Autentikasi, dengan kata lain memungkinkan seseorang <i>login</i> pada 
+                                sebuah situs tanpa memerlukan kata sandi.
+                                 
+                            </p>
 
                             <h2 className="section-heading mb-2  mt-5" id="dompet-ln">Dompet Bitcoin Lightning Network</h2>
                             <p className="mb-0">
@@ -273,11 +302,77 @@ const Bantuan = () => {
                                 </ul>
                             </p>
 
+                            <h2 className="section-heading mb-2 mt-5" id="public-key">Apa itu Public Key?</h2>
+                            <p className="mb-0">
+                                Dalam Bitcoin, <i>Public Key</i> digunakan sebagai identitas sebuah dompet. 
+                                Contoh dari  <i>Public Key</i> atau biasa disebut alamat Bitcoin adalah sebagai berikut:
+                            </p>
+                            <blockquote className="blockquote mt-3">
+                            <code>
+                                
+                            1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+                           
+                            </code>
+                            </blockquote>
+                            <p className="mb-0">
+                                Terkadang, <i>Public Key</i> akan di-<i>encode</i> dalam sebuah kode QR untuk memudahkan proses pembayaran.
+                            </p>
+                            <div className="mt-3 text-center">
+                                <QRCode value={'1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'} fgColor="#444" bgColor="#fff" />
+                            </div>
+                            <p className="mt-3">
+                                Seperti namanya, <i>Public Key</i> bisa dilihat semua orang melalui layanan <a href="https://mempool.space/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" target="_blank">Block Explorer</a>.
+                                
+                            </p>
+                            
+
+                            <h2 className="section-heading mb-2 mt-5" id="private-key">Apa itu Private Key?</h2>
+                            <p className="mb-0">
+                                Berfungsi sebagai kata sandi sebuah dompet Bitcoin, 
+                                sehingga kode <i>Private Key</i> <b>bersifat sangat rahasia</b>. Ketika seseorang telah mengetahui 
+                                kode <i>Private Key</i> maka dia bisa memindahkan atau memiliki Bitcoin dalam dompet tersebut.
+                                <br/>
+                                <br/>
+                                Sehingga ada istilah <i><b>"Not Your Keys, Not Your Money"</b></i>, 
+                                yang berarti jika membeli Bitcoin namun tidak memiliki <i>Private Key</i>, maka dipertanyakan 
+                                kepemilikan Bitcoin tersebut.
+                                <br/>
+                                <br/>
+                                Berikut merupakan contoh dari kode <i>Private Key</i>:
+                                
+                            </p>
+                            <blockquote className="blockquote mt-2 text-sm">
+                            <code>
+                                5K4pkuTyfZhM4wCFpvFQ3ZNAZJpPc7Ks4QKjvZBNFaPQei1GbyJ
+                            </code>
+                            </blockquote>
+                            <p className="mb-0">
+                                Dewasa ini, beberapa dompet tidak lagi menggunakan kode <i>Private Key</i>, melainkan 
+                                menggunakan <i>Seed Phrase</i>. Fungsinya sama, namun lebih sederhana karena 
+                                bukan merupakan kumpulan karakter acak, melainkan 12 kata acak bahasa inggris.
+                            </p>
+                            <blockquote className="blockquote mt-3 text-sm">
+                            <code>
+                                witch collapse practice feed shame open despair creek road again ice least
+                            </code>
+                            </blockquote>
+                            
+                            <p className="mb-0">
+                                <i>Seed Phrase</i> juga <b>bersifat sangat rahasia</b>.
+                                
+                                <br/>
+                                <br/>
+                                Ketika <i>Private Key</i> atau <i>Seed Phrase</i> diketahui orang lain, segera buat dompet baru dan pindahkan 
+                                saldo Bitcoin ke dompet baru.
+                            </p>
+
+
                             <h2 className="section-heading mb-2 mt-5" id="kenapa-mainan">Kenapa dinamakan (Mainan)?</h2>
                             <p className="mb-0">
                                 <ol>
                                     <li>
-                                    Menghindari salah paham dengan Lightning ATM buatan @21enough, dan mengkhususkan untuk orang Indonesia.
+                                    Menghindari salah paham dengan Lightning ATM milik <a href="https://twitter.com/21isenough">@21isenough</a>, 
+                                    dan mengkhususkan untuk pengguna di Indonesia.
                                     </li>
                                     <li>
                                     Sebagai bentuk pengingat bahwa ATM ini hanya untuk edukasi.
@@ -287,24 +382,26 @@ const Bantuan = () => {
 
                             <h2 className="section-heading mb-2 mt-5" id="apakah-bitcoin-asli">Apakah Bitcoin yang dikirim Asli?</h2>
                             <p className="mb-0">
-                                Asli dan berada di main-net bukan testnet. 
+                                Asli dan berada di <i>mainnet</i> bukan <i>testnet</i>. 
                                 <br/>
-                                Mengapa mainnet? agar sederhana untuk pengguna baru yang belum tau Bitcoin. Karena 
-                                saya yakin tidak semua wallet bisa mengubah ke jaringan testnet.
+                                <br/>
+                                Mengapa <i>mainnet</i>? agar sederhana untuk pengguna baru yang belum tahu Bitcoin. Karena 
+                                saya yakin tidak semua wallet bisa mengubah ke jaringan <i>testnet</i>.
                             </p>
 
-                            <h2 className="section-heading mb-2 mt-5" id="mengapa-fee-mahal">Mengapa Fee-nya mahal?</h2>
+                            <h2 className="section-heading mb-2 mt-5" id="mengapa-fee-mahal">Mengapa Biaya Tukarnya mahal?</h2>
                             <p className="mb-0">
                                 ATM ini didesain untuk mengubah Rupiah ke Bitcoin dan langsung dikirim ke dompet masing-masing, sehingga 
-                                perubahan harga bitcoin sangat mempengaruhi biaya penukaran (fee).
+                                perubahan harga Bitcoin sangat mempengaruhi biaya penukaran (<i>fee</i>).
                                 <br/>
-                                Biaya penukaran (fee) digunakan untuk <AnchorLink to="/kebijakan-layanan#transparansi-potongan-biaya">membuat website/mesin tetap berjalan</AnchorLink>.
+                                <br/>
+                                Biaya penukaran digunakan untuk <AnchorLink to="/kebijakan-layanan#transparansi-potongan-biaya">membuat website/mesin tetap berjalan</AnchorLink>.
                                 Perubahan biaya penukaran bisa dilihat pada <Link to="/grafik-biaya-penukaran">grafik berikut</Link>.
                             </p>
 
                             <h2 className="section-heading mb-2 mt-5" id="kenapa-saya-jomblo">Kenapa Saya Jomblo?</h2>
                             <p className="mb-0">
-                                Nah, kalau itu saya tidak tau 😅
+                                Nah, kalau itu saya tidak tahu 😅
                             </p>
 
                            <br/>            
