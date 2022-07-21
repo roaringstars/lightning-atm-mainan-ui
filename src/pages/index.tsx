@@ -15,15 +15,75 @@ import metaPreviewImage from '../assets/images/meta/index.jpg';
 import { Helmet } from "react-helmet"
 import MetaTags from "../components/MetaTags";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import CountUp from "react-countup";
+import ReactTimeAgo from "react-time-ago";
+import LoadingTextHeadingShort from "../components/LoadingTextHeadingShort";
+import LoadingTextHeadingLong from "../components/LoadingTextHeadingLong";
 
 const IndexPage = () => {
+  /**
+   * Const
+   */
+  const apiEndpoint = process.env.ATM_API_ENDPOINT;
+  const [modeTrxDuration, setModeTrxDuration] = React.useState(58);
+  const [totalTrxSatoshiSent, setTotalTrxSatoshiSent] = React.useState(7500000);
+  const [totalTrxCount, setTotalTrxCount] = React.useState(3420);
+  const [totalTodayTrx, setTotalTodayTrx] = React.useState(34);
+  const [lastTrxTimestamp, setLastTrxTimestamp] = React.useState('');
+
+  const [isStatLoading, setIsStatLoading] = React.useState(true);
+  const [isStatDataReady, setIsStatDataReady] = React.useState(false);
+
+  /**
+   * Get status on page load
+   */
+  const load = () => {
+    const endpoint = apiEndpoint + '/api_simple_stats.php';
+    fetch(endpoint, {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then(async response => {
+        const data = await response.json();
+        setIsStatLoading(false);
+
+
+        if (!response.ok) {
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+
+        /**
+         * Assign value
+         */
+        setModeTrxDuration(data.data.mode_trx_duration);
+        setTotalTrxSatoshiSent(data.data.satoshi_sent);
+        setTotalTrxCount(data.data.successfull_trx);
+        setTotalTodayTrx(data.data.today_trx);
+        setLastTrxTimestamp(data.data.last_trx_timestamp);
+      })
+      .catch(error => {
+        // TODO: Log
+        // Log('error', 'Failed while sending post data', {
+        //     endpoint: apiEndpoint,
+        //     error: error
+        // })
+      })
+  }
+
+  React.useEffect(() => {
+    load();
+  }, [])
+
   return (
     <>
       <main>
         <MetaTags
-          // metaDescription="Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri"
-          // metaTitle="Lightning ATM (Mainan)"
-          // metaPath="/"
+        // metaDescription="Membantu Lebih Banyak Orang Belajar Mengelola Bitcoin Mereka Sendiri"
+        // metaTitle="Lightning ATM (Mainan)"
+        // metaPath="/"
         />
 
         <Header />
@@ -43,6 +103,72 @@ const IndexPage = () => {
             <object type="image/svg+xml" data={IntroAnim}>svg-animation</object>
           </div>
         </div>
+
+        <section className="section-stat">
+          <div className="container">
+            <Row>
+              <Col>
+                <div className="title">Kebanyakan Transaksi Selesai</div>
+                <div className="number">
+                  {
+                    isStatLoading ? (
+                      <><LoadingTextHeadingShort /></>
+                    ) : (
+                      <CountUp end={modeTrxDuration} />
+                    )
+                  }
+                </div>
+                <div className="desc">Detik</div>
+              </Col>
+              <Col>
+                <div className="title">Satoshi Terkirim</div>
+                <div className="number">
+                  {
+                    isStatLoading ? (
+                      <><LoadingTextHeadingLong /></>
+                    ) : (
+                      <CountUp
+                        start={totalTrxSatoshiSent - 10000}
+                        end={totalTrxSatoshiSent}
+                        duration={190}
+                        separator={','}
+                        useEasing={true}
+                      />
+                    )
+                  }
+
+                </div>
+                <div className="desc">dari <CountUp
+                  start={totalTrxCount - 100}
+                  end={totalTrxCount}
+                  duration={690}
+                  separator={','}
+                  useEasing={true}
+                /> transaksi berhasil</div>
+              </Col>
+              <Col>
+                <div className="title">Transaksi Hari Ini</div>
+                <div className="number">
+                  {
+                    isStatLoading ? (
+                      <><LoadingTextHeadingShort /></>
+                    ) : (
+                      <CountUp end={totalTodayTrx} />
+                    )
+                  }
+                </div>
+                {
+                  lastTrxTimestamp == '' ? (
+                    <><div className="desc">berhasil</div></>
+                  ) : (
+                    <div className="desc">terakhir dilakukan <ReactTimeAgo date={new Date(lastTrxTimestamp * 1000)} /></div>
+                  )
+                }
+
+              </Col>
+            </Row>
+          </div>
+        </section>
 
         <section className="section-1">
           <div className="container">
