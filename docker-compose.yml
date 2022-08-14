@@ -2,9 +2,10 @@ version: "3.8"
 services:
   app:
     container_name: app-lightning-atm-mainan-ui
-    image: inanimate/httpd-ssl
+    image: nginx
     volumes:
-      - ./public:/usr/local/apache2/htdocs/
+      - ./public:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
@@ -17,8 +18,10 @@ services:
       - "traefik.http.middlewares.app-ratelimit.ratelimit.average=25"
       - "traefik.http.middlewares.app-ratelimit.ratelimit.burst=15"
     ports:
-      - 5030:443
-      - 1030:80
+      - ${APP_HTTPS_PORT}:80
+    environment:
+      - NGINX_HOST=${HOST}
+      - NGINX_PORT=80
     networks:
       - proxy
     restart: always
