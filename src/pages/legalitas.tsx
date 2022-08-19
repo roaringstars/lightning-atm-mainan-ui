@@ -36,7 +36,7 @@ const Legalitas = () => {
                                 dompet pengguna (tidak disimpan oleh ATM).
                                 <br/>
                                 <br/>
-                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan. Serta berusaha memberikan akses informasi yang transaparan dan seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
+                                ATM ini juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan. Serta berusaha memberikan akses informasi yang transparan dan informatif kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                             <div className="dashed-line" />
@@ -103,7 +103,7 @@ const Legalitas = () => {
                                 Pada Oktober 2018 Menteri Perdagangan mengeluarkan peraturan yang memperbolehkan jual-beli Aset Kripto namun tidak menyinggung perihal Kripto sebagai alat pembayaran.
 
                                 <blockquote className="blockquote">
-                                    <p>"Aset Kripto (Crypto Asset) ditetapkan sebagai Komoditi yang dapat dijadikan Subjek Kontrak Berjangka yang diperdagangkan di Bursa Berjangka."</p>
+                                    <p>"Aset Kripto (Crypto Asset) ditetapkan sebagai Komoditas yang dapat dijadikan Subjek Kontrak Berjangka yang diperdagangkan di Bursa Berjangka."</p>
 
                                     <figcaption className="blockquote-footer">
                                         Peraturan Menteri Perdagangan Nomor 99 Tahun 2018 Pasal 1
@@ -112,7 +112,7 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Kemudian pada Februari 2019 dikeluarkan Peraturan Nomor 5 Tahun 2019 oleh Bappebti (Badan Pengawas Perdagangan Berjangka Komoditi) yang mengatur tentang pihak yang dizinkan secara bisnis untuk melakukan jual-beli Aset Kripto.
+                                Kemudian pada Februari 2019 dikeluarkan Peraturan Nomor 5 Tahun 2019 oleh Bappebti (Badan Pengawas Perdagangan Berjangka Komoditi) yang mengatur tentang pihak yang diizinkan secara bisnis untuk melakukan jual-beli Aset Kripto.
 
                                 <sup>
                                     [<a href="https://bappebti.go.id/resources/docs/peraturan/sk_kep_kepala_bappebti/sk_kep_kepala_bappebti_2019_02_01_w9i365pf_id.pdf">10</a>]
@@ -130,7 +130,7 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Januari 2022 — Scam Kripto Merebak</b></div>
                             <p className="text-justify mt-3">
-                                I-coin dan Asix token sempat menjadi berita publik perihal pembuatan koin kripto yang kemudian harga aset tersebut jatuh dan membuat pemilik aset rugi besar. Hal tersebut diduga karena <span className="highlight">pengembang koin hanya mengajak pengguna untuk membeli aset tanpa memberikan edukasi perihal resiko aset kripto.</span>
+                                I-coin dan Asix token sempat menjadi berita publik perihal pembuatan koin kripto yang kemudian harga aset tersebut jatuh dan membuat pemilik aset rugi besar. Hal tersebut diduga karena <span className="highlight">pengembang koin hanya mengajak pengguna untuk membeli aset tanpa memberikan edukasi perihal risiko aset kripto.</span>
                                 <sup>
                                     [<a href="https://kumparan.com/kumparantech/makin-anjlok-kabar-terkini-harga-token-asix-anang-dan-i-coin-wirda-mansur-1xmNBuLGi0f/1" target="_blank">12</a>]
 
@@ -162,21 +162,21 @@ const Legalitas = () => {
                             </p>
 
 
-                            <div className="h3"><b>Salah Persepsi Masal dan Reaksi</b></div>
+                            <div className="h3"><b>Salah Persepsi Massal dan Reaksi</b></div>
                             <p className="text-justify mt-3">
                                 Semenjak Bappebti hanya memperbolehkan Bitcoin sebagai aset, mengakibatkan kebanyakan masyarakat umum mulai berpikir dan mengenal bahwa kripto mampu menjadikan individu mendapatkan untung besar seperti saham pada umumnya. Sehingga masyarakat awam berani memasukan jutaan rupiah kedalamnya, berharap dapat mendapatkan untung yang besar pula.
 
                             </p>
 
                             <p className="text-justify">
-                                Padahal faktanya, Bitcoin dan kripto lain belum sepenuhnya teruji sebagai teknologi yang berhasil. Saya berani berkata kalau Bitcoin masih sebatas mata uang eksperimen yang baru berumur 13 tahun, dibandingakan E-mail yang sudah berumur 57 tahun. Sehingga alangkah baiknya jika tidak memasukan uang terlalu banyak kedalam teknologi ini kecuali sudah memahami bagaimana teknologi tersebut bekerja.
+                                Padahal faktanya, Bitcoin dan kripto lain belum sepenuhnya teruji sebagai teknologi yang berhasil. Saya berani berkata kalau Bitcoin masih sebatas mata uang eksperimen yang baru berumur 13 tahun, dibandingkan E-mail yang sudah berumur 57 tahun. Sehingga alangkah baiknya jika tidak memasukan uang terlalu banyak kedalam teknologi ini kecuali sudah memahami bagaimana teknologi tersebut bekerja.
                             </p>
                             <p className="text-justify">
                                 Melihat kondisi ini saya tidak bisa diam, saya perlu menyuarakan bahwasanya <span className="highlight">masyarakat awam perlu untuk memahami Bitcoin secara teknis sebelum menaruh uang dalam jumlah yang besar. Namun, masalahnya belum terdapat sebuah alat peraga yang rendah biaya yang bisa digunakan orang awam untuk mencoba dan belajar Bitcoin.</span>
                             </p>
 
                             <p className="text-justify">
-                                Kemudian saya bereksperimen untuk membuat sebuah ATM Bitcoin (Mainan) yang berfungsi sebagai pintu gerbang untuk memahami teknis Bitcoin. Sehingga masyarakat dapat berdiskusi dan menimbang, apa saja manfaat dan resiko Bitcoin sebagai mata uang.  <span className="highlight">Dimana hal ini saya rasa belum dilakukan pemerintah atau <a href="https://tekno.kompas.com/read/2021/11/12/08032907/mui-tetapkan-kripto-haram-jadi-mata-uang-untuk-jual-beli?page=all" target="_blank">kelompok agama</a> sebelum menetapkan sebuah peraturan, saya belum mendengar adanya pengambilan opini publik tentang manfaat Bitcoin ini.</span>
+                                Kemudian saya bereksperimen untuk membuat sebuah ATM Bitcoin (Mainan) yang berfungsi sebagai pintu gerbang untuk memahami teknis Bitcoin. Sehingga masyarakat dapat berdiskusi dan menimbang, apa saja manfaat dan risiko Bitcoin sebagai mata uang.  <span className="highlight">Dimana hal ini saya rasa belum dilakukan pemerintah atau <a href="https://tekno.kompas.com/read/2021/11/12/08032907/mui-tetapkan-kripto-haram-jadi-mata-uang-untuk-jual-beli?page=all" target="_blank">kelompok agama</a> sebelum menetapkan sebuah peraturan, saya belum mendengar adanya pengambilan opini publik tentang manfaat Bitcoin ini.</span>
                                 <sup>
                                     [<a href="https://www.epa.gov/international-cooperation/public-participation-guide-introduction-public-participation" target="_blank">14</a>] [<a href="https://www.scitepress.org/Papers/2018/100525/100525.pdf" target="_blank">15</a>] [<a href="https://www.google.com/search?q=opini+publik+bitcoin+site%3Ago.id" target="_blank">16</a>]
                                 </sup>
@@ -186,12 +186,12 @@ const Legalitas = () => {
 
                             <div className="h3"><b>Dilema Etika</b></div>
                             <p className="text-justify mt-3">
-                                Pembuatan Lightning ATM (Mainan) tidak selalu berjalan mulus, ada beberapa hal yang dapat dikaitkan dengan pelanggaran hukum di-Indonesia. Meski begitu <span className="highlight">saya yakin kalau semua teknologi perlu untuk di demokratisasi, perlu lebih banyak orang yang memahami teknis teknologi tersebut.</span> </p>
+                                Pembuatan Lightning ATM (Mainan) tidak selalu berjalan mulus, ada beberapa hal yang dapat dikaitkan dengan pelanggaran hukum di Indonesia. Meski begitu <span className="highlight">saya yakin kalau semua teknologi perlu untuk di demokratisasi, perlu lebih banyak orang yang memahami teknis teknologi tersebut.</span> </p>
 
                             <p className="text-justify">
-                                Hal ini sangat penting, karena mengikuti sifat alami teknologi baru yaitu selalu memiliki dua sisi (baik dan buruk). Ketika hanya sedikit orang yang mengetahui teknologi tersebut, bahaya dapat datang tak terduga, karena tidak ada manusia lain yang mencegah aktifitas tersebut terjadi. </p>
+                                Hal ini sangat penting, karena mengikuti sifat alami teknologi baru yaitu selalu memiliki dua sisi (baik dan buruk). Ketika hanya sedikit orang yang mengetahui teknologi tersebut, bahaya dapat datang tak terduga, karena tidak ada manusia lain yang mencegah aktivitas tersebut terjadi. </p>
                             <p className="text-justify">
-                                Selayaknya teknologi seperti Internet, E-mail, A.I., Drone, atau Nuklir, Bitcoin juga memerlukan adanya ruang untuk belajar dan bereksperimen untuk mengetahui manfaat dan bahaya. Tentu dengan membatasi resiko yang mungkin terjadi seperti pencucian uang, kehilangan uang, dan transaksi gelap.
+                                Selayaknya teknologi seperti Internet, E-mail, A.I., Drone, atau Nuklir, Bitcoin juga memerlukan adanya ruang untuk belajar dan bereksperimen untuk mengetahui manfaat dan bahaya. Tentu dengan membatasi risiko yang mungkin terjadi seperti pencucian uang, kehilangan uang, dan transaksi gelap.
                             </p>
 
                             <p className="text-justify">
@@ -204,7 +204,7 @@ const Legalitas = () => {
                             </p>
 
                             <p className="text-justify">
-                                Sehingga dalam waktu dekat, ATM ini tidak dimungkinkan untuk mendapat izin resmi dari pemerintah karena keterbatasan hukum yang ada. Sehubungan dengan hal tersebut saya memutuskan untuk menimbang berdasarkan hukum dasar yang ada dan etika moral yang tidak berentangan dengan hukum di Indonesia. Hukum yang mendasari proyek ini berangkat dari UU ITE Nomor 11 Tahun 2008 Pasal 4 yang berbunyi:
+                                Sehingga dalam waktu dekat, ATM ini tidak dimungkinkan untuk mendapat izin resmi dari pemerintah karena keterbatasan hukum yang ada. Atas dengan hal tersebut saya memutuskan untuk menimbang berdasarkan hukum dasar yang ada dan etika moral yang tidak berentangan dengan hukum di Indonesia. Hukum yang mendasari proyek ini berangkat dari UU ITE Nomor 11 Tahun 2008 Pasal 4 yang berbunyi:
 
                                 <sup>
                                     [<a href="https://www.dpr.go.id/doksetjen/dokumen/-Regulasi-UU.-No.-11-Tahun-2008-Tentang-Informasi-dan-Transaksi-Elektronik-1552380483.pdf" target="_blank">17</a>]
@@ -270,12 +270,12 @@ const Legalitas = () => {
 
                                     </li>
                                     <li>
-                                        Terdapat <Link to={'/kebijakan-layanan'}> Kebijakan Layanan</Link> yang jelas dan transaparan terhadap batasan dan 
-                                        resiko penggunaan layanan.
+                                        Terdapat <Link to={'/kebijakan-layanan'}> Kebijakan Layanan</Link> yang jelas dan transparan terhadap batasan dan 
+                                        risiko penggunaan layanan.
 
                                     </li>
                                     <li>
-                                        Layanan ini memberikan akses bantuan jika megalami kendala, bantuan bisa datang dari komunitas atau saya secara pribadi.
+                                        Layanan ini memberikan akses bantuan jika mengalami kendala, bantuan bisa datang dari komunitas atau saya secara pribadi.
 
                                     </li>
                                 </ul>
@@ -286,7 +286,7 @@ const Legalitas = () => {
                             <p className="text-justify mt-3">
                                 Jika disimpulkan, mesikupun belum mendapat izin resmi untuk beroperasi namun terdapat lebih banyak manfaat dari adanya mesin Lightning ATM (Mainan) ini. 
                                 
-                                Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan. Serta berusaha memberikan akses informasi yang transaparan dan seluas-luasnya kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
+                                Kami juga berusaha untuk melawan penggunaan Bitcoin sebagai tindak kejahatan. Serta berusaha memberikan akses informasi yang transparan dan informatif kepada masyarakat umum sesuai dengan dasar tujuan yaitu mencerdaskan kehidupan bangsa.
                             </p>
 
                         </div>

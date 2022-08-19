@@ -174,12 +174,13 @@ const IndexPage = () => {
           <div className="container">
             <h3>Mengapa ATM ini dibuat?</h3>
             <p>
-              Masih banyak orang (terutama di-Indonesia) yang belum mengetahui teknologi Bitcoin Lightning Network
-              dan cara memegang dompet Bitcoin mereka sendiri (<i>Self Custody</i>). Sementara kebanyakan jasa penukaran Bitcoin mematok tarif yang lumayan <Link to="/perbandingan">mahal*</Link> untuk memulai belajar.
+              Masih banyak orang (terutama di Indonesia) yang belum mengetahui teknologi Bitcoin Lightning Network
+              ataupun cara memegang dompet Bitcoin mereka sendiri (<i>Self Custody</i>). 
+              Sementara kebanyakan jasa penukaran Bitcoin memerlukan nominal yang <Link to="/perbandingan">besar*</Link> bagi orang yang baru memulai belajar.
             </p>
 
             <p>
-              ATM ini memungkinkan siapapun untuk memulai belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan&nbsp;<b>Rp1,500</b> kamu bisa mulai bereksperimen dengan Bitcoin.
+              ATM ini memungkinkan siapa pun untuk memulai belajar Bitcoin tanpa perlu takut kehilangan banyak uang, cukup dengan&nbsp;<b>Rp1,500</b> kamu bisa mulai bereksperimen dengan Bitcoin.
             </p>
           </div>
         </section>

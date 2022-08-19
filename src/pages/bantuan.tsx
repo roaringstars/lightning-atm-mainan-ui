@@ -73,25 +73,25 @@ const Bantuan = () => {
                             <div className="mb-5 mt-4">
                                 <h2 className="section-heading mb-2">Bitcoin itu apa si?</h2>
                                 <p className="mb-0">Sederhananya, Bitcoin adalah mata uang digital
-                                    tapi tidak memerlukan pihak sentral seperti Bank, Pemerintah, atau Perusahaan untuk menjamin
+                                    tetapi tidak memerlukan pihak sentral seperti Bank, Pemerintah, atau Perusahaan untuk menjamin
                                     transaksi valid antar penggunanya. <br /> <br />
 
                                     Melainkan menggunakan kesepakatan bersama
                                     untuk memverifikasi setiap transaksi secara publik dan otomatis menggunakan algoritma, saat ini ada 
-                                    sekitar <a href="https://bitnodes.io/">15 ribu node</a> yang
-                                    memverifikasi dan mencatat setiap transaksi. Selama ribuan node ini saling tidak percaya satu
+                                    sekitar <a href="https://bitnodes.io/">15 ribu <i>node</i></a> yang
+                                    memverifikasi dan mencatat setiap transaksi. Selama ribuan <i>node</i> ini saling tidak percaya satu
                                     sama lain, maka tidak ada transaksi yang terlewat dan tidak ada orang yang
                                     bisa curang mengubah data didalamnya.
                                     <br /> <br />
                                     Bitcoin tidak memerlukan informasi pengguna seperti Nama, Foto, atau Tanda Tangan.
-                                    Melainkan transaksi diwajibkan untuk dipublikasi dan diverifikasi ribuan node tersebut.
-                                    Setiap pengguna harus memiliki Wallet yang fungsinya mirip Rekening Tabungan, 
+                                    Melainkan transaksi diwajibkan untuk dipublikasi dan diverifikasi ribuan <i>node</i> tersebut.
+                                    Setiap pengguna harus memiliki <i>Wallet</i> yang fungsinya mirip Rekening Tabungan, 
                                     berisi <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink>&nbsp;
                                     dan <AnchorLink to="/bantuan#private-key"><i>Private Key</i></AnchorLink>.
                                     <br /><br />
                                     <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink> itu berfungsi seperti Nomor Rekening yang orang bisa kirim uang kedalamnya, 
                                     sedangkan <AnchorLink to="/bantuan#private-key"><i>Private Key</i></AnchorLink> berfungsi sebagai kata sandi yang 
-                                    hanya pemilik Rekening Tabungan yang dapat memindahkan uang di Wallet tersebut.
+                                    hanya pemilik Rekening Tabungan yang dapat memindahkan uang di <i>Wallet</i> tersebut.
                                 </p>
                             </div>
                         </div>
@@ -110,11 +110,11 @@ const Bantuan = () => {
                                 <h2 className="section-heading mb-2">Transaksi On-Chain itu apa?</h2>
 
                                 <p className="mb-0">
-                                    Hmm, sederhananya transaksi yang dicatat setiap node Bitcoin (15 ribu node tadi). Ciri-ciri dari
+                                    Hmm, sederhananya transaksi yang dicatat setiap <i>node</i> Bitcoin (15 ribu <i>node</i> tadi). Ciri dari
                                     transaksi ini adalah bisa dilihat semua orang melalui layanan <a href="https://mempool.space/" target="_blank">Block Explorer</a>.
                                     <br />
                                     <br />
-                                    Kekurangan dari transaksi On-Chain adalah membutuhkan waktu lama untuk terkonfirmasi
+                                    Kekurangan dari transaksi <i>On-Chain</i> adalah membutuhkan waktu lama untuk terkonfirmasi
                                     dan tidak efisien untuk nominal pembayaran yang kecil. Namun kelebihannya adalah
                                     sederhana karena hanya memerlukan <AnchorLink to="/bantuan#public-key"><i>Public Key</i></AnchorLink> tujuan dan tidak memerlukan
                                     koneksi internet yang stabil.
@@ -389,14 +389,14 @@ const Bantuan = () => {
                                        Tunggu proses verifikasi pembayaran, biasanya berlangsung kurang dari 10 menit.
                                     </li>
                                     <li>
-                                        Setelah terkonfirmasi, scan kode LNURL menggunakan dompet Lightning.
+                                        Setelah terkonfirmasi, pindai kode LNURL menggunakan dompet Lightning.
                                     </li>
                                     <li>
                                         Bitcoin akan sampai dalam sekejap melalui jaringan Lightning.
                                     </li>
                                 </ol>
                                 <br/>
-                                Beriku beberapa tutorial dari komunitas dalam bentuk video dan blog:
+                                Berikut beberapa tutorial dari komunitas dalam bentuk video dan blog:
                                 <ul className="mt-2">
                                     <li><a href="https://www.youtube.com/watch?v=Iwk-rRCy6qU" target="_blank">Tutorial Video oleh @bukan_rastaman</a></li>
                                     <li><a href="https://www.youtube.com/watch?v=R9Qec-mV6iE" target="_blank">Tutorial Video oleh @kantongcrypto</a></li>
@@ -430,7 +430,7 @@ const Bantuan = () => {
                             <h2 className="section-heading mb-2 mt-5" id="mengapa-fee-mahal">Mengapa Biaya Tukarnya mahal?</h2>
                             <p className="mb-0">
                                 ATM ini didesain untuk mengubah Rupiah ke Bitcoin dan langsung dikirim ke dompet masing-masing, sehingga 
-                                perubahan harga Bitcoin sangat mempengaruhi biaya penukaran (<i>fee</i>).
+                                perubahan harga Bitcoin sangat memengaruhi biaya penukaran (<i>fee</i>).
                                 <br/>
                                 <br/>
                                 Biaya penukaran digunakan untuk <AnchorLink to="/kebijakan-layanan#transparansi-potongan-biaya">membuat website/mesin tetap berjalan</AnchorLink>.
