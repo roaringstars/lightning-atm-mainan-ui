@@ -59,7 +59,7 @@ const Tip = () => {
 
     function generateQr() {
         setIsGenerateInvoiceLoading(true);
-        const endpoint = apiEndpoint + '/api_tip.php'
+        const endpoint = apiEndpoint + '/api/tip'
         fetch(endpoint, {
             method: 'POST',
             headers: new Headers({
@@ -98,7 +98,7 @@ const Tip = () => {
     }
 
     function checkPayment(invoiceCode: string) {
-        const endpoint = apiEndpoint + '/api_tip.php?payment_request=' + invoiceCode
+        const endpoint = apiEndpoint + '/api/tip?payment_request=' + invoiceCode
         fetch(endpoint, {
             method: 'GET',
             headers: new Headers({
@@ -140,7 +140,7 @@ const Tip = () => {
      * Load tipper on page load 
      */
     function loadTipper() {
-        const endpoint = apiEndpoint + '/api_tip.php'
+        const endpoint = apiEndpoint + '/api/tip'
         fetch(endpoint, {
             method: 'GET',
             headers: new Headers({

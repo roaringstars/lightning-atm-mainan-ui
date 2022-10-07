@@ -16,7 +16,7 @@ const PriceInBtc = (props: any) => {
     /**
 * Compose API endpoint
 */
-    const endpoint = apiEndpoint + '/api_rate.php?deposit=1500'
+    const endpoint = apiEndpoint + '/api/atm/rate?deposit=1500'
 
     /**
      * Load latest Bitcoin price rate

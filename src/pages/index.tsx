@@ -38,7 +38,7 @@ const IndexPage = () => {
    * Get status on page load
    */
   const load = () => {
-    const endpoint = apiEndpoint + '/api_simple_stats.php';
+    const endpoint = apiEndpoint + '/api/simple_stats';
     fetch(endpoint, {
       method: 'GET',
       headers: new Headers({

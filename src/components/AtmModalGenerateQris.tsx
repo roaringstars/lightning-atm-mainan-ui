@@ -59,7 +59,7 @@ const AtmModalGenerateQris = (props: any) => {
 
             setIsLoading(true);
             setIsQrisDataReady(false);
-            let endpoint = apiEndpoint + '/api_generate_qris.php?deposit=' + amount;
+            let endpoint = apiEndpoint + '/api/atm/generate_qris?deposit=' + amount;
             console.log('Loading request: ', endpoint)
             fetch(endpoint, {
                 method: 'GET',
@@ -163,12 +163,12 @@ const AtmModalGenerateQris = (props: any) => {
          */
         if (!forbidAction) {
             if (isDebug) {
-                console.log('Call API: /api_check_payment');
+                console.log('Call API: /api/atm/check_payment');
             }
 
             setIsPaymentCheckLoading(true);
             setIsPaymentCheckReady(false);
-            let endpoint = apiEndpoint + '/api_check_payment.php?id=' + trxId;
+            let endpoint = apiEndpoint + '/api/atm/check_payment?id=' + trxId;
             console.log('Loading request: ', endpoint)
             fetch(endpoint, {
                 method: 'GET',

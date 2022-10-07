@@ -60,11 +60,11 @@ const AtmModalExchangeDetail = (props: any) => {
          */
         if (!forbidAction) {
             if (isDebug) {
-                console.log('Call API: /api_rate.php?deposit=' + amount);
+                console.log('Call API: /api/atm/rate?deposit=' + amount);
             }
             setIsLoading(true);
             setIsRateDataReady(false);
-            let endpoint = apiEndpoint + '/api_rate.php?deposit=' + amount;
+            let endpoint = apiEndpoint + '/api/atm/rate?deposit=' + amount;
             console.log('Loading request: ', endpoint)
             fetch(endpoint, {
                 method: 'GET',

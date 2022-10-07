@@ -32,7 +32,7 @@ const GrafikBiayaPenukaran = () => {
      * Endpoint 
      */
     const apiEndpoint = process.env.ATM_API_ENDPOINT;
-    const endpoint = apiEndpoint + '/api_adjusted_fee.php'
+    const endpoint = apiEndpoint + '/api/adjusted_fee'
 
     /**
      * Declare state

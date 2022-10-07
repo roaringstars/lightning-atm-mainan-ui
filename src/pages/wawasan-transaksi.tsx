@@ -73,7 +73,7 @@ const WawasanTransaksi = ({ location }: any) => {
         setIsLoading(true);
         setIsDataReady(false);
         setDataNotFound(false);
-        const endpoint = apiEndpoint + '/api_troubleshoot_trx.php?trx_id=' + actualTrxId
+        const endpoint = apiEndpoint + '/api/troubleshoot_trx?trx_id=' + actualTrxId
         fetch(endpoint, {
             method: 'GET',
             headers: new Headers({

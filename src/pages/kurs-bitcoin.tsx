@@ -22,7 +22,7 @@ const KursBitcoin = () => {
      * Endpoint 
      */
     const apiEndpoint = process.env.ATM_API_ENDPOINT;
-    const endpoint = apiEndpoint + '/api_market_price.php'
+    const endpoint = apiEndpoint + '/api/market_price'
 
     /**
      * Declare state

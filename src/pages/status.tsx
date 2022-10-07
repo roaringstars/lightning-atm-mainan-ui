@@ -17,7 +17,7 @@ const Status = () => {
      * Endpoint 
      */
     const apiEndpoint = process.env.ATM_API_ENDPOINT;
-    const endpoint = apiEndpoint + '/api_status.php'
+    const endpoint = apiEndpoint + '/api/status'
 
     /**
      * Declare state
